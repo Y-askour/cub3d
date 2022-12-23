@@ -6,14 +6,14 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:07:03 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 19:02:37 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/23 22:30:56 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
 
 int check(t_all *data)
 {
-  check_ceiling(data);
+  check_colors(data);
   return (0);
 }
 

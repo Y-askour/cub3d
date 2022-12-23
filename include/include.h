@@ -73,4 +73,5 @@ void get_map(t_all *data);
 
 // check data
 int check_ceiling(t_all *data);
+int check_colors(t_all *data);
 #endif
