@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:11:15 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 18:26:09 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/24 15:31:07 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -29,4 +29,14 @@ void free_metadata(t_all *data)
   free(data->parss.south);
   free(data->parss.ceiling);
   free(data->parss.floor);
+}
+
+void free_rgb(char **rgb)
+{
+  int i;
+
+  i = 0;
+  while (rgb[i])
+    free(rgb[i++]);
+  free(rgb);
 }

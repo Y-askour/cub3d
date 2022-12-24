@@ -35,7 +35,10 @@ typedef struct s_valid_data
 {
   unsigned int ceiling[3];
   unsigned int floor[3];
-
+  char *so;
+  char *no;
+  char *ea;
+  char *we;
 } t_valid_data;
 
 typedef struct s_all
@@ -74,4 +77,8 @@ void get_map(t_all *data);
 // check data
 int check_ceiling(t_all *data);
 int check_colors(t_all *data);
+int cout_comma(char *str);
+int check_is_rgb(char **rgb);
+void free_rgb(char **rgb);
+void fill_color(char **color,unsigned int to_fill[3]);
 #endif
