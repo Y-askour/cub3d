@@ -5,7 +5,7 @@ HEADER=include/include.h
 SRC=$(addprefix src/,main.c parssing/parssing.c parssing/get_colors.c \
 		parssing/get_all.c parssing/get_textures.c parssing/parssing_utils.c\
 		free/free.c check/check_colors.c check/check_colors_utils.c\
-		check/check_textures.c)
+		check/check_textures.c check/check_textures_utils.c)
 SRC_OBJ=$(SRC:.c=.o)
 
 GNL_SRC=$(addprefix utils/get_next_line/,get_next_line.c get_next_line_utils.c)

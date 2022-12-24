@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:07:06 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 18:51:08 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/24 17:11:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -98,5 +98,6 @@ int read_file(char *file,t_all *data)
     trimed_line = ft_strtrim(line,"\n");
     i++;
   }
+  data->parss.all[i] = NULL;
   return (1);
 }
