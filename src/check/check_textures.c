@@ -6,11 +6,21 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/24 16:33:10 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/24 16:51:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
+
+int open_file(char *str)
+{
+  int fd;
+
+  fd = open(str,O_RDONLY);
+  if (fd < 0)
+    return (1);
+  return (0);
+}
 
 int check_east(t_all *data)
 {
@@ -30,6 +40,8 @@ int check_east(t_all *data)
     return (1);
   }
   data->valid.ea = trimed_str;
+  if (open_file(data->valid.ea))
+    return (1);
   return (0);
 }
 
@@ -51,6 +63,8 @@ int check_west(t_all *data)
     return (1);
   }
   data->valid.we = trimed_str;
+  if (open_file(data->valid.we))
+    return (1);
   return (0);
 }
 
@@ -72,6 +86,8 @@ int check_south(t_all *data)
     return (1);
   }
   data->valid.so = trimed_str;
+  if (open_file(data->valid.so))
+    return (1);
   return (0);
 }
 
@@ -93,6 +109,8 @@ int check_north(t_all *data)
     return (1);
   }
   data->valid.no = trimed_str;
+  if (open_file(data->valid.no))
+    return (1);
   return (0);
 }
 
