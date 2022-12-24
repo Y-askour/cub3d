@@ -59,6 +59,8 @@ int read_file(char *file,t_all *data);
 // free
 void free_metadata(t_all *data);
 void free_all(t_all *data);
+void free_rgb(char **rgb);
+void free_textures(t_all *data);
 
 // get_textures
 int get_west(t_all *data);
@@ -74,11 +76,14 @@ int get_ceiling(t_all *data);
 int get_metadata(t_all *data);
 void get_map(t_all *data);
 
-// check data
+// check colors
 int check_ceiling(t_all *data);
 int check_colors(t_all *data);
+
+// check_colors_utils
 int cout_comma(char *str);
 int check_is_rgb(char **rgb);
-void free_rgb(char **rgb);
 void fill_color(char **color,unsigned int to_fill[3]);
+// check_textures
+int check_textures(t_all *data);
 #endif

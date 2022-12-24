@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:11:15 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/24 15:31:07 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/24 16:29:52 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -39,4 +39,12 @@ void free_rgb(char **rgb)
   while (rgb[i])
     free(rgb[i++]);
   free(rgb);
+}
+
+void free_textures(t_all *data)
+{
+  free(data->valid.ea);
+  free(data->valid.we);
+  free(data->valid.so);
+  free(data->valid.no);
 }

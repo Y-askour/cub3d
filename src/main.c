@@ -6,14 +6,20 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:07:03 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 22:30:56 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/24 16:31:51 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
 
 int check(t_all *data)
 {
-  check_colors(data);
+  if (check_colors(data))
+    return (1);
+  if (check_textures(data))
+  {
+    free_textures(data);
+    return (1);
+  }
   return (0);
 }
 
@@ -29,12 +35,16 @@ int main(int ac,char **av)
     {
       return (1);
     }
-    check(&data);
+    if (check(&data))
+    {
+      return (1);
+    }
     free_metadata(&data);
     i = 0;
     while(data.parss.map[i])
       free(data.parss.map[i++]);
     free(data.parss.map);
+    return (0);
   }
   else
     printf("number of args is not valid\n");
