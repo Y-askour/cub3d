@@ -92,4 +92,7 @@ int check_textures(t_all *data);
 // check_textures_utils
 int open_file(char *str);
 void  init_textures(t_all *data);
+
+// check_map
+int check_map(t_all *data);
 #endif

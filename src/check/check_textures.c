@@ -6,14 +6,13 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/24 16:55:30 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/26 16:43:03 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
 
-int check_east(t_all *data)
-{
+int check_east(t_all *data) {
   char *str;
   char *trimed_str;
   int   len;
@@ -32,6 +31,7 @@ int check_east(t_all *data)
   data->valid.ea = trimed_str;
   if (open_file(data->valid.ea))
     return (1);
+  free(data->valid.ea);
   return (0);
 }
 
@@ -55,6 +55,7 @@ int check_west(t_all *data)
   data->valid.we = trimed_str;
   if (open_file(data->valid.we))
     return (1);
+  free(data->valid.we);
   return (0);
 }
 
@@ -78,6 +79,7 @@ int check_south(t_all *data)
   data->valid.so = trimed_str;
   if (open_file(data->valid.so))
     return (1);
+  free(data->valid.so);
   return (0);
 }
 
@@ -101,6 +103,7 @@ int check_north(t_all *data)
   data->valid.no = trimed_str;
   if (open_file(data->valid.no))
     return (1);
+  free(data->valid.no);
   return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:21:26 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 16:22:48 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/25 14:43:29 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -45,5 +45,6 @@ void get_map(t_all *data)
     i++;
     j++;
   }
+  data->parss.map[j] = NULL;
   free_all(data);
 }

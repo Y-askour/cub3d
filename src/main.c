@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:07:03 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/24 16:31:51 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/25 19:01:05 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
@@ -18,6 +18,10 @@ int check(t_all *data)
   if (check_textures(data))
   {
     free_textures(data);
+    return (1);
+  }
+  if (check_map(data))
+  {
     return (1);
   }
   return (0);
