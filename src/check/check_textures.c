@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 16:43:03 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/26 21:59:55 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int check_east(t_all *data) {
   if (ft_strlen(data->parss.east) > 4)
     len = ft_strlen(data->parss.east);
   str = ft_strnstr(data->parss.east,".xpm",len);
+  free(data->parss.east);
   if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
   {
     free(trimed_str);
@@ -31,7 +32,6 @@ int check_east(t_all *data) {
   data->valid.ea = trimed_str;
   if (open_file(data->valid.ea))
     return (1);
-  free(data->valid.ea);
   return (0);
 }
 
@@ -47,6 +47,7 @@ int check_west(t_all *data)
   if (ft_strlen(data->parss.west) > 4)
     len = ft_strlen(data->parss.west);
   str = ft_strnstr(data->parss.west,".xpm",len);
+  free(data->parss.west);
   if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
   {
     free(trimed_str);
@@ -55,7 +56,6 @@ int check_west(t_all *data)
   data->valid.we = trimed_str;
   if (open_file(data->valid.we))
     return (1);
-  free(data->valid.we);
   return (0);
 }
 
@@ -71,6 +71,8 @@ int check_south(t_all *data)
   if (ft_strlen(data->parss.south) > 4)
     len = ft_strlen(data->parss.south);
   str = ft_strnstr(data->parss.south,".xpm",len);
+  free(data->parss.south);
+  if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
   if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
   {
     free(trimed_str);
@@ -79,7 +81,6 @@ int check_south(t_all *data)
   data->valid.so = trimed_str;
   if (open_file(data->valid.so))
     return (1);
-  free(data->valid.so);
   return (0);
 }
 
@@ -95,6 +96,7 @@ int check_north(t_all *data)
   if (ft_strlen(data->parss.north) > 4)
     len = ft_strlen(data->parss.north);
   str = ft_strnstr(data->parss.north,".xpm",len);
+  free(data->parss.north);
   if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
   {
     free(trimed_str);
@@ -103,7 +105,6 @@ int check_north(t_all *data)
   data->valid.no = trimed_str;
   if (open_file(data->valid.no))
     return (1);
-  free(data->valid.no);
   return (0);
 }
 

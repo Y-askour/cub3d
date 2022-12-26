@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 16:11:01 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/26 22:36:15 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,40 @@ void add_space(t_all *data)
   data->parss.map = map;
 }
 
-int check_map(t_all *data)
+
+int endmap_index(char **str)
 {
   int i;
 
   i = 0;
-  add_space(data);
-  while (data->parss.map[i])
+  while (str[i])
+    i++;
+  i--;
+  while (str[i])
   {
-    printf("%s    len=|%ld|\n",data->parss.map[i],ft_strlen(data->parss.map[i]));
+    if (ft_strlen(str[i]) && is_empty(str[i]))
+      break;
+    i--;
+  }
+  return (i);
+}
+
+int check_map(t_all *data)
+{
+  int i;
+
+  int end;
+  end = endmap_index(data->parss.map);
+  data->valid.maps = malloc(sizeof(char *) * end + 2);
+
+  i = 0;
+  while (i <= end)
+  {
+    data->valid.maps[i] = ft_strdup(data->parss.map[i]);
+    printf("i = %d |%s|\n",i,data->valid.maps[i]);
     i++;
   }
+  data->valid.maps[i] = NULL;
+  printf("------------\n");
   return (0);
 }

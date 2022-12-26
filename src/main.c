@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:07:03 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/25 19:01:05 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/26 22:37:07 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
@@ -43,11 +43,27 @@ int main(int ac,char **av)
     {
       return (1);
     }
-    free_metadata(&data);
+    while (data.parss.all[i])
+      free(data.parss.all[i++]);
+    free(data.parss.all);
     i = 0;
-    while(data.parss.map[i])
+    while (data.parss.map[i])
       free(data.parss.map[i++]);
     free(data.parss.map);
+    i = 0;
+    while (data.valid.maps[i])
+    {
+      printf("%s\n",data.valid.maps[i]);
+      free(data.valid.maps[i++]);
+    }
+    free(data.valid.maps);
+
+    free(data.parss.floor);
+    free(data.parss.ceiling);
+    free(data.valid.no);
+    free(data.valid.so);
+    free(data.valid.we);
+    free(data.valid.ea);
     return (0);
   }
   else

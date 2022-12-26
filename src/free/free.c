@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:11:15 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/24 16:29:52 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/26 18:53:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -47,4 +47,14 @@ void free_textures(t_all *data)
   free(data->valid.we);
   free(data->valid.so);
   free(data->valid.no);
+}
+
+void free_map(t_all *data)
+{
+  int i;
+
+  i = 0;
+  while (data->parss.map[i])
+    free(data->parss.map[i++]);
+  free(data->parss.map);
 }
