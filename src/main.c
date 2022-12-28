@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:50:43 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:03:41 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,6 @@ int main(int ac,char **av)
     }
     if (check(&data))
       return (1);
-    while (data.valid.maps[i])
-    {
-      printf("%s\n",data.valid.maps[i]);
-      free(data.valid.maps[i++]);
-    }
-    free(data.valid.maps);
     return (0);
   }
   else

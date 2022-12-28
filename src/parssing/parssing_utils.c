@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:55:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:55:26 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 21:52:31 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int read_file(char *file,t_all *data)
   i = 0;
   if (fd == -3 || len < 1)
     return (0);
-  data->parss.all = malloc(sizeof(char *) * len + 1);
+  data->parss.all = malloc(sizeof(char *) * (len + 1));
   line = get_next_line(fd);
   trimed_line = ft_strtrim(line,"\n");
   while (line)

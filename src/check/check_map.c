@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:42:19 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 21:51:34 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void str_space(char **dest,char *original,unsigned int b_len)
   int diff;
   len = ft_strlen(original);
   diff = b_len - len;
-  to_fill = malloc(sizeof(char)  * len  + diff + 1);
+  to_fill = malloc(sizeof(char)  * (len  + diff + 1));
   int i;
 
   i = 0;
@@ -67,7 +67,7 @@ void add_space(t_all *data)
   i = 0;
   while(data->parss.map[i])
     i++;
-  map = malloc(sizeof(char *) * i + 1);
+  map = malloc(sizeof(char *) * (i + 1));
   if (!map)
     return ;
   i = 0;
@@ -100,13 +100,13 @@ int endmap_index(char **str)
   return (i);
 }
 
-int check_map(t_all *data)
+void init_map(t_all *data)
 {
   int i;
 
   int end;
   end = endmap_index(data->parss.map);
-  data->valid.maps = malloc(sizeof(char *) * end + 2);
+  data->valid.maps = malloc(sizeof(char *) * (end + 2));
 
   i = 0;
   while (i <= end)
@@ -116,5 +116,18 @@ int check_map(t_all *data)
   }
   data->valid.maps[i] = NULL;
   free_map(data);
+}
+
+int check_map(t_all *data)
+{
+  int i;
+
+  init_map(data);
+  i = 0;
+  while (data->valid.maps[i])
+  {
+    free(data->valid.maps[i++]);
+  }
+  free(data->valid.maps);
   return (0);
 }

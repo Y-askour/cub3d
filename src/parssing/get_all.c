@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:49 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:50:51 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 21:52:15 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void get_map(t_all *data)
     i++;
     len++;
   }
-  data->parss.map = malloc(sizeof(char *) * len + 1);
+  data->parss.map = malloc(sizeof(char *) * (len + 1));
   i = 0;
   while (data->parss.all[temp])
   {
