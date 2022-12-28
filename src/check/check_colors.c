@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:57:03 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/24 15:30:33 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 17:34:03 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,19 @@ int check_colors(t_all *data)
 {
   if (!check_ceiling(data))
   {
+    free_map(data);
+    free_parssing(data);
     printf("check ceiling\n");
     return (1);
   }
   if (!check_floor(data))
   {
+    free_map(data);
+    free_parssing(data);
     printf("check floor\n");
     return (1);
   }
+  free(data->parss.floor);
+  free(data->parss.ceiling);
   return (0);
 }

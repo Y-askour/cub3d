@@ -63,6 +63,7 @@ void free_all(t_all *data);
 void free_rgb(char **rgb);
 void free_textures(t_all *data);
 void free_map(t_all *data);
+void free_parssing(t_all *data);
 
 // get_textures
 int get_west(t_all *data);

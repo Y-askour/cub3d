@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 22:36:15 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 17:42:19 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,9 @@ int check_map(t_all *data)
   while (i <= end)
   {
     data->valid.maps[i] = ft_strdup(data->parss.map[i]);
-    printf("i = %d |%s|\n",i,data->valid.maps[i]);
     i++;
   }
   data->valid.maps[i] = NULL;
-  printf("------------\n");
+  free_map(data);
   return (0);
 }

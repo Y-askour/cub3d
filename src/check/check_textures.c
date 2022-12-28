@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 21:59:55 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 17:21:59 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,16 +113,22 @@ int check_textures(t_all *data)
   init_textures(data);
   if (check_south(data))
   {
+    free(data->parss.east);
+    free(data->parss.north);
+    free(data->parss.west);
     printf("check south texture\n");
     return (1);
   }
   if (check_north(data))
   {
+    free(data->parss.east);
+    free(data->parss.west);
     printf("check north texture\n");
     return (1);
   }
   if (check_west(data))
   {
+    free(data->parss.east);
     printf("check west texture\n");
     return (1);
   }

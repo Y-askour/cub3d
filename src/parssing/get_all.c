@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:21:26 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 22:31:55 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 17:31:45 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -45,25 +45,26 @@ int is_empty(char *str)
 void get_map(t_all *data)
 {
   int i;
-  int j;
+  int len;
   int temp;
 
   i = data->parss.map_index;
-  j = 0;
+  len = 0;
   while (data->parss.all[i] && !is_empty(data->parss.all[i]))
     i++;
   if (!data->parss.all[i])
   {
     data->parss.map = NULL;
+    free_all(data);
     return ;
   }
   temp = i;
   while (data->parss.all[i])
   {
     i++;
-    j++;
+    len++;
   }
-  data->parss.map = malloc(sizeof(char *) * j + 1);
+  data->parss.map = malloc(sizeof(char *) * len + 1);
   i = 0;
   while (data->parss.all[temp])
   {
@@ -72,4 +73,5 @@ void get_map(t_all *data)
     i++;
   }
   data->parss.map[i] = NULL;
+  free_all(data);
 }

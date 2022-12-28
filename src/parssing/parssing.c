@@ -6,7 +6,7 @@
 /*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 16:18:07 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 22:22:01 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 17:33:33 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../include/include.h"
@@ -92,6 +92,16 @@ int parss_metadata(char *av,t_all *data)
   return (1);
 }
 
+void free_parssing(t_all *data)
+{
+    free(data->parss.floor);
+    free(data->parss.ceiling);
+    free(data->parss.east);
+    free(data->parss.west);
+    free(data->parss.north);
+    free(data->parss.south);
+}
+
 int parssing(char *av,t_all *data)
 {
   if (!parss_metadata(av,data))
@@ -106,6 +116,7 @@ int parssing(char *av,t_all *data)
   get_map(data);
   if (!data->parss.map)
   {
+    free_parssing(data);
     printf("missing map\n");
     return (0);
   }
