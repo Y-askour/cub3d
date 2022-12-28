@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:45:01 by yaskour           #+#    #+#             */
-/*   Updated: 2021/11/09 20:06:53 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:58:05 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:58:06 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static char	*ft_alloc(char *src, char c)
