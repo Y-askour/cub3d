@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parssing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:18:07 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:33:33 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:55:00 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:55:02 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
 int check_double_metadata(t_all *data)

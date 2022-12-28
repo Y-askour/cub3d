@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:11:15 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/26 18:53:28 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:54:27 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:54:29 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
 void free_all(t_all *data)

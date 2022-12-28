@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:19:40 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 18:24:10 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:54:49 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:54:50 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
 int get_floor(t_all *data)
