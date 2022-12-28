@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:16:51 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 18:24:28 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 18:07:42 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 18:07:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
 int get_west(t_all *data)
