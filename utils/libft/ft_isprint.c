@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 14:38:52 by yaskour           #+#    #+#             */
-/*   Updated: 2021/11/12 00:26:38 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 18:00:42 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 18:00:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_isprint( int character )
