@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 21:51:34 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:16:58 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ unsigned int big_len(t_all *data)
 
   i = 0;
   len = 0;
-  while (data->parss.map[i])
+  while (data->valid.maps[i])
   {
-    if (len < ft_strlen(data->parss.map[i]))
-      len = ft_strlen(data->parss.map[i]);
+    if (len < ft_strlen(data->valid.maps[i]))
+      len = ft_strlen(data->valid.maps[i]);
     i++;
   }
   return (len);
@@ -65,21 +65,21 @@ void add_space(t_all *data)
   
   b_len = big_len(data);
   i = 0;
-  while(data->parss.map[i])
+  while(data->valid.maps[i])
     i++;
   map = malloc(sizeof(char *) * (i + 1));
   if (!map)
     return ;
   i = 0;
-  while (data->parss.map[i])
+  while (data->valid.maps[i])
   {
-    str_space(&map[i],data->parss.map[i],b_len);
-    free(data->parss.map[i]);
+    str_space(&map[i],data->valid.maps[i],b_len);
+    free(data->valid.maps[i]);
     i++;
   }
   map[i] = NULL;
-  free(data->parss.map);
-  data->parss.map = map;
+  free(data->valid.maps);
+  data->valid.maps = map;
 }
 
 
@@ -123,9 +123,11 @@ int check_map(t_all *data)
   int i;
 
   init_map(data);
+  add_space(data);
   i = 0;
   while (data->valid.maps[i])
   {
+    printf("%s |%ld|\n",data->valid.maps[i],ft_strlen(data->valid.maps[i]));
     free(data->valid.maps[i++]);
   }
   free(data->valid.maps);
