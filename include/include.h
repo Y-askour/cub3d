@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:51:00 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:44:55 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void free_rgb(char **rgb);
 void free_textures(t_all *data);
 void free_map(t_all *data);
 void free_parssing(t_all *data);
+void free_maps(t_all *data);
 
 // get_textures
 int get_west(t_all *data);

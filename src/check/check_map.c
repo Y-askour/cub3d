@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 22:16:58 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:44:40 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,44 @@ void init_map(t_all *data)
   free_map(data);
 }
 
-int check_map(t_all *data)
+int search(char *src)
+{
+  int i;
+  char str[] = "10 NSEW"; 
+  i = 0;
+
+  while (src[i])
+  {
+    if (!ft_strchr(str,src[i]))
+      return (1);
+    i++;
+  }
+  return (0);
+};
+int check_characters(t_all *data)
 {
   int i;
 
-  init_map(data);
-  add_space(data);
   i = 0;
   while (data->valid.maps[i])
   {
-    printf("%s |%ld|\n",data->valid.maps[i],ft_strlen(data->valid.maps[i]));
-    free(data->valid.maps[i++]);
+    if (search(data->valid.maps[i]))
+      return (1);
+    i++;
   }
-  free(data->valid.maps);
+  return (0);
+}
+
+int check_map(t_all *data)
+{
+  init_map(data);
+  add_space(data);
+  if (check_characters(data))
+  {
+    free_maps(data);
+    printf("invalid map characters\n");
+    return (0);
+  }
+  free_maps(data);
   return (0);
 }

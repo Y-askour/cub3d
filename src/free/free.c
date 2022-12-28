@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:54:27 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:54:29 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/28 22:44:10 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ void free_map(t_all *data)
   while (data->parss.map[i])
     free(data->parss.map[i++]);
   free(data->parss.map);
+}
+
+void free_maps(t_all *data)
+{
+  int i;
+
+  i = 0;
+  while (data->valid.maps[i])
+    free(data->valid.maps[i++]);
+  free(data->valid.maps);
 }
