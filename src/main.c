@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:07:03 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:42:15 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:50:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/include.h"
 
 int check(t_all *data)

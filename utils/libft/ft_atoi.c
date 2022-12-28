@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:24:56 by yaskour           #+#    #+#             */
-/*   Updated: 2021/11/15 20:55:58 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:52:00 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:52:01 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)

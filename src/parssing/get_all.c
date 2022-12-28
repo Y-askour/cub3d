@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_all.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/23 16:21:26 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:31:45 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:50:49 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:50:51 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
 int get_metadata(t_all *data)

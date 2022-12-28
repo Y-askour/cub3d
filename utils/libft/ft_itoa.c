@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 22:36:20 by yaskour           #+#    #+#             */
-/*   Updated: 2021/11/16 18:13:01 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 17:52:13 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 17:52:18 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static void	ft_rev(char *s)
