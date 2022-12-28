@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 14:59:24 by yaskour           #+#    #+#             */
-/*   Updated: 2021/11/03 11:35:56 by yaskour          ###   ########.fr       */
+/*   Created: 2022/12/28 18:04:41 by yaskour           #+#    #+#             */
+/*   Updated: 2022/12/28 18:04:42 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memset( void *pointer, int value, size_t count )
