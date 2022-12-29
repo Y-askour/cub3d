@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:51:35 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 21:20:51 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 21:26:14 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int check_ceiling(t_all *data)
       free_rgb(rgb);
       return (0);
     }
-    printf("hru\n");
     free_rgb(rgb);
     return (1);
   }

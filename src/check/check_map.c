@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 18:04:11 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 21:27:44 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,6 @@ int middle_char(t_all *data)
     j = start;
     while (j < end)
     {
-      //printf("%c",data->valid.maps[i][j]);
       if (data->valid.maps[i][j] == ' ')
       {
         if (data->valid.maps[i][j - 1] != '1' && data->valid.maps[i][j - 1] != ' ') 
@@ -205,29 +204,16 @@ int middle_char(t_all *data)
       if (data->valid.maps[i][j] == '0')
       {
         if (data->valid.maps[i][j - 1] == ' ') 
-        {
-          printf("a\n");
           return (1);
-        }
         if (data->valid.maps[i][j + 1] == ' ') 
-        {
-          printf("b\n");
           return (1);
-        }
         if (data->valid.maps[i - 1][j] == ' ') 
-        {
-          printf("c\n");
           return (1);
-        }
         if (data->valid.maps[i + 1][j] == ' ') 
-        {
-          printf("i = %d j = %d -> %c\n",i,j,data->valid.maps[i + 1][j]);
           return (1);
-        }
       }
       j++;
     }
-    //printf("\n");
     i++;
   }
   return (0);
