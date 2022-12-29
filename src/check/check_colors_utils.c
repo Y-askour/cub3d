@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:30:04 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 20:49:42 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 22:34:48 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ int check_is_rgb(char **rgb)
   return (0);
 }
 
-
-int fill_color(char **color,unsigned int to_fill[3])
+int fill_ceiling(char **color,t_all *data)
 {
   int i;
 
@@ -62,7 +61,22 @@ int fill_color(char **color,unsigned int to_fill[3])
   {
     if (!color[i])
       return (1);
-    to_fill[i] = ft_atoi(color[i]);
+    data->valid.ceiling[i] = ft_atoi(color[i]);
+    i++;
+  }
+  return (0);
+}
+
+int fill_floor(char **color,t_all *data)
+{
+  int i;
+
+  i = 0;
+  while (i < 3)
+  {
+    if (!color[i])
+      return (1);
+    data->valid.ceiling[i] = ft_atoi(color[i]);
     i++;
   }
   return (0);

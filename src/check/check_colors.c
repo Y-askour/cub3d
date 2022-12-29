@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:51:35 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 21:26:14 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 22:35:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int check_floor(t_all *data)
       free_rgb(rgb);
       return (0);
     }
-    if (fill_color(rgb,data->valid.ceiling))
+    if (fill_floor(rgb,data))
     {
       free_rgb(rgb);
       return (0);
@@ -63,7 +63,7 @@ int check_ceiling(t_all *data)
       free_rgb(rgb);
       return (0);
     }
-    if (fill_color(rgb,data->valid.ceiling))
+    if (fill_ceiling(rgb,data))
     {
       free_rgb(rgb);
       return (0);
