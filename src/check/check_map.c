@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 21:58:30 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 22:22:29 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,6 +277,5 @@ int check_map(t_all *data)
     printf("invalid map \n");
     return (1);
   }
-  free_maps(data);
   return (0);
 }

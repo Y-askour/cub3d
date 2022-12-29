@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 22:03:41 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 22:23:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int check(t_all *data)
     free_textures(data);
     return (1);
   }
-  free_textures(data);
   return (0);
 }
 
@@ -45,6 +44,19 @@ int main(int ac,char **av)
     }
     if (check(&data))
       return (1);
+    printf("%s\n",data.valid.so);
+    printf("%s\n",data.valid.no);
+    printf("%s\n",data.valid.we);
+    printf("%s\n",data.valid.ea);
+    i = 0;
+    while (i < 3)
+      printf("%c",data.valid.ceiling[i++]);
+    i = 0;
+    while (i < 3)
+      printf("%c",data.valid.floor[i++]);
+    i = 0;
+    while (data.valid.maps[i])
+      printf("%s\n",data.valid.maps[i++]);
     return (0);
   }
   else

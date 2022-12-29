@@ -1,10 +1,11 @@
-SO./textures/south.xpm
+SO ./textures/south.xpm
 
-EA  ./textures/east.xpm
+NO  ./textures/north.xpm
 
 WE  ./textures/west.xpm
 
-NO  ./textures/north.xpm
+
+EA  ./textures/east.xpm
 
 F   225,255,0
 C 225,255,0
