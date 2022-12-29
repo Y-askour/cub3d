@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 22:44:40 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 15:56:34 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ void init_map(t_all *data)
     data->valid.maps[i] = ft_strdup(data->parss.map[i]);
     i++;
   }
+  data->valid.len = i;
   data->valid.maps[i] = NULL;
   free_map(data);
 }
 
-int search(char *src)
+int search(char *src,char *str)
 {
   int i;
-  char str[] = "10 NSEW"; 
   i = 0;
 
   while (src[i])
@@ -132,6 +132,7 @@ int search(char *src)
   }
   return (0);
 };
+
 int check_characters(t_all *data)
 {
   int i;
@@ -139,10 +140,19 @@ int check_characters(t_all *data)
   i = 0;
   while (data->valid.maps[i])
   {
-    if (search(data->valid.maps[i]))
+    if (search(data->valid.maps[i],"10 NSEW"))
       return (1);
     i++;
   }
+  return (0);
+}
+
+int check_valid_map(t_all *data)
+{
+  if (search(data->valid.maps[0]," 1"))
+    return (1);
+ if (search(data->valid.maps[data->valid.len -1]," 1"))
+   return (1);
   return (0);
 }
 
@@ -154,8 +164,16 @@ int check_map(t_all *data)
   {
     free_maps(data);
     printf("invalid map characters\n");
-    return (0);
+    return (1);
   }
+  if (check_valid_map(data))
+  {
+    return (1);
+  }
+  int i = 0;
+
+  while (data->valid.maps[i])
+    printf("%s\n",data->valid.maps[i++]);
   free_maps(data);
   return (0);
 }
