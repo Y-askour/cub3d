@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 16:32:03 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 20:49:11 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int check_colors(t_all *data);
 // check_colors_utils
 int cout_comma(char *str);
 int check_is_rgb(char **rgb);
-void fill_color(char **color,unsigned int to_fill[3]);
+int fill_color(char **color,unsigned int to_fill[3]);
 
 // check_textures
 int check_textures(t_all *data);

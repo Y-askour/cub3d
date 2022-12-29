@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:51:35 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:51:36 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 21:20:51 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int check_floor(t_all *data)
       free_rgb(rgb);
       return (0);
     }
-    fill_color(rgb,data->valid.floor);
+    if (fill_color(rgb,data->valid.ceiling))
+    {
+      free_rgb(rgb);
+      return (0);
+    }
     free_rgb(rgb);
     return (1);
   }
@@ -59,7 +63,12 @@ int check_ceiling(t_all *data)
       free_rgb(rgb);
       return (0);
     }
-    fill_color(rgb,data->valid.ceiling);
+    if (fill_color(rgb,data->valid.ceiling))
+    {
+      free_rgb(rgb);
+      return (0);
+    }
+    printf("hru\n");
     free_rgb(rgb);
     return (1);
   }
