@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 16:47:42 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 17:54:14 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,12 +173,61 @@ int first_and_last_char(char **str,int map_len,int line_len)
 
 int middle_char(t_all *data)
 {
-  int i ;
+  int i;
+  int j;
+  int start;
+  int end;
 
   i = 1;
   while (i < data->valid.map_len - 1)
   {
-    printf("%s\n",data->valid.maps[i]);
+    start = 0;
+    while (data->valid.maps[i][start] && data->valid.maps[i][start] == ' ')
+      start++;
+    end = data->valid.line_len - 1;
+    while (end > 0 && data->valid.maps[i][end] == ' ')
+      end--;
+    j = start;
+    while (j < end)
+    {
+      //printf("%c",data->valid.maps[i][j]);
+      if (data->valid.maps[i][j] == ' ')
+      {
+        if (data->valid.maps[i][j - 1] != '1' && data->valid.maps[i][j - 1] != ' ') 
+          return (1);
+        if (data->valid.maps[i][j + 1] != '1' && data->valid.maps[i][j + 1] != ' ') 
+          return (1);
+        if (data->valid.maps[i - 1][j] != '1' && data->valid.maps[i - 1][j] != ' ') 
+          return (1);
+        if (data->valid.maps[i + 1][j] != '1' && data->valid.maps[i + 1][j] != ' ') 
+          return (1);
+      }
+      if (data->valid.maps[i][j] == '0')
+      {
+        if (data->valid.maps[i][j - 1] == ' ') 
+        {
+          printf("a\n");
+          return (1);
+        }
+        if (data->valid.maps[i][j + 1] == ' ') 
+        {
+          printf("b\n");
+          return (1);
+        }
+        if (data->valid.maps[i - 1][j] == ' ') 
+        {
+          printf("c\n");
+          return (1);
+        }
+        if (data->valid.maps[i + 1][j] == ' ') 
+        {
+          printf("i = %d j = %d -> %c\n",i,j,data->valid.maps[i + 1][j]);
+          return (1);
+        }
+      }
+      j++;
+    }
+    //printf("\n");
     i++;
   }
   return (0);
