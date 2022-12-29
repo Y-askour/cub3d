@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 21:27:44 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 21:58:30 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ unsigned int big_len(t_all *data)
 {
   unsigned int len;
   int i;
-
 
   i = 0;
   len = 0;
@@ -40,7 +39,6 @@ void str_space(char **dest,char *original,unsigned int b_len)
   int i;
 
   i = 0;
-
   while(original[i])
   {
     to_fill[i] = original[i];

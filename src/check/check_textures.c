@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:21:59 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 22:08:55 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int check_east(t_all *data) {
 
   len = 4;
   str = &data->parss.east[2];
+  if (str[0] != ' ')
+  {
+    free(data->parss.east);
+    return (1);
+  }
   trimed_str = ft_strtrim(str," ");
   if (ft_strlen(data->parss.east) > 4)
     len = ft_strlen(data->parss.east);
@@ -43,6 +48,11 @@ int check_west(t_all *data)
 
   len = 4;
   str = &data->parss.west[2];
+  if (str[0] != ' ')
+  {
+    free(data->parss.west);
+    return (1);
+  }
   trimed_str = ft_strtrim(str," ");
   if (ft_strlen(data->parss.west) > 4)
     len = ft_strlen(data->parss.west);
@@ -67,6 +77,11 @@ int check_south(t_all *data)
 
   len = 4;
   str = &data->parss.south[2];
+  if (str[0] != ' ')
+  {
+    free(data->parss.south);
+    return (1);
+  }
   trimed_str = ft_strtrim(str," ");
   if (ft_strlen(data->parss.south) > 4)
     len = ft_strlen(data->parss.south);
@@ -92,6 +107,11 @@ int check_north(t_all *data)
 
   len = 4;
   str = &data->parss.north[2];
+  if (str[0] != ' ')
+  {
+    free(data->parss.north);
+    return (1);
+  }
   trimed_str = ft_strtrim(str," ");
   if (ft_strlen(data->parss.north) > 4)
     len = ft_strlen(data->parss.north);
