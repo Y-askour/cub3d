@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 17:54:14 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 18:04:11 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,36 @@ int middle_char(t_all *data)
   return (0);
 }
 
+int check_player(t_all *data)
+{
+  int i;
+  int j;
+  int player;
+
+  i =  0;
+  player = 0;
+  while (data->valid.maps[i])
+  {
+    j = 0;
+    while (data->valid.maps[i][j])
+    {
+      if (data->valid.maps[i][j] == 'W')
+        player++;
+      if (data->valid.maps[i][j] == 'E')
+        player++;
+      if (data->valid.maps[i][j] == 'S')
+        player++;
+      if (data->valid.maps[i][j] == 'N')
+        player++;
+      j++;
+    }
+    i++;
+  }
+  if (player != 1)
+    return (1);
+  return (0);
+}
+
 int check_valid_map(t_all *data)
 {
   if (search(data->valid.maps[0]," 1"))
@@ -242,6 +272,8 @@ int check_valid_map(t_all *data)
  if (first_and_last_char(data->valid.maps,data->valid.map_len,data->valid.line_len))
    return (1);
  if (middle_char(data))
+   return (1);
+ if (check_player(data))
    return (1);
   return (0);
 }
