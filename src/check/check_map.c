@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 15:56:34 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 16:47:42 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void add_space(t_all *data)
 
   
   b_len = big_len(data);
+  data->valid.line_len = b_len;
   i = 0;
   while(data->valid.maps[i])
     i++;
@@ -114,7 +115,7 @@ void init_map(t_all *data)
     data->valid.maps[i] = ft_strdup(data->parss.map[i]);
     i++;
   }
-  data->valid.len = i;
+  data->valid.map_len = i;
   data->valid.maps[i] = NULL;
   free_map(data);
 }
@@ -147,11 +148,51 @@ int check_characters(t_all *data)
   return (0);
 }
 
+int first_and_last_char(char **str,int map_len,int line_len)
+{
+  int i;
+  int j;
+
+  i = 1;
+  while (i < map_len - 1)
+  {
+    j = 0;
+    while (str[i][j] && str[i][j] == ' ')
+      j++;
+    if (str[i][j] != '1')
+      return (1);
+    j = line_len - 1;
+    while (j > 0 && str[i][j] == ' ')
+      j--;
+    if (str[i][j] != '1')
+      return (1);
+    i++;
+  }
+  return (0);
+}
+
+int middle_char(t_all *data)
+{
+  int i ;
+
+  i = 1;
+  while (i < data->valid.map_len - 1)
+  {
+    printf("%s\n",data->valid.maps[i]);
+    i++;
+  }
+  return (0);
+}
+
 int check_valid_map(t_all *data)
 {
   if (search(data->valid.maps[0]," 1"))
     return (1);
- if (search(data->valid.maps[data->valid.len -1]," 1"))
+ if (search(data->valid.maps[data->valid.map_len -1]," 1"))
+   return (1);
+ if (first_and_last_char(data->valid.maps,data->valid.map_len,data->valid.line_len))
+   return (1);
+ if (middle_char(data))
    return (1);
   return (0);
 }
@@ -168,12 +209,9 @@ int check_map(t_all *data)
   }
   if (check_valid_map(data))
   {
+    printf("invalid map \n");
     return (1);
   }
-  int i = 0;
-
-  while (data->valid.maps[i])
-    printf("%s\n",data->valid.maps[i++]);
   free_maps(data);
   return (0);
 }

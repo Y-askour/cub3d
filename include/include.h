@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 15:52:44 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/29 16:32:03 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ typedef struct s_valid_data
   char *ea;
   char *we;
   char **maps;
-  int   len;
+  int   map_len;
+  int   line_len;
 } t_valid_data;
 
 typedef struct s_all
