@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 22:23:43 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/30 22:05:34 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int main(int ac,char **av)
     printf("%s\n",data.valid.ea);
     i = 0;
     while (i < 3)
-      printf("%c",data.valid.ceiling[i++]);
+      printf("ceiling %d\n",data.valid.ceiling[i++]);
     i = 0;
     while (i < 3)
-      printf("%c",data.valid.floor[i++]);
+      printf("%d\n",data.valid.floor[i++]);
     i = 0;
     while (data.valid.maps[i])
       printf("%s\n",data.valid.maps[i++]);

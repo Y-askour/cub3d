@@ -6,13 +6,10 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:51:35 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 22:35:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/30 22:00:41 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 #include "../../include/include.h"
-
 
 int check_floor(t_all *data)
 {

@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:30:04 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 22:34:48 by yaskour          ###   ########.fr       */
+/*   Updated: 2022/12/30 22:05:04 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int fill_floor(char **color,t_all *data)
   {
     if (!color[i])
       return (1);
-    data->valid.ceiling[i] = ft_atoi(color[i]);
+    data->valid.floor[i] = ft_atoi(color[i]);
     i++;
   }
   return (0);
