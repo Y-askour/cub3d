@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/01 16:35:01 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/01 18:45:24 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
@@ -43,22 +43,9 @@ int main(int ac,char **av)
     }
     if (check(&data))
       return (1);
-    printf("%s\n",data.valid.so);
-    printf("%s\n",data.valid.no);
-    printf("%s\n",data.valid.we);
-    printf("%s\n",data.valid.ea);
-    i = 0;
-    while (i < 3)
-      printf("ceiling %d\n",data.valid.ceiling[i++]);
-    i = 0;
-    while (i < 3)
-      printf("%d\n",data.valid.floor[i++]);
     i = 0;
     while (data.valid.maps[i])
-	{
-		printf("%s\n",data.valid.maps[i]);
 		free(data.valid.maps[i++]);
-	}
 	free(data.valid.maps);
 	free(data.valid.we);
 	free(data.valid.so);
