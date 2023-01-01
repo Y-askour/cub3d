@@ -6,10 +6,9 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/30 22:05:34 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/01 16:25:31 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../include/include.h"
 
 int check(t_all *data)
@@ -56,7 +55,17 @@ int main(int ac,char **av)
       printf("%d\n",data.valid.floor[i++]);
     i = 0;
     while (data.valid.maps[i])
-      printf("%s\n",data.valid.maps[i++]);
+	{
+		printf("%s\n",data.valid.maps[i]);
+		free(data.valid.maps[i++]);
+	}
+	free(data.valid.maps);
+	free(data.valid.ceiling);
+	free(data.valid.floor);
+	free(data.valid.we);
+	free(data.valid.so);
+	free(data.valid.ea);
+	free(data.valid.no);
     return (0);
   }
   else
