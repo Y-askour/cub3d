@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/01 18:45:24 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/01 21:01:10 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
@@ -43,6 +43,7 @@ int main(int ac,char **av)
     }
     if (check(&data))
       return (1);
+	draw(&data);
     i = 0;
     while (data.valid.maps[i])
 		free(data.valid.maps[i++]);
@@ -51,6 +52,7 @@ int main(int ac,char **av)
 	free(data.valid.so);
 	free(data.valid.ea);
 	free(data.valid.no);
+	mlx_loop(data.mlx.mlx);
     return (0);
   }
   else

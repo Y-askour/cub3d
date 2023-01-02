@@ -6,16 +6,19 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/29 22:33:23 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/02 16:05:16 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 #define INCLUDE_H
 #include <stdio.h>
+#define CUB 30
 #include "../utils/libft/libft.h"
 #include "../utils/get_next_line/get_next_line.h"
 #include <fcntl.h>
+#include "../mlx/mlx.h"
+#include <math.h>
 
 typedef struct s_parss
 {
@@ -56,10 +59,23 @@ typedef struct s_valid_data
   int   line_len;
 } t_valid_data;
 
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int 	bpp;
+	int		line_length;
+	int 	endian;
+} t_mlx;
+
+
 typedef struct s_all
 {
   t_parss parss;
   t_valid_data valid;
+  t_mlx	mlx;
   unsigned int len;
 } t_all;
 
@@ -115,4 +131,7 @@ void  init_textures(t_all *data);
 // check_map
 int check_map(t_all *data);
 int is_empty(char *str);
+// drawing
+int draw(t_all *data);
+
 #endif
