@@ -6,11 +6,12 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/01 16:23:21 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:15:39 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
+#include <stdio.h>
 
 unsigned int big_len(t_all *data)
 {
@@ -219,32 +220,44 @@ int middle_char(t_all *data)
 
 int check_player(t_all *data)
 {
-  int i;
-  int j;
-  int player;
+	int i;
+	int j;
+	int player;
 
-  i =  0;
-  player = 0;
-  while (data->valid.maps[i])
-  {
-    j = 0;
-    while (data->valid.maps[i][j])
-    {
-      if (data->valid.maps[i][j] == 'W')
-        player++;
-      if (data->valid.maps[i][j] == 'E')
-        player++;
-      if (data->valid.maps[i][j] == 'S')
-        player++;
-      if (data->valid.maps[i][j] == 'N')
-        player++;
-      j++;
-    }
-    i++;
-  }
-  if (player != 1)
-    return (1);
-  return (0);
+	i =  0;
+	player = 0;
+	while (data->valid.maps[i])
+	{
+		j = 0;
+		while (data->valid.maps[i][j])
+		{
+			if (data->valid.maps[i][j] == 'W')
+			{
+				player_position(data,j,i);
+				player++;
+			}
+			if (data->valid.maps[i][j] == 'E')
+			{
+				player_position(data,j,i);
+				player++;
+			}
+			if (data->valid.maps[i][j] == 'S')
+			{
+				player_position(data,j,i);
+				player++;
+			}
+			if (data->valid.maps[i][j] == 'N')
+			{
+				player_position(data,j,i);
+				player++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (player != 1)
+		return (1);
+	return (0);
 }
 
 int check_valid_map(t_all *data)

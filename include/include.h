@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 16:05:16 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:06:55 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ typedef struct s_all
   t_valid_data valid;
   t_mlx	mlx;
   unsigned int len;
+  int		x_player;
+  int		y_player;
 } t_all;
 
 // parssing
@@ -133,5 +135,6 @@ int check_map(t_all *data);
 int is_empty(char *str);
 // drawing
 int draw(t_all *data);
+void	player_position(t_all *data,int x,int y);
 
 #endif

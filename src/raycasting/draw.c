@@ -6,11 +6,12 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 16:36:02 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:16:16 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
+#include <stdio.h>
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 {
@@ -67,6 +68,13 @@ void drawcub(t_all *data , int x , int y,unsigned int color)
 	}
 }
 
+void	player_position(t_all *data,int x,int y)
+{
+	data->y_player = (y * CUB) + (CUB / 2);
+	data->x_player = (x * CUB) + (CUB / 2);
+	data->valid.maps[y][x] = '0';
+}
+
 int draw(t_all *data)
 {
 	int i;
@@ -83,12 +91,11 @@ int draw(t_all *data)
 				drawcub(data,j,i,0x124A2A);
 			if (data->valid.maps[i][j] == '0')
 				drawcub(data,j,i,0x475E6B);
-			if (data->valid.maps[i][j] == ' ')
-				drawcub(data,j,i,0x000000);
 			j++;
 		}
 		i++;
 	}
+	my_mlx_pixel_put(data, data->x_player,data->y_player,0xffffff);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }
