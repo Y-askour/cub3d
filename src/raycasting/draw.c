@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 17:16:16 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/02 17:35:01 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void 	init_mlx(t_all *data)
 {
 
 	data->mlx.mlx = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.mlx,2560,1440,"hey");
-	data->mlx.img = mlx_new_image(data->mlx.mlx,2560,1440);
+	data->mlx.win = mlx_new_window(data->mlx.mlx,1000,1000,"hey");
+	data->mlx.img = mlx_new_image(data->mlx.mlx,1000,1000);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img,&data->mlx.bpp,&data->mlx.line_length,&data->mlx.endian);
 }
 
@@ -80,7 +80,6 @@ int draw(t_all *data)
 	int i;
 	int j;
 
-	init_mlx(data);
 	i = 0;
 	while (data->valid.maps[i])
 	{
