@@ -6,12 +6,11 @@
 /*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 17:15:39 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 16:52:00 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
-#include <stdio.h>
 
 unsigned int big_len(t_all *data)
 {
@@ -275,6 +274,18 @@ int check_valid_map(t_all *data)
   return (0);
 }
 
+void init_angle(t_all *data)
+{
+	if (data->valid.player == 'S')
+		data->start_ang = M_PI / 2;
+	if (data->valid.player == 'N')
+		data->start_ang = (3 * M_PI) / 2;
+	if (data->valid.player == 'W')
+		data->start_ang = M_PI;
+	if (data->valid.player == 'E')
+		data->start_ang = 0;
+}
+
 int check_map(t_all *data)
 {
   init_map(data);
@@ -291,5 +302,6 @@ int check_map(t_all *data)
     printf("invalid map \n");
     return (1);
   }
+  init_angle(data);
   return (0);
 }

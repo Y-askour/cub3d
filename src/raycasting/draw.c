@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 17:35:01 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 16:09:38 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 
 void 	init_mlx(t_all *data)
 {
-
 	data->mlx.mlx = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.mlx,1000,1000,"hey");
-	data->mlx.img = mlx_new_image(data->mlx.mlx,1000,1000);
+	data->mlx.win = mlx_new_window(data->mlx.mlx,2880,1620,"hey");
+	data->mlx.img = mlx_new_image(data->mlx.mlx,2880,1620);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img,&data->mlx.bpp,&data->mlx.line_length,&data->mlx.endian);
 }
 
@@ -70,6 +69,7 @@ void drawcub(t_all *data , int x , int y,unsigned int color)
 
 void	player_position(t_all *data,int x,int y)
 {
+	data->valid.player = data->valid.maps[y][x];
 	data->y_player = (y * CUB) + (CUB / 2);
 	data->x_player = (x * CUB) + (CUB / 2);
 	data->valid.maps[y][x] = '0';

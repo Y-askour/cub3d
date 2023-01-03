@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 18:59:09 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 16:17:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_valid_data
   char **maps;
   int   map_len;
   int   line_len;
+  char 	player;
 } t_valid_data;
 
 typedef struct s_mlx
@@ -79,6 +80,7 @@ typedef struct s_all
   unsigned int len;
   int		x_player;
   int		y_player;
+  double		start_ang;
 } t_all;
 
 // parssing
@@ -133,6 +135,7 @@ void  init_textures(t_all *data);
 // check_map
 int check_map(t_all *data);
 int is_empty(char *str);
+
 // drawing
 int draw(t_all *data);
 void	player_position(t_all *data,int x,int y);

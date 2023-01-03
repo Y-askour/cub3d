@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/02 19:06:51 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 16:52:46 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
@@ -30,20 +30,45 @@ int check(t_all *data)
   return (0);
 }
 
+int check_wall(t_all *data,int y,int x)
+{
+
+	x /= CUB;
+	y /= CUB;
+	if (data->valid.maps[y][x] == '1')
+		return (1);
+	return (0);
+}
+
 int younes(int keycode,t_all *data)
 {
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
 	if (keycode == 53)
 		exit(0);
-	if (keycode == 13) // w
-		data->y_player -= 10;
-	if (keycode == 1) // s
-		data->y_player += 10;
-	if (keycode == 0) // a
-		data->x_player -= 10;
-	if (keycode == 2) // d
-		data->x_player += 10;
-	printf("%d\n",keycode);
+	else if (keycode == 13) // w
+	{
+		data->x_player += 10 * cos(data->start_ang);
+		data->y_player += 10 * sin(data->start_ang);
+		//if (!check_wall(data,data->y_player + 1,data->x_player))
+	}
+	else if (keycode == 1) // s
+	{
+		data->x_player -= 10 * cos(data->start_ang);
+		data->y_player -= 10 * sin(data->start_ang);
+		//if (!check_wall(data,data->y_player + 1,data->x_player))
+	}
+	else if (keycode == 0) // a
+	{
+		data->x_player += 10  * sin(data->start_ang);
+		data->y_player -= 10  * cos(data->start_ang);
+		//if (!check_wall(data,data->y_player,data->x_player - 1))
+	}
+	else if (keycode == 2) // d
+	{
+		data->x_player -= 10  * sin(data->start_ang);
+		data->y_player += 10  * cos(data->start_ang);
+		//if (!check_wall(data,data->y_player,data->x_player + 1))
+	}
 	draw(data);
 	return (0);
 }
