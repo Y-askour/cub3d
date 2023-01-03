@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/03 16:17:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 16:55:20 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_all
   unsigned int len;
   int		x_player;
   int		y_player;
-  double		start_ang;
+  double		direction_ang;
 } t_all;
 
 // parssing

@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/03 16:09:38 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 18:13:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int draw(t_all *data)
 		i++;
 	}
 	my_mlx_pixel_put(data, data->x_player,data->y_player,0xffffff);
+	dda(data->x_player,data->y_player,data->x_player + cos(data->direction_ang) * 20,data->y_player + sin(data->direction_ang) * 20,data,0xffffff);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }
