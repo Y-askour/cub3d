@@ -6,10 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/03 18:16:11 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/03 18:28:56 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/include.h"
+#include <math.h>
 #include <stdio.h>
 
 int check(t_all *data)
@@ -40,6 +41,13 @@ int check_wall(t_all *data,int y,int x)
 	return (0);
 }
 
+void normalize_angle(t_all *data)
+{
+	data->direction_ang = fmod(data->direction_ang, 2  * M_PI);
+	if (data->direction_ang < 0)
+		data->direction_ang += 2 * M_PI;
+}
+
 int younes(int keycode,t_all *data)
 {
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
@@ -48,10 +56,12 @@ int younes(int keycode,t_all *data)
 	else if (keycode == 123)
 	{
 		data->direction_ang -= M_PI/30;
+		normalize_angle(data);
 	}
 	else if (keycode == 124)
 	{
 		data->direction_ang += M_PI/30;
+		normalize_angle(data);
 	}
 	else if (keycode == 13) // w
 	{
