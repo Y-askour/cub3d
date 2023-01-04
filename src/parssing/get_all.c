@@ -6,11 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:49 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:25:02 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:41:57 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
+#include <include.h>
 
 int	get_metadata(t_all *data)
 {

@@ -6,12 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:31:18 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:46:32 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
-#include <stdio.h>
+#include <include.h>
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 {
@@ -60,8 +59,15 @@ void	init_mlx(t_all *data)
 		y += yinc;
 	}
 }*/
+
 void	drawcub(t_all *data, int x, int y, unsigned int color)
 {
+	int x0;
+	int	x1;
+	int y0;
+	int y1;
+	int start;
+
 	x0 = x * CUB;
 	x1 = (x + 1) * CUB;
 	y0 = y * CUB;
@@ -106,9 +112,9 @@ int	draw(t_all *data)
 		i++;
 	}
 	my_mlx_pixel_put(data, data->x_player, data->y_player, 0xffffff);
-	dda(data->x_player, data->y_player, data->x_player
-		+ cos(data->direction_ang) * 20, data->y_player
-		+ sin(data->direction_ang) * 20, data, 0xffffff);
+	//dda(data->x_player, data->y_player, data->x_player
+	//	+ cos(data->direction_ang) * 20, data->y_player
+	//	+ sin(data->direction_ang) * 20, data, 0xffffff);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }

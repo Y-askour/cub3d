@@ -1,7 +1,7 @@
 CC=cc
 NAME=Cub3d
-FLAGS=-Wall -Wextra -Werror -Imlx -g
-HEADER=include/include.h
+HEADER=include
+FLAGS=-Wall -Wextra -Werror -Imlx -I$(HEADER) -g
 SRC=$(addprefix src/,main.c parssing/parssing.c parssing/get_colors.c \
 		parssing/get_all.c parssing/get_textures.c parssing/parssing_utils.c\
 		free/free.c check/check_colors.c check/check_colors_utils.c\

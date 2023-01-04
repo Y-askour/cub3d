@@ -6,11 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:30:04 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:18:52 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:42:59 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
+#include <include.h>
 
 int	cout_comma(char *str)
 {

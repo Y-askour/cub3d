@@ -6,11 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:27:07 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:45:12 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
+#include <include.h>
 
 unsigned int	big_len(t_all *data)
 {
@@ -118,7 +118,6 @@ void	init_map(t_all *data)
 int	search(char *src, char *str)
 {
 	int	i;
-	int	i;
 
 	i = 0;
 	while (src[i])
@@ -132,6 +131,8 @@ int	search(char *src, char *str)
 
 int	check_characters(t_all *data)
 {
+	int	i;
+
 	i = 0;
 	while (data->valid.maps[i])
 	{

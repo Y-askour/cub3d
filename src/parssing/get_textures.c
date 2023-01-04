@@ -6,11 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:07:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:25:09 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:42:22 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
+#include <include.h>
 
 int	get_west(t_all *data)
 {

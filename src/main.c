@@ -6,12 +6,13 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:34:18 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:39:18 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include <stdio.h>
+#include <include.h>
 
 int	check(t_all *data)
 {
