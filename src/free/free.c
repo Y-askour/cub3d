@@ -3,69 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:54:27 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 22:44:10 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:16:21 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
 
-void free_all(t_all *data)
+void	free_all(t_all *data)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while(data->parss.all[i])
-    free(data->parss.all[i++]);
-  free(data->parss.all);
+	i = 0;
+	while (data->parss.all[i])
+		free(data->parss.all[i++]);
+	free(data->parss.all);
 }
 
-void free_metadata(t_all *data)
+void	free_metadata(t_all *data)
 {
-  free(data->parss.east);
-  free(data->parss.west);
-  free(data->parss.north);
-  free(data->parss.south);
-  free(data->parss.ceiling);
-  free(data->parss.floor);
+	free(data->parss.east);
+	free(data->parss.west);
+	free(data->parss.north);
+	free(data->parss.south);
+	free(data->parss.ceiling);
+	free(data->parss.floor);
 }
 
-void free_rgb(char **rgb)
+void	free_rgb(char **rgb)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (rgb[i])
-    free(rgb[i++]);
-  free(rgb);
+	i = 0;
+	while (rgb[i])
+		free(rgb[i++]);
+	free(rgb);
 }
 
-void free_textures(t_all *data)
+void	free_textures(t_all *data)
 {
-  free(data->valid.ea);
-  free(data->valid.we);
-  free(data->valid.so);
-  free(data->valid.no);
+	free(data->valid.ea);
+	free(data->valid.we);
+	free(data->valid.so);
+	free(data->valid.no);
 }
 
-void free_map(t_all *data)
+void	free_map(t_all *data)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (data->parss.map[i])
-    free(data->parss.map[i++]);
-  free(data->parss.map);
+	i = 0;
+	while (data->parss.map[i])
+		free(data->parss.map[i++]);
+	free(data->parss.map);
 }
 
-void free_maps(t_all *data)
+void	free_maps(t_all *data)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (data->valid.maps[i])
-    free(data->valid.maps[i++]);
-  free(data->valid.maps);
+	i = 0;
+	while (data->valid.maps[i])
+		free(data->valid.maps[i++]);
+	free(data->valid.maps);
 }

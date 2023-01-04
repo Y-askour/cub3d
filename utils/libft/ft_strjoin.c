@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:59:38 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:59:40 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:20:55 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -33,5 +32,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (*str2)
 		*ptr++ = *str2++;
 	*ptr = '\0';
-	return ((char *) ptr - len);
+	return ((char *)ptr - len);
 }

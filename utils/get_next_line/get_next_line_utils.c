@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 22:23:26 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/23 22:23:27 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:23:47 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -93,7 +92,7 @@ char	*ft_strjoins(char *s1, char *s2)
 		return (ft_strdups(s2));
 	j = 0;
 	t = NULL;
-	t = malloc (((ft_strlens(s1) + ft_strlens(s2)) + 1) * sizeof(char));
+	t = malloc(((ft_strlens(s1) + ft_strlens(s2)) + 1) * sizeof(char));
 	if (t == NULL)
 		return (NULL);
 	i = ft_strlens(s1);

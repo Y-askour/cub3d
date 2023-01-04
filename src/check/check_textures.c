@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/01 18:42:46 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:19:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
 #include <stdio.h>
-int check_is_white_spaces(char *str)
+
+int	check_is_white_spaces(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -26,12 +27,12 @@ int check_is_white_spaces(char *str)
 	return (i);
 }
 
-int check_east(t_all *data)
+int	check_east(t_all *data)
 {
-	char *str;
-	char *trimed_str;
-	int 	i;
-	int   len;
+	char	*str;
+	char	*trimed_str;
+	int		i;
+	int		len;
 
 	len = 4;
 	str = &data->parss.east[2];
@@ -40,11 +41,11 @@ int check_east(t_all *data)
 		free(data->parss.east);
 		return (1);
 	}
-	i  = check_is_white_spaces(str);
-	trimed_str = ft_strtrim(&str[i]," ");
+	i = check_is_white_spaces(str);
+	trimed_str = ft_strtrim(&str[i], " ");
 	if (ft_strlen(data->parss.east) > 4)
 		len = ft_strlen(data->parss.east);
-	str = ft_strnstr(data->parss.east,".xpm",len);
+	str = ft_strnstr(data->parss.east, ".xpm", len);
 	free(data->parss.east);
 	if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
 	{
@@ -57,12 +58,12 @@ int check_east(t_all *data)
 	return (0);
 }
 
-int check_west(t_all *data)
+int	check_west(t_all *data)
 {
-	char *str;
-	char *trimed_str;
-	int 	i;
-	int   len;
+	char	*str;
+	char	*trimed_str;
+	int		i;
+	int		len;
 
 	len = 4;
 	str = &data->parss.west[2];
@@ -71,11 +72,11 @@ int check_west(t_all *data)
 		free(data->parss.west);
 		return (1);
 	}
-	i  = check_is_white_spaces(str);
-	trimed_str = ft_strtrim(&str[i]," ");
+	i = check_is_white_spaces(str);
+	trimed_str = ft_strtrim(&str[i], " ");
 	if (ft_strlen(data->parss.west) > 4)
 		len = ft_strlen(data->parss.west);
-	str = ft_strnstr(data->parss.west,".xpm",len);
+	str = ft_strnstr(data->parss.west, ".xpm", len);
 	free(data->parss.west);
 	if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
 	{
@@ -88,12 +89,12 @@ int check_west(t_all *data)
 	return (0);
 }
 
-int check_south(t_all *data)
+int	check_south(t_all *data)
 {
-	char *str;
-	char *trimed_str;
-	int 	i;
-	int   len;
+	char	*str;
+	char	*trimed_str;
+	int		i;
+	int		len;
 
 	len = 4;
 	str = &data->parss.south[2];
@@ -102,11 +103,11 @@ int check_south(t_all *data)
 		free(data->parss.south);
 		return (1);
 	}
-	i  = check_is_white_spaces(str);
-	trimed_str = ft_strtrim(&str[i]," ");
+	i = check_is_white_spaces(str);
+	trimed_str = ft_strtrim(&str[i], " ");
 	if (ft_strlen(data->parss.south) > 4)
 		len = ft_strlen(data->parss.south);
-	str = ft_strnstr(data->parss.south,".xpm",len);
+	str = ft_strnstr(data->parss.south, ".xpm", len);
 	free(data->parss.south);
 	if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
 		if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
@@ -120,12 +121,12 @@ int check_south(t_all *data)
 	return (0);
 }
 
-int check_north(t_all *data)
+int	check_north(t_all *data)
 {
-	char *str;
-	char *trimed_str;
-	int   len;
-	int 	i;
+	char	*str;
+	char	*trimed_str;
+	int		len;
+	int		i;
 
 	len = 4;
 	str = &data->parss.north[2];
@@ -134,11 +135,11 @@ int check_north(t_all *data)
 		free(data->parss.north);
 		return (1);
 	}
-	i  = check_is_white_spaces(str);
-	trimed_str = ft_strtrim(&str[i]," ");
+	i = check_is_white_spaces(str);
+	trimed_str = ft_strtrim(&str[i], " ");
 	if (ft_strlen(data->parss.north) > 4)
 		len = ft_strlen(data->parss.north);
-	str = ft_strnstr(data->parss.north,".xpm",len);
+	str = ft_strnstr(data->parss.north, ".xpm", len);
 	free(data->parss.north);
 	if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
 	{
@@ -151,7 +152,7 @@ int check_north(t_all *data)
 	return (0);
 }
 
-int check_textures(t_all *data)
+int	check_textures(t_all *data)
 {
 	init_textures(data);
 	if (check_south(data))
