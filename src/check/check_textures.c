@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:19:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/04 17:28:05 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,10 @@ int	check_south(t_all *data)
 	str = ft_strnstr(data->parss.south, ".xpm", len);
 	free(data->parss.south);
 	if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
-		if (!str || (ft_strlen(trimed_str) <= 4) || (ft_strlen(str) > 4))
-		{
-			free(trimed_str);
-			return (1);
-		}
+	{
+		free(trimed_str);
+		return (1);
+	}
 	data->valid.so = trimed_str;
 	if (open_file(data->valid.so))
 		return (1);
