@@ -38,6 +38,8 @@ void	str_space(char **dest, char *original, unsigned int b_len)
 	len = ft_strlen(original);
 	diff = b_len - len;
 	to_fill = malloc(sizeof(char) * (len + diff + 1));
+	if (!to_fill)
+		exit(1) ;
 	i = 0;
 	while (original[i])
 	{
@@ -104,6 +106,8 @@ void	init_map(t_all *data)
 
 	end = endmap_index(data->parss.map);
 	data->valid.maps = malloc(sizeof(char *) * (end + 2));
+	if (!data->valid.maps)
+		return ;
 	i = 0;
 	while (i <= end)
 	{
@@ -279,13 +283,26 @@ int	check_valid_map(t_all *data)
 void	init_angle(t_all *data)
 {
 	if (data->valid.player == 'S')
+	{
 		data->direction_ang = M_PI / 2;
+		data->rotation_speed = 6;
+	}
 	if (data->valid.player == 'N')
+	{
 		data->direction_ang = (3 * M_PI) / 2;
+		data->rotation_speed = 18;
+	}
 	if (data->valid.player == 'W')
+	{
 		data->direction_ang = M_PI;
+		data->rotation_speed = 12;
+
+	}
 	if (data->valid.player == 'E')
+	{
 		data->direction_ang = 0;
+		data->rotation_speed = 0;
+	}
 }
 
 int	check_map(t_all *data)

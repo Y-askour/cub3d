@@ -20,6 +20,15 @@
 # include <fcntl.h>
 # include <math.h>
 
+// Keycodes for Mac
+# define UP 13
+# define DOWN 1
+# define LEFT 0
+# define RIGHT 2
+# define ESC 53
+# define ROTATE_LEFT 123
+# define ROTATE_RIGHT 124
+// 
 typedef struct s_parss
 {
 	char			**all;
@@ -78,6 +87,7 @@ typedef struct s_all
 	int				x_player;
 	int				y_player;
 	double			direction_ang;
+	int				rotation_speed;
 }					t_all;
 
 // parssing
@@ -86,7 +96,7 @@ int					parssing(char *av, t_all *data);
 // parssing utils
 void				init_data(t_all *data);
 int					check_file_name(char *av);
-int					read_file(char *file, t_all *data);
+int					read_file(char *file, t_all *data, int i);
 
 // free
 void				free_metadata(t_all *data);

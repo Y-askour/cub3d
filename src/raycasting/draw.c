@@ -95,6 +95,7 @@ int	draw(t_all *data)
 	int	i;
 	int	j;
 
+
 	i = 0;
 	while (data->valid.maps[i])
 	{

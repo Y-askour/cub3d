@@ -47,42 +47,40 @@ void	normalize_angle(t_all *data)
 	if (data->direction_ang < 0)
 		data->direction_ang += 2 * M_PI;
 }
-// w == 13
-// s == 1
-// a == 0
-// d == 2
 
 int	younes(int keycode, t_all *data)
 {
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
-	if (keycode == 53)
+	if (keycode == ESC)
 		exit(0);
-	else if (keycode == 123)
+	else if (keycode == ROTATE_LEFT)
 	{
-		data->direction_ang -= M_PI / 30;
+		data->rotation_speed = (data->rotation_speed + 23) % 24;
+		data->direction_ang = M_PI / 12 * data->rotation_speed;
 		normalize_angle(data);
 	}
-	else if (keycode == 124)
+	else if (keycode == ROTATE_RIGHT)
 	{
-		data->direction_ang += M_PI / 30;
+		data->rotation_speed = (data->rotation_speed + 1) % 24;
+		data->direction_ang = data->rotation_speed * M_PI / 12;
 		normalize_angle(data);
 	}
-	else if (keycode == 13)
+	else if (keycode == UP)
 	{
 		data->x_player += 10 * cos(data->direction_ang);
 		data->y_player += 10 * sin(data->direction_ang);
 	}
-	else if (keycode == 1)
+	else if (keycode == DOWN)
 	{
 		data->x_player -= 10 * cos(data->direction_ang);
 		data->y_player -= 10 * sin(data->direction_ang);
 	}
-	else if (keycode == 0)
+	else if (keycode == LEFT)
 	{
 		data->x_player += 10 * sin(data->direction_ang);
 		data->y_player -= 10 * cos(data->direction_ang);
 	}
-	else if (keycode == 2)
+	else if (keycode == RIGHT)
 	{
 		data->x_player -= 10 * sin(data->direction_ang);
 		data->y_player += 10 * cos(data->direction_ang);

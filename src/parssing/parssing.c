@@ -71,7 +71,7 @@ int	parss_metadata(char *av, t_all *data)
 		printf("check your name file\n");
 		return (0);
 	}
-	if (!read_file(av, data))
+	if (!read_file(av, data, 0))
 	{
 		printf("check if file is empty\n");
 		return (0);

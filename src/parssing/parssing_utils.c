@@ -73,21 +73,21 @@ int	check_file_name(char *av)
 	return (0);
 }
 
-int	read_file(char *file, t_all *data)
+int	read_file(char *file, t_all *data, int i)
 {
 	int		fd;
 	int		len;
 	char	*line;
 	char	*trimed_line;
-	int		i;
 
 	len = file_len(file);
 	data->len = len;
 	fd = check_file(file);
-	i = 0;
 	if (fd == -3 || len < 1)
 		return (0);
 	data->parss.all = malloc(sizeof(char *) * (len + 1));
+	if (!data->parss.all)
+		return (0);
 	line = get_next_line(fd);
 	trimed_line = ft_strtrim(line, "\n");
 	while (line)
