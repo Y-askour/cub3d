@@ -6,11 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:45:12 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:04:08 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <include.h>
+#include "../../include/include.h"
 
 unsigned int	big_len(t_all *data)
 {

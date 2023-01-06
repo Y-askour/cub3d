@@ -6,11 +6,11 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:55:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:42:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:06:36 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <include.h>
+#include "../../include/include.h"
 
 int	check_file(char *av)
 {

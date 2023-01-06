@@ -6,12 +6,10 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:28:05 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:04:32 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../include/include.h"
-#include <stdio.h>
 
 int	check_is_white_spaces(char *str)
 {

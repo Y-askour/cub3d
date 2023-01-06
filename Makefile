@@ -11,8 +11,8 @@ RS	= "\033[0m"
 #------------------- End Define Color ------------------#
 CC=cc
 NAME=Cub3d
-HEADER=include
-FLAGS=-Wall -Wextra -Werror -Imlx -I$(HEADER) -g
+HEADER=include/include.h
+FLAGS=-Wall -Wextra -Werror -Imlx  -g
 SRC=$(addprefix src/,main.c parssing/parssing.c parssing/get_colors.c \
 		parssing/get_all.c parssing/get_textures.c parssing/parssing_utils.c\
 		free/free.c check/check_colors.c check/check_colors_utils.c\
