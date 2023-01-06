@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/07 00:12:23 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/07 00:48:06 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,23 @@ int	check_wall(t_all *data, double y, double x)
 
 	if (data->direction_ang >= ( (3 * M_PI) / 2) && data->direction_ang <= (2 * M_PI)) // up right
 	{
-		//if (data->valid.maps[y_wall - 1][x_wall] == '1' && data->valid.maps[y_wall][x_wall + 1] == '1')
-		//{
-		//	return (1);
-		//}
+		if (data->valid.maps[y_wall - 1][x_wall] == '1' && data->valid.maps[y_wall][x_wall + 1] == '1')
+			return (1);
 	}
-	if (data->direction_ang >= M_PI && data->direction_ang <= ((3 * M_PI) / 2))
+	if (data->direction_ang >= M_PI && data->direction_ang <= ((3 * M_PI) / 2)) // up left
 	{
+		if (data->valid.maps[y_wall - 1][x_wall] == '1' && data->valid.maps[y_wall][x_wall - 1] == '1')
+			return (1);
 	}
-	if (data->direction_ang >= 0 && data->direction_ang <= (M_PI / 2))
+	if (data->direction_ang >= 0 && data->direction_ang <= (M_PI / 2)) // down right
 	{
+		if (data->valid.maps[y_wall + 1][x_wall] == '1' && data->valid.maps[y_wall][x_wall + 1] == '1')
+			return (1);
 	}
-	if (data->direction_ang >= (M_PI / 2) && data->direction_ang <= M_PI)
+	if (data->direction_ang >= (M_PI / 2) && data->direction_ang <= M_PI) // down left
 	{
-		printf("%f\n",data->direction_ang);
+		if (data->valid.maps[y_wall + 1][x_wall] == '1' && data->valid.maps[y_wall][x_wall - 1] == '1')
+			return (1);
 	}
 	return (0);
 }
@@ -88,34 +91,34 @@ int	younes(int keycode, t_all *data)
 	}
 	else if (keycode == UP)
 	{
-		if (!check_wall(data, data->y_player + 5 * sin(data->direction_ang), data->x_player + 5 * cos(data->direction_ang)))
+		if (!check_wall(data, data->y_player + 1 * sin(data->direction_ang), data->x_player + 1 * cos(data->direction_ang)))
 		{
-			data->x_player = data->x_player + 5 * cos(data->direction_ang);
-			data->y_player = data->y_player + 5 * sin(data->direction_ang);
+			data->x_player = data->x_player + 1 * cos(data->direction_ang);
+			data->y_player = data->y_player + 1 * sin(data->direction_ang);
 		}
 	}
 	else if (keycode == DOWN)
 	{
-		if (!check_wall(data, data->y_player - 5 * sin(data->direction_ang), data->x_player - 5 * cos(data->direction_ang)))
+		if (!check_wall(data, data->y_player - 1 * sin(data->direction_ang), data->x_player - 1 * cos(data->direction_ang)))
 		{
-			data->x_player = data->x_player - 5 * cos(data->direction_ang);
-			data->y_player = data->y_player - 5 * sin(data->direction_ang);
+			data->x_player = data->x_player - 1 * cos(data->direction_ang);
+			data->y_player = data->y_player - 1 * sin(data->direction_ang);
 		}
 	}
 	else if (keycode == LEFT)
 	{
-		if (!check_wall(data, data->y_player - 5 * cos(data->direction_ang), data->x_player + 5 * sin(data->direction_ang)))
+		if (!check_wall(data, data->y_player - 1 * cos(data->direction_ang), data->x_player + 1 * sin(data->direction_ang)))
 		{
-			data->x_player = data->x_player + 5 * sin(data->direction_ang);
-			data->y_player = data->y_player - 5 * cos(data->direction_ang);
+			data->x_player = data->x_player + 1 * sin(data->direction_ang);
+			data->y_player = data->y_player - 1 * cos(data->direction_ang);
 		}
 	}
 	else if (keycode == RIGHT)
 	{
-		if (!check_wall(data, data->y_player + 5 * cos(data->direction_ang), data->x_player - 5 * sin(data->direction_ang)))
+		if (!check_wall(data, data->y_player + 1 * cos(data->direction_ang), data->x_player - 1 * sin(data->direction_ang)))
 		{
-			data->x_player = data->x_player - 5 * sin(data->direction_ang);
-			data->y_player = data->y_player + 5 * cos(data->direction_ang);
+			data->x_player = data->x_player - 1 * sin(data->direction_ang);
+			data->y_player = data->y_player + 1 * cos(data->direction_ang);
 		}
 	}
 	draw(data);
