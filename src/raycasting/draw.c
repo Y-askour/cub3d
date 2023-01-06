@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 16:14:45 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/06 23:49:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	player_position(t_all *data, int x, int y)
 	data->valid.player = data->valid.maps[y][x];
 	data->y_player = (y * CUB) + (CUB / 2);
 	data->x_player = (x * CUB) + (CUB / 2);
-	data->valid.maps[y][x] = '0';
+	data->valid.maps[(int)roundf(y)][(int)roundf(x)] = '0';
 }
 
 int	draw(t_all *data)
