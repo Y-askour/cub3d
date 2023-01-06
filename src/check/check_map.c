@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 16:04:08 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:16:08 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	str_space(char **dest, char *original, unsigned int b_len)
 	diff = b_len - len;
 	to_fill = malloc(sizeof(char) * (len + diff + 1));
 	if (!to_fill)
-		exit(1) ;
+		exit(1);
 	i = 0;
 	while (original[i])
 	{
@@ -296,7 +296,6 @@ void	init_angle(t_all *data)
 	{
 		data->direction_ang = M_PI;
 		data->rotation_speed = 12;
-
 	}
 	if (data->valid.player == 'E')
 	{

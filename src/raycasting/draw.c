@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 16:11:44 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/06 16:14:45 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
 	float	x;
 	float	y;
 
-
-
-
 	dx = X1 - X0;
 	dy = Y1 - Y0;
 	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
@@ -60,11 +57,11 @@ void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
 
 void	drawcub(t_all *data, int x, int y, unsigned int color)
 {
-	int x0;
+	int	x0;
 	int	x1;
-	int y0;
-	int y1;
-	int start;
+	int	y0;
+	int	y1;
+	int	start;
 
 	x0 = x * CUB;
 	x1 = (x + 1) * CUB;
@@ -94,7 +91,6 @@ int	draw(t_all *data)
 {
 	int	i;
 	int	j;
-
 
 	i = 0;
 	while (data->valid.maps[i])
