@@ -84,10 +84,10 @@ typedef struct s_all
 	t_valid_data	valid;
 	t_mlx			mlx;
 	unsigned int	len;
-	int				x_player;
-	int				y_player;
+	double			x_player;
+	double			y_player;
 	double			direction_ang;
-	int				rotation_speed;
+	double				rotation_speed;
 }					t_all;
 
 // parssing

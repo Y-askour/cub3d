@@ -32,11 +32,12 @@ int	check(t_all *data)
 	return (0);
 }
 
-int	check_wall(t_all *data, int y, int x)
+int	check_wall(t_all *data, double y, double x)
 {
-	x /= CUB;
-	y /= CUB;
-	if (data->valid.maps[y][x] == '1')
+	x = floor(x/ CUB);
+	y = floor(y/ CUB);
+	printf("%c\n", data->valid.maps[(int)y][(int)x]);
+	if (data->valid.maps[(int)y][(int)x] == '1')
 		return (1);
 	return (0);
 }
@@ -50,48 +51,52 @@ void	normalize_angle(t_all *data)
 
 int	younes(int keycode, t_all *data)
 {
-	int	new_x = 0;
-	int	new_y = 0;
-	
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
 	if (keycode == ESC)
 		exit(0);
 	else if (keycode == ROTATE_LEFT)
 	{
-		data->rotation_speed = (data->rotation_speed + 23) % 24;
+		data->rotation_speed = fmod(data->rotation_speed + 23, 24);
 		data->direction_ang = M_PI / 12 * data->rotation_speed;
 		normalize_angle(data);
 	}
 	else if (keycode == ROTATE_RIGHT)
 	{
-		data->rotation_speed = (data->rotation_speed + 1) % 24;
+		data->rotation_speed = fmod(data->rotation_speed + 1, 24);
 		data->direction_ang = data->rotation_speed * M_PI / 12;
 		normalize_angle(data);
 	}
 	else if (keycode == UP)
 	{
-		new_x = data->x_player + 10 * cos(data->direction_ang);
-		new_y = data->y_player + 10 * sin(data->direction_ang);
+		if (!check_wall(data, data->y_player + 10 * sin(data->direction_ang), data->x_player + 10 * cos(data->direction_ang)))
+		{
+			data->x_player = data->x_player + 10 * cos(data->direction_ang);
+			data->y_player = data->y_player + 10 * sin(data->direction_ang);
+		}
 	}
 	else if (keycode == DOWN)
 	{
-		new_x = data->x_player - 10 * cos(data->direction_ang);
-		new_y = data->y_player - 10 * sin(data->direction_ang);
+		if (!check_wall(data, data->y_player - 10 * sin(data->direction_ang), data->x_player - 10 * cos(data->direction_ang)))
+		{
+			data->x_player = data->x_player - 10 * cos(data->direction_ang);
+			data->y_player = data->y_player - 10 * sin(data->direction_ang);
+		}
 	}
 	else if (keycode == LEFT)
 	{
-		new_x = data->x_player + 10 * sin(data->direction_ang);
-		new_y = data->y_player - 10 * cos(data->direction_ang);
+		if (!check_wall(data, data->y_player - 10 * cos(data->direction_ang), data->x_player + 10 * sin(data->direction_ang)))
+		{
+			data->x_player = data->x_player + 10 * sin(data->direction_ang);
+			data->y_player = data->y_player - 10 * cos(data->direction_ang);
+		}
 	}
 	else if (keycode == RIGHT)
 	{
-		new_x = data->x_player - 10 * sin(data->direction_ang);
-		new_y = data->y_player + 10 * cos(data->direction_ang);
-	}
-	if (!check_wall(data, new_y, new_x))
-	{
-		data->x_player = new_x;
-		data->y_player = new_y;
+		if (!check_wall(data, data->y_player + 10 * cos(data->direction_ang), data->x_player - 10 * sin(data->direction_ang)))
+		{
+			data->x_player = data->x_player - 10 * sin(data->direction_ang);
+			data->y_player = data->y_player + 10 * cos(data->direction_ang);
+		}
 	}
 	draw(data);
 	return (0);
