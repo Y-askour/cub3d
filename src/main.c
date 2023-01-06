@@ -50,6 +50,9 @@ void	normalize_angle(t_all *data)
 
 int	younes(int keycode, t_all *data)
 {
+	int	new_x = 0;
+	int	new_y = 0;
+	
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
 	if (keycode == ESC)
 		exit(0);
@@ -67,23 +70,28 @@ int	younes(int keycode, t_all *data)
 	}
 	else if (keycode == UP)
 	{
-		data->x_player += 10 * cos(data->direction_ang);
-		data->y_player += 10 * sin(data->direction_ang);
+		new_x = data->x_player + 10 * cos(data->direction_ang);
+		new_y = data->y_player + 10 * sin(data->direction_ang);
 	}
 	else if (keycode == DOWN)
 	{
-		data->x_player -= 10 * cos(data->direction_ang);
-		data->y_player -= 10 * sin(data->direction_ang);
+		new_x = data->x_player - 10 * cos(data->direction_ang);
+		new_y = data->y_player - 10 * sin(data->direction_ang);
 	}
 	else if (keycode == LEFT)
 	{
-		data->x_player += 10 * sin(data->direction_ang);
-		data->y_player -= 10 * cos(data->direction_ang);
+		new_x = data->x_player + 10 * sin(data->direction_ang);
+		new_y = data->y_player - 10 * cos(data->direction_ang);
 	}
 	else if (keycode == RIGHT)
 	{
-		data->x_player -= 10 * sin(data->direction_ang);
-		data->y_player += 10 * cos(data->direction_ang);
+		new_x = data->x_player - 10 * sin(data->direction_ang);
+		new_y = data->y_player + 10 * cos(data->direction_ang);
+	}
+	if (!check_wall(data, new_y, new_x))
+	{
+		data->x_player = new_x;
+		data->y_player = new_y;
 	}
 	draw(data);
 	return (0);
