@@ -29,6 +29,8 @@
 # define ROTATE_LEFT 123
 # define ROTATE_RIGHT 124
 // 
+
+
 typedef struct s_parss
 {
 	char			**all;
