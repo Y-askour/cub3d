@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/07 18:13:44 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/07 18:19:01 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,15 @@ int	check(t_all *data)
 
 int	check_wall(t_all *data, double y, double x)
 {
-	int x_wall = x/ CUB;
-	int y_wall = y/ CUB;
-	int x_p_pos = data->x_player/CUB;
-	int y_p_pos = data->y_player/CUB;
+	int	x_wall;
+	int	y_wall;
+	int	x_p_pos;
+	int	y_p_pos;
 
+	x_wall = x / CUB;
+	y_wall = y / CUB;
+	x_p_pos = data->x_player / CUB;
+	y_p_pos = data->y_player / CUB;
 	if (data->valid.maps[(int)y_wall][(int)x_wall] == '1')
 		return (1);
 	if (x_wall != x_p_pos && y_wall != y_p_pos)

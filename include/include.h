@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:20:02 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/07 18:15:50 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_all
 	double			x_player;
 	double			y_player;
 	double			direction_ang;
-	double				rotation_speed;
+	double			rotation_speed;
 }					t_all;
 
 // parssing
