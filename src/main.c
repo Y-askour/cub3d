@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/07 18:19:01 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/07 20:19:46 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,29 @@ int	check_wall(t_all *data, double y, double x)
 		return (1);
 	if (x_wall != x_p_pos && y_wall != y_p_pos)
 	{
+		if (y_wall + 1 == data->valid.map_len || x_wall - 1 == -1)
+			return (1);
 		if (data->valid.maps[y_wall][x_wall - 1] == '1' && data->valid.maps[y_wall + 1][x_wall] == '1')
 			return (1);
 	}
 	if (x_wall != x_p_pos && y_wall != y_p_pos)
 	{
+		if (y_wall + 1 == data->valid.map_len || x_wall + 1 == data->valid.line_len)
+			return (1);
 		if (data->valid.maps[y_wall][x_wall + 1] == '1' && data->valid.maps[y_wall + 1][x_wall] == '1')
 			return (1);
 	}
 	if (x_wall != x_p_pos && y_wall != y_p_pos)
 	{
+		if (y_wall -1 == -1 || x_wall - 1 == -1)
+			return (1);
 		if (data->valid.maps[y_wall][x_wall - 1] == '1' && data->valid.maps[y_wall - 1][x_wall] == '1')
 			return (1);
 	}
 	if (x_wall != x_p_pos && y_wall != y_p_pos)
 	{
+		if (y_wall - 1 == -1 || x_wall + 1 == data->valid.line_len)
+			return (1);
 		if (data->valid.maps[y_wall][x_wall + 1] == '1' && data->valid.maps[y_wall - 1][x_wall] == '1')
 			return (1);
 	}
