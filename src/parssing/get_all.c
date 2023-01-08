@@ -43,14 +43,9 @@ int	is_empty(char *str)
 	return (0);
 }
 
-void	get_map(t_all *data)
+void	get_map(t_all *data, int i, int len, int temp)
 {
-	int	i;
-	int	len;
-	int	temp;
-
 	i = data->parss.map_index;
-	len = 0;
 	while (data->parss.all[i] && !is_empty(data->parss.all[i]))
 		i++;
 	if (!data->parss.all[i])

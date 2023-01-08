@@ -24,8 +24,10 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 void	init_mlx(t_all *data)
 {
 	data->mlx.mlx = mlx_init();
-	data->mlx.win = mlx_new_window(data->mlx.mlx, 2880, 1620, "hey");
-	data->mlx.img = mlx_new_image(data->mlx.mlx, 2880, 1620);
+	data->mlx.w_win = data->valid.line_len * TILE_SIZE;
+	data->mlx.h_win = data->valid.map_len * TILE_SIZE;
+	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win, data->mlx.h_win, "Cub3D");
+	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.w_win, data->mlx.h_win);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
 			&data->mlx.line_length, &data->mlx.endian);
 }
