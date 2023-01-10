@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/07 18:15:50 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 23:42:15 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,6 @@ int					is_empty(char *str);
 int					draw(t_all *data);
 void				player_position(t_all *data, int x, int y);
 void				init_mlx(t_all *data);
+double				normalize_angle(double ang);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 22:48:36 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 23:47:32 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void	drawcub(t_all *data, int x, int y, unsigned int color)
 		start = x0;
 		while (start < x1)
 		{
-			my_mlx_pixel_put(data, start, y0, color);
+			if (start == x0 || (y0 % 30) == 0)
+				my_mlx_pixel_put(data,start,y0,0x000000);
+			else
+				my_mlx_pixel_put(data, start, y0, color);
 			start++;
 		}
 		y0++;
@@ -110,20 +113,21 @@ int horizontal_inter(t_all *data,double ang)
 	if (!is_up(ang))
 		first_y += CUB;
 	first_x = ((data->y_player - first_y) / tan(ang) ) + data->x_player;
-	printf("%d\n",first_x);
+	dda(first_x,first_y,first_x,first_y,data,0xB7A6A4);
 	return (0);
 }
 
 int vertical_inter(t_all *data,double ang)
 {
 	int	first_x;
-	//int	first_y;
-	(void)ang;
+	int	first_y;
 
 	first_x = floor(data->y_player/CUB) * CUB;
 	if (is_left(ang))
 		first_x -= CUB;
-	printf("%d\n",first_x);
+	first_y = ((tan(ang) * (first_x - data->x_player)) + data->y_player);
+	first_y *= -1;
+	printf("%d\n",first_y);
 	return (0);
 }
 
@@ -134,14 +138,15 @@ int	draw_rays(t_all *data)
 	int		i;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
+	start_angle = normalize_angle(start_angle);
 	increment = (60 * (M_PI / 180)) / 2280;
 	i = 0;
 	while (i < 1)
 	{
-		vertical_inter(data,start_angle);
+		horizontal_inter(data,start_angle);
 		dda(data->x_player, data->y_player, data->x_player
-			+ cos(start_angle) * 20, data->y_player
-			+ sin(start_angle) * 20, data, 0xffffff);
+			+ cos(start_angle) * 10, data->y_player
+			+ sin(start_angle) * 10, data, 0xff00ff);
 		start_angle += increment;
 		i++;
 	}
@@ -162,12 +167,15 @@ int	draw(t_all *data)
 			if (data->valid.maps[i][j] == '1')
 				drawcub(data, j, i, 0x124A2A);
 			if (data->valid.maps[i][j] == '0')
-				drawcub(data, j, i, 0x475E6B);
+				drawcub(data, j, i, 0x242121);
 			j++;
 		}
 		i++;
 	}
 	my_mlx_pixel_put(data, data->x_player, data->y_player, 0xffffff);
+	dda(data->x_player, data->y_player, data->x_player
+		+ cos(data->direction_ang) * 10, data->y_player
+		+ sin(data->direction_ang) * 10, data, 0xff00ff);
 	draw_rays(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);

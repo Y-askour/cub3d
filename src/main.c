@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/07 20:19:46 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 23:42:23 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,12 @@ int	check_wall(t_all *data, double y, double x)
 	return (0);
 }
 
-void	normalize_angle(t_all *data)
+double	normalize_angle(double ang)
 {
-	data->direction_ang = fmod(data->direction_ang, 2 * M_PI);
-	if (data->direction_ang < 0)
-		data->direction_ang += 2 * M_PI;
+	ang = fmod(ang, 2 * M_PI);
+	if (ang < 0)
+		ang += 2 * M_PI;
+	return (ang);
 }
 
 int	younes(int keycode, t_all *data)
@@ -91,12 +92,12 @@ int	younes(int keycode, t_all *data)
 	else if (keycode == ROTATE_LEFT)
 	{
 		data->direction_ang += data->rotation_speed;
-		normalize_angle(data);
+		data->direction_ang = normalize_angle(data->direction_ang);
 	}
 	else if (keycode == ROTATE_RIGHT)
 	{
 		data->direction_ang -= data->rotation_speed;
-		normalize_angle(data);
+		data->direction_ang = normalize_angle(data->direction_ang);
 	}
 	else if (keycode == UP)
 	{
