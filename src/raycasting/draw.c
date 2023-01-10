@@ -6,11 +6,12 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 23:49:43 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 18:17:24 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
+#include <stdio.h>
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 {
@@ -87,6 +88,27 @@ void	player_position(t_all *data, int x, int y)
 	data->valid.maps[(int)roundf(y)][(int)roundf(x)] = '0';
 }
 
+int draw_rays(t_all *data)
+{
+	double start_angle;
+	double increment;
+	int i;
+
+	start_angle = data->direction_ang -  ( 30 * (M_PI/180));
+	increment = (60 * (M_PI/180)) / 2280;
+
+	i = 0;
+	while (i < 2880)
+	{
+		dda(data->x_player, data->y_player, data->x_player
+			+ cos(start_angle) * 20, data->y_player
+			+ sin(start_angle) * 20, data, 0xffffff);
+		start_angle += increment;
+		i++;
+	}
+	return (0);
+}
+
 int	draw(t_all *data)
 {
 	int	i;
@@ -107,9 +129,7 @@ int	draw(t_all *data)
 		i++;
 	}
 	my_mlx_pixel_put(data, data->x_player, data->y_player, 0xffffff);
-	dda(data->x_player, data->y_player, data->x_player
-		+ cos(data->direction_ang) * 20, data->y_player
-		+ sin(data->direction_ang) * 20, data, 0xffffff);
+	draw_rays(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }
