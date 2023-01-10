@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 18:20:22 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 22:48:36 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,30 @@ void	init_mlx(t_all *data)
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
 			&data->mlx.line_length, &data->mlx.endian);
 }
-//void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
-//{
-//	int		dx;
-//	int		dy;
-//	int		steps;
-//	float	xinc;
-//	float	yinc;
-//	float	x;
-//	float	y;
-//
-//	dx = X1 - X0;
-//	dy = Y1 - Y0;
-//	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-//	xinc = dx / (float)steps;
-//	yinc = dy / (float)steps;
-//	x = X0;
-//	y = Y0;
-//	for (int i = 0; i <= steps; i++)
-//	{
-//		my_mlx_pixel_put(data, round(x), round(y), color);
-//		x += xinc;
-//		y += yinc;
-//	}
-//}
+void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
+{
+	int		dx;
+	int		dy;
+	int		steps;
+	float	xinc;
+	float	yinc;
+	float	x;
+	float	y;
+
+	dx = X1 - X0;
+	dy = Y1 - Y0;
+	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+	xinc = dx / (float)steps;
+	yinc = dy / (float)steps;
+	x = X0;
+	y = Y0;
+	for (int i = 0; i <= steps; i++)
+	{
+		my_mlx_pixel_put(data, round(x), round(y), color);
+		x += xinc;
+		y += yinc;
+	}
+}
 
 void	drawcub(t_all *data, int x, int y, unsigned int color)
 {
@@ -87,6 +87,46 @@ void	player_position(t_all *data, int x, int y)
 	data->valid.maps[(int)roundf(y)][(int)roundf(x)] = '0';
 }
 
+int is_up(double ang)
+{
+	if (ang >= M_PI && ang <= (2 * M_PI))
+		return (1);
+	return (0);
+}
+
+int is_left(double ang)
+{
+	if (ang >= (M_PI / 2) && ang <= ((3 * M_PI) / 2))
+		return (1);
+	return (0);
+}
+
+int horizontal_inter(t_all *data,double ang)
+{
+	int	first_x;
+	int	first_y;
+
+	first_y = floor(data->y_player/CUB) * CUB;
+	if (!is_up(ang))
+		first_y += CUB;
+	first_x = ((data->y_player - first_y) / tan(ang) ) + data->x_player;
+	printf("%d\n",first_x);
+	return (0);
+}
+
+int vertical_inter(t_all *data,double ang)
+{
+	int	first_x;
+	//int	first_y;
+	(void)ang;
+
+	first_x = floor(data->y_player/CUB) * CUB;
+	if (is_left(ang))
+		first_x -= CUB;
+	printf("%d\n",first_x);
+	return (0);
+}
+
 int	draw_rays(t_all *data)
 {
 	double	start_angle;
@@ -96,8 +136,9 @@ int	draw_rays(t_all *data)
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	increment = (60 * (M_PI / 180)) / 2280;
 	i = 0;
-	while (i < 2880)
+	while (i < 1)
 	{
+		vertical_inter(data,start_angle);
 		dda(data->x_player, data->y_player, data->x_player
 			+ cos(start_angle) * 20, data->y_player
 			+ sin(start_angle) * 20, data, 0xffffff);
