@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 23:47:32 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 23:53:57 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int horizontal_inter(t_all *data,double ang)
 	first_y = floor(data->y_player/CUB) * CUB;
 	if (!is_up(ang))
 		first_y += CUB;
-	first_x = ((data->y_player - first_y) / tan(ang) ) + data->x_player;
+	first_x = ((first_y - data->y_player) / tan(ang) ) + data->x_player;
 	dda(first_x,first_y,first_x,first_y,data,0xB7A6A4);
 	return (0);
 }
