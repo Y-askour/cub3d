@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 18:17:24 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/10 18:20:22 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,30 @@ void	init_mlx(t_all *data)
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
 			&data->mlx.line_length, &data->mlx.endian);
 }
-
-void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
-{
-	int		dx;
-	int		dy;
-	int		steps;
-	float	xinc;
-	float	yinc;
-	float	x;
-	float	y;
-
-	dx = X1 - X0;
-	dy = Y1 - Y0;
-	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-	xinc = dx / (float)steps;
-	yinc = dy / (float)steps;
-	x = X0;
-	y = Y0;
-	for (int i = 0; i <= steps; i++)
-	{
-		my_mlx_pixel_put(data, round(x), round(y), color);
-		x += xinc;
-		y += yinc;
-	}
-}
+//void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
+//{
+//	int		dx;
+//	int		dy;
+//	int		steps;
+//	float	xinc;
+//	float	yinc;
+//	float	x;
+//	float	y;
+//
+//	dx = X1 - X0;
+//	dy = Y1 - Y0;
+//	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+//	xinc = dx / (float)steps;
+//	yinc = dy / (float)steps;
+//	x = X0;
+//	y = Y0;
+//	for (int i = 0; i <= steps; i++)
+//	{
+//		my_mlx_pixel_put(data, round(x), round(y), color);
+//		x += xinc;
+//		y += yinc;
+//	}
+//}
 
 void	drawcub(t_all *data, int x, int y, unsigned int color)
 {
@@ -88,15 +87,14 @@ void	player_position(t_all *data, int x, int y)
 	data->valid.maps[(int)roundf(y)][(int)roundf(x)] = '0';
 }
 
-int draw_rays(t_all *data)
+int	draw_rays(t_all *data)
 {
-	double start_angle;
-	double increment;
-	int i;
+	double	start_angle;
+	double	increment;
+	int		i;
 
-	start_angle = data->direction_ang -  ( 30 * (M_PI/180));
-	increment = (60 * (M_PI/180)) / 2280;
-
+	start_angle = data->direction_ang - (30 * (M_PI / 180));
+	increment = (60 * (M_PI / 180)) / 2280;
 	i = 0;
 	while (i < 2880)
 	{
