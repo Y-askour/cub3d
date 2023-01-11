@@ -72,11 +72,11 @@ clean:
 	@rm -rf $(GNL_OBJ)
 	@make fclean -C utils/libft
 	@make clean -C mlx
-	@printf "\e[0;31m[.o files deleted]\n\e[0;m"
+	@echo $(R)[.o files deleted]$(RS)
 
 fclean:clean
 	@rm -rf $(NAME)
-	@printf "\e[0;31m[cub3D deleted]\n\e[0;m"
+	@echo $(R)[cub3D deleted]$(RS) 
 
 re:fclean $(NAME)
 
