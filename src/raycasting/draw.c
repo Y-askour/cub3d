@@ -6,11 +6,12 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/11 18:14:20 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:44:31 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
+#include <math.h>
 #include <stdio.h>
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
@@ -113,7 +114,7 @@ int horizontal_inter(t_all *data,double ang)
 	if (!is_up(ang))
 		first_y += CUB;
 	first_x = ((first_y - data->y_player) / tan(ang) ) + data->x_player;
-	dda(floor(first_x/CUB) * CUB,first_y,(floor(first_x/CUB) * CUB) + CUB,first_y,data,0xff0000);
+	dda(floor(first_x/CUB) * CUB,first_y,(floor(first_x/CUB) * CUB) + CUB,first_y,data,0x00ff00);
 	return (0);
 }
 
@@ -122,11 +123,11 @@ int vertical_inter(t_all *data,double ang)
 	double	first_x;
 	double	first_y;
 
-	first_x = floor(data->y_player/CUB) * CUB;
+	first_x = floor(data->x_player/CUB) * CUB;
 	if (!is_left(ang))
 		first_x += CUB;
-	first_y = data->y_player + ((first_x - data->y_player) * tan(ang));
-	dda(first_x,first_y,first_x,first_y,data,0xff0000);
+	first_y = data->y_player + ((first_x - data->x_player) * tan(ang));
+	dda(first_x,floor(first_y/CUB) * CUB,first_x,(floor(first_y/CUB) * CUB) + CUB,data,0xff0000);
 	return (0);
 }
 
@@ -143,7 +144,7 @@ int	draw_rays(t_all *data)
 	while (i < 1)
 	{
 		horizontal_inter(data,start_angle);
-		//vertical_inter(data,start_angle);
+		vertical_inter(data,start_angle);
 		dda(data->x_player, data->y_player, data->x_player
 			+ cos(start_angle) * 10, data->y_player
 			+ sin(start_angle) * 10, data, 0xffffff);
@@ -173,9 +174,9 @@ int	draw(t_all *data)
 		i++;
 	}
 	my_mlx_pixel_put(data, data->x_player, data->y_player, 0xffffff);
-	//dda(data->x_player, data->y_player, data->x_player
-	//	+ cos(data->direction_ang) * 10, data->y_player
-	//	+ sin(data->direction_ang) * 10, data, 0xff00ff);
+	dda(data->x_player, data->y_player, data->x_player
+		+ cos(data->direction_ang) * 10, data->y_player
+		+ sin(data->direction_ang) * 10, data, 0xff00ff);
 	draw_rays(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
