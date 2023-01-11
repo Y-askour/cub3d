@@ -114,7 +114,7 @@ int	parssing(char *av, t_all *data)
 		printf("map is above a metadata");
 		return (0);
 	}
-	get_map(data);
+	get_map(data, 0, 0, 0);
 	if (!data->parss.map)
 	{
 		free_parssing(data);

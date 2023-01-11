@@ -29,6 +29,9 @@
 # define ROTATE_LEFT 123
 # define ROTATE_RIGHT 124
 // 
+# define FOV 60 * M_PI / 180
+# define TILE_SIZE 64
+
 typedef struct s_parss
 {
 	char			**all;
@@ -72,6 +75,8 @@ typedef struct s_mlx
 	void			*mlx;
 	void			*win;
 	void			*img;
+	int				w_win;
+	int				h_win;
 	char			*addr;
 	int				bpp;
 	int				line_length;
@@ -119,7 +124,7 @@ int					get_ceiling(t_all *data);
 
 // get_all
 int					get_metadata(t_all *data);
-void				get_map(t_all *data);
+void				get_map(t_all *data, int i, int len, int temp);
 
 // check colors
 int					check_ceiling(t_all *data);

@@ -158,7 +158,12 @@ int	main(int ac, char **av)
 	int		i;
 
 	i = 0;
-	if (ac == 2)
+	if (ac != 2)
+	{
+		printf("Usage : ./cub3d <filename>\n");
+		exit(1);
+	}
+	else
 	{
 		if (!parssing(av[1], &data))
 		{
@@ -171,8 +176,6 @@ int	main(int ac, char **av)
 		mlx_hook(data.mlx.win, 2, 1L << 0, younes, &data);
 		mlx_loop(data.mlx.mlx);
 		return (0);
-	}
-	else
-		printf("number of args is not valid\n");
+	}	
 	return (0);
 }
