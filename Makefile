@@ -9,27 +9,37 @@ P	= "\033[0;35m"
 RS	= "\033[0m"
 
 #------------------- End Define Color ------------------#
-CC=cc
-NAME=Cub3d
-HEADER=include/include.h
-FLAGS=-Wall -Wextra -Werror -Imlx  -g
-SRC=$(addprefix src/,main.c parssing/parssing.c parssing/get_colors.c \
+
+#          ----------========== {     VARS     } ==========----------
+CC = cc
+NAME = Cub3d
+HEADER = include/include.h
+FLAGS = -Wall -Wextra -Werror -Imlx
+LIBFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_LIB = mlx/libmlx.a
+GET_NEXT_LINE = /utils/get_next_line/
+LIBFT_LIB = utils/libft/libft.a
+LIBFT_HEADER = utils/libft/libft.h
+GNl_HEADER = utils/get_next_line/get_next_line.h
+
+#          ----------========== {     SRCS     } ==========----------
+
+
+SRC = $(addprefix src/,main.c parssing/parssing.c parssing/get_colors.c \
 		parssing/get_all.c parssing/get_textures.c parssing/parssing_utils.c\
 		free/free.c check/check_colors.c check/check_colors_utils.c\
 		check/check_textures.c check/check_textures_utils.c check/check_map.c\
 		raycasting/draw.c )
-SRC_OBJ=$(SRC:.c=.o)
-LIBFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
-GNL_SRC=$(addprefix utils/get_next_line/,get_next_line.c get_next_line_utils.c)
-GNL_OBJ=$(GNL_SRC:.c=.o)
-GNl_HEADER=utils/get_next_line/get_next_line.h
-MLX_LIB = mlx/libmlx.a
-LIBFT_HEADER=utils/libft/libft.h
+SRC_OBJ = $(SRC:.c=.o)
+GNL_SRC = $(addprefix utils/get_next_line/,get_next_line.c get_next_line_utils.c)
+GNL_OBJ = $(GNL_SRC:.c=.o)
 
+#          ----------========== {     RULES     } ==========----------
 All:$(NAME)
 
-$(NAME):$(MLX_LIB) utils/libft/libft.a $(GNL_OBJ) $(SRC_OBJ) 
-	$(CC) $(FLAGS) $(SRC_OBJ) $(GNL_OBJ) utils/libft/libft.a  $(LIBFLAGS) $(MLX_LIB) -o $(NAME)
+
+$(NAME):$(MLX_LIB) $(LIBFT_LIB) $(GNL_OBJ) $(SRC_OBJ) 
+	@echo "\n"
 	@echo $(B)"         ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡ "$(RS)
 	@echo $(B)"         ║"$(C)"░░░░░███████░░██░░░░██░░████████░░███████░░███████░░░░░░"$(B)"║"$(RS)
 	@echo $(B)"         ║"$(C)"░░░░██░░░░░░░░██░░░░██░░██░░░░██░░░░░░░██░░██░░░░░██░░░░"$(B)"║"$(RS)
@@ -41,29 +51,34 @@ $(NAME):$(MLX_LIB) utils/libft/libft.a $(GNL_OBJ) $(SRC_OBJ)
 	@echo "                        "$(P)"    YOPI && Younes Askour"$(RS)
 	@echo "$                         "$(G)"-----------------------------"$(RS)
 	@echo "\n"
+	@$(CC) $(FLAGS) $(SRC_OBJ) $(GNL_OBJ) $(LIBFT_LIB)  $(LIBFLAGS) $(MLX_LIB) -o $(NAME)
 
-utils/libft/libft.a:$(LIBFT_HEADER)
-	make -C utils/libft/
+$(LIBFT_LIB):$(LIBFT_HEADER)
+	@make -C utils/libft/
 
 
-/utils/get_next_line/%.o:/utils/get_next_line/%.c $(GNL_HEADER)
-	$(CC) $(FlAGS) -c $< -o $@
+$(GET_NEXT_LINE)%.o:$(GET_NEXT_LINE)%.c $(GNL_HEADER)
+	@$(CC) $(FlAGS) -c $< -o $@
 
 %.o:%.c $(HEADER)
-	$(CC) $(FLAGS) -c $< -o $@
+	@printf "\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m"
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(MLX_LIB):
-	make -C mlx 2> /dev/null
+	@make -C mlx 2> /dev/null
 
 clean:
-	rm -rf $(SRC_OBJ)
-	rm -rf $(GNL_OBJ)
-	make fclean -C utils/libft
-	make clean -C mlx
+	@rm -rf $(SRC_OBJ)
+	@rm -rf $(GNL_OBJ)
+	@make fclean -C utils/libft
+	@make clean -C mlx
+	@printf "\e[0;31m[.o files deleted]\n\e[0;m"
 
 fclean:clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@printf "\e[0;31m[cub3D deleted]\n\e[0;m"
 
 re:fclean $(NAME)
+
 
 .PHONY:get_next_line all fclean clean
