@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 23:47:32 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/11 17:25:56 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	drawcub(t_all *data, int x, int y, unsigned int color)
 		start = x0;
 		while (start < x1)
 		{
-			if (start == x0 || (y0 % 30) == 0)
+			if (start == x0 || (y0 % 50) == 0)
 				my_mlx_pixel_put(data,start,y0,0x000000);
 			else
 				my_mlx_pixel_put(data, start, y0, color);
@@ -106,28 +106,28 @@ int is_left(double ang)
 
 int horizontal_inter(t_all *data,double ang)
 {
-	int	first_x;
-	int	first_y;
+	double	first_x;
+	double	first_y;
 
 	first_y = floor(data->y_player/CUB) * CUB;
 	if (!is_up(ang))
 		first_y += CUB;
-	first_x = ((data->y_player - first_y) / tan(ang) ) + data->x_player;
-	dda(first_x,first_y,first_x,first_y,data,0xB7A6A4);
+	first_x = ((first_y - data->y_player) / tan(ang) ) + data->x_player;
+	//printf("%f\n",floor(first_x/CUB) * CUB);
+	dda(floor(first_x/CUB) * CUB,first_y,(floor(first_x/CUB) * CUB) + CUB,first_y,data,0xff0000);
 	return (0);
 }
 
 int vertical_inter(t_all *data,double ang)
 {
-	int	first_x;
-	int	first_y;
+	double	first_x;
+	double	first_y;
 
 	first_x = floor(data->y_player/CUB) * CUB;
-	if (is_left(ang))
-		first_x -= CUB;
-	first_y = ((tan(ang) * (first_x - data->x_player)) + data->y_player);
-	first_y *= -1;
-	printf("%d\n",first_y);
+	if (!is_left(ang))
+		first_x += CUB;
+	first_y = data->y_player + ((first_x - data->y_player) * tan(ang));
+	dda(first_x,first_y,first_x,first_y,data,0xff0000);
 	return (0);
 }
 
@@ -144,9 +144,10 @@ int	draw_rays(t_all *data)
 	while (i < 1)
 	{
 		horizontal_inter(data,start_angle);
-		dda(data->x_player, data->y_player, data->x_player
-			+ cos(start_angle) * 10, data->y_player
-			+ sin(start_angle) * 10, data, 0xff00ff);
+		//vertical_inter(data,start_angle);
+		//dda(data->x_player, data->y_player, data->x_player
+		//	+ cos(start_angle) * 10, data->y_player
+		//	+ sin(start_angle) * 10, data, 0xffffff);
 		start_angle += increment;
 		i++;
 	}

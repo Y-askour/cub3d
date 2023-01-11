@@ -6,14 +6,14 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 23:42:15 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:17:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 # include <stdio.h>
-# define CUB 30
+# define CUB 50
 # include "../mlx/mlx.h"
 # include "../utils/get_next_line/get_next_line.h"
 # include "../utils/libft/libft.h"
