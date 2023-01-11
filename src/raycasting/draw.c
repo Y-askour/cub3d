@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/11 17:28:05 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:14:20 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,9 @@ int	draw_rays(t_all *data)
 	{
 		horizontal_inter(data,start_angle);
 		//vertical_inter(data,start_angle);
-		//dda(data->x_player, data->y_player, data->x_player
-		//	+ cos(start_angle) * 10, data->y_player
-		//	+ sin(start_angle) * 10, data, 0xffffff);
+		dda(data->x_player, data->y_player, data->x_player
+			+ cos(start_angle) * 10, data->y_player
+			+ sin(start_angle) * 10, data, 0xffffff);
 		start_angle += increment;
 		i++;
 	}
@@ -173,9 +173,9 @@ int	draw(t_all *data)
 		i++;
 	}
 	my_mlx_pixel_put(data, data->x_player, data->y_player, 0xffffff);
-	dda(data->x_player, data->y_player, data->x_player
-		+ cos(data->direction_ang) * 10, data->y_player
-		+ sin(data->direction_ang) * 10, data, 0xff00ff);
+	//dda(data->x_player, data->y_player, data->x_player
+	//	+ cos(data->direction_ang) * 10, data->y_player
+	//	+ sin(data->direction_ang) * 10, data, 0xff00ff);
 	draw_rays(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
