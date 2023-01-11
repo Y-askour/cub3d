@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/11 18:44:31 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/11 21:30:39 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,42 @@ int horizontal_inter(t_all *data,double ang)
 {
 	double	first_x;
 	double	first_y;
+	double	step_y;
+	double	step_x;
+	int 	index_x;
+	int 	index_y;
 
 	first_y = floor(data->y_player/CUB) * CUB;
 	if (!is_up(ang))
 		first_y += CUB;
 	first_x = ((first_y - data->y_player) / tan(ang) ) + data->x_player;
-	dda(floor(first_x/CUB) * CUB,first_y,(floor(first_x/CUB) * CUB) + CUB,first_y,data,0x00ff00);
+
+	step_y = CUB;
+	if (is_up(ang))
+		step_y *= -1;
+
+	step_x = (CUB/tan(ang));
+	if (!is_left(ang) && step_x < 0)
+		step_x *= -1;
+	if (is_left(ang) && step_x > 0)
+		step_x *= -1;
+	//first_y += step_y;
+	//first_x += step_x;
+	//first_y += step_y;
+	//first_x += step_x;
+	//first_y += step_y;
+	//first_x += step_x;
+	index_x = floor(first_x/CUB);
+	index_y = floor(first_y/CUB);
+	printf("%c\n",data->valid.maps[index_y][index_x]);
+	//while (index_x >= 0 && index_x < data->valid.line_len && index_y >= 0  && index_y < data->valid.map_len && data->valid.maps[index_y][index_y] == '0')
+	//{
+	//	first_y += step_y;
+	//	first_x += step_x;
+	//	index_x = floor(first_x/CUB);
+	//	index_y = floor(first_y/CUB);
+	//}
+	dda(first_x,first_y,first_x,first_y,data,0x00ff00);
 	return (0);
 }
 
@@ -144,7 +174,7 @@ int	draw_rays(t_all *data)
 	while (i < 1)
 	{
 		horizontal_inter(data,start_angle);
-		vertical_inter(data,start_angle);
+		//vertical_inter(data,start_angle);
 		dda(data->x_player, data->y_player, data->x_player
 			+ cos(start_angle) * 10, data->y_player
 			+ sin(start_angle) * 10, data, 0xffffff);
