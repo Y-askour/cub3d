@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 23:14:47 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 23:38:20 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,6 +265,7 @@ int	draw_rays(t_all *data)
 			color = 0xffffff;
 		}
 		cub_distance = calculate_distance(data,y1,x1)/ CUB;
+		cub_distance *= cos(data->direction_ang - start_angle);
 		wall_height = data->mlx.h_win / cub_distance;
 		j = 0;
 		while (j < (data->mlx.h_win/2))
