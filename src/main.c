@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/10 23:42:23 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 23:20:15 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,44 +91,44 @@ int	younes(int keycode, t_all *data)
 		exit(0);
 	else if (keycode == ROTATE_LEFT)
 	{
-		data->direction_ang += data->rotation_speed;
+		data->direction_ang -= data->rotation_speed;
 		data->direction_ang = normalize_angle(data->direction_ang);
 	}
 	else if (keycode == ROTATE_RIGHT)
 	{
-		data->direction_ang -= data->rotation_speed;
+		data->direction_ang += data->rotation_speed;
 		data->direction_ang = normalize_angle(data->direction_ang);
 	}
 	else if (keycode == UP)
 	{
-		if (!check_wall(data, data->y_player + 5 * sin(data->direction_ang), data->x_player + 5 * cos(data->direction_ang)))
+		if (!check_wall(data, data->y_player + 3 * sin(data->direction_ang), data->x_player + 3 * cos(data->direction_ang)))
 		{
-			data->x_player = data->x_player + 5 * cos(data->direction_ang);
-			data->y_player = data->y_player + 5 * sin(data->direction_ang);
+			data->x_player = data->x_player + 3 * cos(data->direction_ang);
+			data->y_player = data->y_player + 3 * sin(data->direction_ang);
 		}
 	}
 	else if (keycode == DOWN)
 	{
-		if (!check_wall(data, data->y_player - 5 * sin(data->direction_ang), data->x_player - 5 * cos(data->direction_ang)))
+		if (!check_wall(data, data->y_player - 3 * sin(data->direction_ang), data->x_player - 3 * cos(data->direction_ang)))
 		{
-			data->x_player = data->x_player - 5 * cos(data->direction_ang);
-			data->y_player = data->y_player - 5 * sin(data->direction_ang);
+			data->x_player = data->x_player - 3 * cos(data->direction_ang);
+			data->y_player = data->y_player - 3 * sin(data->direction_ang);
 		}
 	}
 	else if (keycode == LEFT)
 	{
-		if (!check_wall(data, data->y_player - 5 * cos(data->direction_ang), data->x_player + 5 * sin(data->direction_ang)))
+		if (!check_wall(data, data->y_player - 3 * cos(data->direction_ang), data->x_player + 3 * sin(data->direction_ang)))
 		{
-			data->x_player = data->x_player + 5 * sin(data->direction_ang);
-			data->y_player = data->y_player - 5 * cos(data->direction_ang);
+			data->x_player = data->x_player + 3 * sin(data->direction_ang);
+			data->y_player = data->y_player - 3 * cos(data->direction_ang);
 		}
 	}
 	else if (keycode == RIGHT)
 	{
-		if (!check_wall(data, data->y_player + 5 * cos(data->direction_ang), data->x_player - 5 * sin(data->direction_ang)))
+		if (!check_wall(data, data->y_player + 3 * cos(data->direction_ang), data->x_player - 3 * sin(data->direction_ang)))
 		{
-			data->x_player = data->x_player - 5 * sin(data->direction_ang);
-			data->y_player = data->y_player + 5 * cos(data->direction_ang);
+			data->x_player = data->x_player - 3 * sin(data->direction_ang);
+			data->y_player = data->y_player + 3 * cos(data->direction_ang);
 		}
 	}
 	draw(data);

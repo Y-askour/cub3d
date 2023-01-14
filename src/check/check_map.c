@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/11 18:24:19 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 23:15:38 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,7 +283,7 @@ int	check_valid_map(t_all *data)
 
 void	init_angle(t_all *data)
 {
-	data->rotation_speed = 10 * (M_PI/180);
+	data->rotation_speed = 5  * (M_PI/180);
 	if (data->valid.player == 'S')
 		data->direction_ang = M_PI / 2;
 	if (data->valid.player == 'N')

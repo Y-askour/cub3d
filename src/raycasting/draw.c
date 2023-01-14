@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 22:56:04 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 23:14:47 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,6 @@ int	draw_rays(t_all *data)
 		}
 		cub_distance = calculate_distance(data,y1,x1)/ CUB;
 		wall_height = data->mlx.h_win / cub_distance;
-		printf("wall_height -> %f\n",wall_height);
 		j = 0;
 		while (j < (data->mlx.h_win/2))
 		{
