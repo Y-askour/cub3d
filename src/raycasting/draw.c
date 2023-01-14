@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 20:56:50 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 22:56:04 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 void	init_mlx(t_all *data)
 {
 	data->mlx.mlx = mlx_init();
-	data->mlx.w_win = data->valid.line_len * TILE_SIZE;
-	data->mlx.h_win = data->valid.map_len * TILE_SIZE;
+	data->mlx.w_win = 2560;
+	data->mlx.h_win = 1440;
 	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win, data->mlx.h_win, "Cub3D");
 	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.w_win, data->mlx.h_win);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
@@ -236,13 +236,19 @@ int	draw_rays(t_all *data)
 	double	increment;
 	double 	x1;
 	double 	y1;
+	double 	cub_distance;
+	double wall_height;
 	int		i;
+	int		j;
+	int		start;
+	int		end;
+	int		color;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	start_angle = normalize_angle(start_angle);
-	increment = (60 * (M_PI / 180)) / 2280;
+	increment = (60 * (M_PI / 180)) / data->mlx.w_win;
 	i = 0;
-	while (i < 2280)
+	while (i < data->mlx.w_win)
 	{
 		horizontal_inter(data,start_angle);
 		vertical_inter(data,start_angle);
@@ -250,13 +256,40 @@ int	draw_rays(t_all *data)
 		{
 			y1 = data->hor_y;
 			x1 = data->hor_x;
+			color = 0xff;
 		}
 		else
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
+			color = 0xffffff;
 		}
-		dda(data->x_player, data->y_player,x1, y1,data, 0xffffff);
+		cub_distance = calculate_distance(data,y1,x1)/ CUB;
+		wall_height = data->mlx.h_win / cub_distance;
+		printf("wall_height -> %f\n",wall_height);
+		j = 0;
+		while (j < (data->mlx.h_win/2))
+		{
+			my_mlx_pixel_put(data,i,j,0x000000);
+			j++;
+		}
+		start = (data->mlx.h_win/2) - (wall_height/2);
+		if (start < 0)
+			start = 0;
+		end = (data->mlx.h_win/2) + (wall_height/2);
+		if (end > data->mlx.h_win)
+			end = data->mlx.h_win;
+		j = start;
+		while (j < end)
+		{
+			my_mlx_pixel_put(data,i,j,color);
+			j++;
+		}
+		while(j < data->mlx.h_win)
+		{
+			my_mlx_pixel_put(data,i,j,0xff00ff);
+			j++;
+		}
 		start_angle += increment;
 		i++;
 	}
@@ -265,27 +298,6 @@ int	draw_rays(t_all *data)
 
 int	draw(t_all *data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->valid.maps[i])
-	{
-		j = 0;
-		while (data->valid.maps[i][j])
-		{
-			if (data->valid.maps[i][j] == '1')
-				drawcub(data, j, i, 0x124A2A);
-			if (data->valid.maps[i][j] == '0')
-				drawcub(data, j, i, 0x242121);
-			j++;
-		}
-		i++;
-	}
-	my_mlx_pixel_put(data, data->x_player, data->y_player, 0xffffff);
-	dda(data->x_player, data->y_player, data->x_player
-		+ cos(data->direction_ang) * 10, data->y_player
-		+ sin(data->direction_ang) * 10, data, 0xff00ff);
 	draw_rays(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
