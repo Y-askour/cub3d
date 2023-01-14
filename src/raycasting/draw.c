@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 17:32:09 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 20:56:50 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,22 @@ void	init_mlx(t_all *data)
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
 			&data->mlx.line_length, &data->mlx.endian);
 }
-void	dda(int X0, int Y0, int X1, int Y1, t_all *data, int color)
+
+void	dda(double X0, double Y0, double X1, double Y1, t_all *data, double color)
 {
-	int		dx;
-	int		dy;
-	int		steps;
-	float	xinc;
-	float	yinc;
-	float	x;
-	float	y;
+	double		dx;
+	double		dy;
+	double		steps;
+	double	xinc;
+	double	yinc;
+	double	x;
+	double	y;
 
 	dx = X1 - X0;
 	dy = Y1 - Y0;
-	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-	xinc = dx / (float)steps;
-	yinc = dy / (float)steps;
+	steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
+	xinc = dx / (double)steps;
+	yinc = dy / (double)steps;
 	x = X0;
 	y = Y0;
 	for (int i = 0; i <= steps; i++)
@@ -130,33 +131,36 @@ int horizontal_inter(t_all *data,double ang)
 		step_x *= -1;
 	if (is_left(ang) && step_x > 0)
 		step_x *= -1;
-	index_x = floor(first_x/CUB);
-	index_y = floor(first_y/CUB);
+	if (is_up(ang))
+	{
+		index_x = floor(first_x/CUB);
+		index_y = floor((first_y - 1)/CUB);
+	}
+	else
+	{
+		index_x = floor(first_x/CUB);
+		index_y = floor((first_y)/CUB);
+	}
 	while (index_y >= 0 && index_y < data->valid.map_len && index_x >= 0 && index_x < data->valid.line_len)
 	{
-		if (is_up(ang))
+		if (data->valid.maps[index_y][index_x] == '1')
 		{
-			if (data->valid.maps[index_y - 1][index_x] == '1')
-			{
-				data->hor_x = first_x;
-				data->hor_y = first_y;
-				return (0);
-			}
-
-		}
-		else
-		{
-			if (data->valid.maps[index_y][index_x] == '1')
-			{
-				data->hor_x = first_x;
-				data->hor_y = first_y;
-				return (0);
-			}
+			data->hor_x = first_x;
+			data->hor_y = first_y;
+			return (0);
 		}
 		first_x += step_x;
 		first_y += step_y;
-		index_x = floor(first_x/CUB);
-		index_y = floor(first_y/CUB);
+		if (is_up(ang))
+		{
+			index_x = floor(first_x/CUB);
+			index_y = floor((first_y - 1)/CUB);
+		}
+		else
+		{
+			index_x = floor(first_x/CUB);
+			index_y = floor((first_y)/CUB);
+		}
 	}
 	data->hor_y = INT_MAX;
 	data->hor_x = INT_MAX;
@@ -185,34 +189,36 @@ int vertical_inter(t_all *data,double ang)
 		step_y *= -1;
 	if (!is_up(ang) && step_y < 0)
 		step_y *= -1;
-	index_x = floor(first_x/CUB);
-	index_y = floor(first_y/CUB);
+	if (is_left(ang))
+	{
+		index_x = floor((first_x - 1)/CUB);
+		index_y = floor(first_y/CUB);
+	}
+	else
+	{
+		index_x = floor(first_x/CUB);
+		index_y = floor(first_y/CUB);
+	}
 	while (index_y >= 0 && index_y < data->valid.map_len && index_x >= 0 && index_x < data->valid.line_len)
 	{
-		if (is_left(ang))
+		if (data->valid.maps[index_y][index_x] == '1')
 		{
-			if (data->valid.maps[index_y][index_x  - 1] == '1')
-			{
-				data->ver_x = first_x;
-				data->ver_y = first_y;
-				return (0);
-			}
-
-		}
-		else
-		{
-			if (data->valid.maps[index_y][index_x] == '1')
-			{
-				data->ver_x = first_x;
-				data->ver_y = first_y;
-				return (0);
-			}
-
+			data->ver_x = first_x;
+			data->ver_y = first_y;
+			return (0);
 		}
 		first_x += step_x;
 		first_y += step_y;
-		index_x = floor(first_x/CUB);
-		index_y = floor(first_y/CUB);
+		if (is_left(ang))
+		{
+			index_x = floor((first_x - 1)/CUB);
+			index_y = floor(first_y/CUB);
+		}
+		else
+		{
+			index_x = floor(first_x/CUB);
+			index_y = floor(first_y/CUB);
+		}
 	}
 	data->ver_x = INT_MAX;
 	data->ver_y = INT_MAX;
