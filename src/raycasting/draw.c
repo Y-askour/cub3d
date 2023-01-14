@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/11 21:30:39 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 16:49:17 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,23 +128,25 @@ int horizontal_inter(t_all *data,double ang)
 		step_x *= -1;
 	if (is_left(ang) && step_x > 0)
 		step_x *= -1;
-	//first_y += step_y;
-	//first_x += step_x;
-	//first_y += step_y;
-	//first_x += step_x;
-	//first_y += step_y;
-	//first_x += step_x;
+	if (is_up(ang))
+		first_y--;
 	index_x = floor(first_x/CUB);
 	index_y = floor(first_y/CUB);
-	printf("%c\n",data->valid.maps[index_y][index_x]);
-	//while (index_x >= 0 && index_x < data->valid.line_len && index_y >= 0  && index_y < data->valid.map_len && data->valid.maps[index_y][index_y] == '0')
-	//{
-	//	first_y += step_y;
-	//	first_x += step_x;
-	//	index_x = floor(first_x/CUB);
-	//	index_y = floor(first_y/CUB);
-	//}
-	dda(first_x,first_y,first_x,first_y,data,0x00ff00);
+	while (index_y >= 0 && index_y < data->valid.map_len && index_x >= 0 && index_x < data->valid.line_len)
+	{
+		if (data->valid.maps[index_y][index_x] == '1')
+		{
+			data->hor_x = first_x;
+			data->hor_y = first_y;
+			return (0);
+		}
+		first_x += step_x;
+		first_y += step_y;
+		index_x = floor(first_x/CUB);
+		index_y = floor(first_y/CUB);
+	}
+	data->hor_y = INT_MAX;
+	data->hor_x = INT_MAX;
 	return (0);
 }
 
@@ -152,19 +154,56 @@ int vertical_inter(t_all *data,double ang)
 {
 	double	first_x;
 	double	first_y;
+	double 	step_x;
+	double 	step_y;
+	int 	index_x;
+	int 	index_y;
 
 	first_x = floor(data->x_player/CUB) * CUB;
 	if (!is_left(ang))
 		first_x += CUB;
 	first_y = data->y_player + ((first_x - data->x_player) * tan(ang));
-	dda(first_x,floor(first_y/CUB) * CUB,first_x,(floor(first_y/CUB) * CUB) + CUB,data,0xff0000);
+	step_x = CUB;
+	step_y = tan(ang) * CUB;
+	if (is_up(ang) && step_y > 0)
+		step_y *= -1;
+	if (!is_up(ang) && step_y < 0)
+		step_y *= -1;
+	if (is_left(ang))
+		first_x--;
+	index_x = floor(first_x/CUB);
+	index_y = floor(first_y/CUB);
+	//printf("%d      %d\n",index_y,index_x);
+	//printf("%c\n",data->valid.maps[index_y][index_x]);
+	while (index_y >= 0 && index_y < data->valid.map_len && index_x >= 0 && index_x < data->valid.line_len)
+	{
+		if (data->valid.maps[index_y][index_x] == '1')
+		{
+			data->ver_x = first_x;
+			data->ver_y = first_y;
+			return (0);
+		}
+		first_x += step_x;
+		first_y += step_y;
+		index_x = floor(first_x/CUB);
+		index_y = floor(first_y/CUB);
+	}
+	data->ver_x = INT_MAX;
+	data->ver_y = INT_MAX;
 	return (0);
+}
+
+double calculate_distance(t_all *data,double y,double x)
+{
+	return (sqrt(pow(x - data->x_player, 2) + pow(y - data->y_player, 2)));
 }
 
 int	draw_rays(t_all *data)
 {
 	double	start_angle;
 	double	increment;
+	double 	x1;
+	double 	y1;
 	int		i;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
@@ -174,10 +213,18 @@ int	draw_rays(t_all *data)
 	while (i < 1)
 	{
 		horizontal_inter(data,start_angle);
-		//vertical_inter(data,start_angle);
-		dda(data->x_player, data->y_player, data->x_player
-			+ cos(start_angle) * 10, data->y_player
-			+ sin(start_angle) * 10, data, 0xffffff);
+		vertical_inter(data,start_angle);
+		if (calculate_distance(data,data->ver_y,data->ver_x) > calculate_distance(data,data->hor_y, data->hor_x))
+		{
+			y1 = data->hor_y;
+			x1 = data->hor_x;
+		}
+		else
+		{
+			y1 = data->ver_y;
+			x1 = data->ver_x;
+		}
+		dda(data->x_player, data->y_player,x1, y1,data, 0xffffff);
 		start_angle += increment;
 		i++;
 	}

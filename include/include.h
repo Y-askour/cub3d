@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/11 16:17:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/14 16:41:32 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ESC 53
 # define ROTATE_LEFT 123
 # define ROTATE_RIGHT 124
+# define INT_MAX 2147483647
 // 
 typedef struct s_parss
 {
@@ -88,6 +89,12 @@ typedef struct s_all
 	double			y_player;
 	double			direction_ang;
 	double			rotation_speed;
+	double 			horizontal_distance;
+	double 			verticale_distance;
+	double 			ver_x;
+	double 			ver_y;
+	double 			hor_x;
+	double 			hor_y;
 }					t_all;
 
 // parssing
