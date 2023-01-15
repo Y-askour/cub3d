@@ -3,36 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:37:05 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 16:04:32 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/15 23:38:50 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
-int	check_is_white_spaces(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ' && !(str[i] >= 9 && str[i] <= 13))
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-int	check_east(t_all *data)
+int	check_east(t_all *data, int i, int len)
 {
 	char	*str;
 	char	*trimed_str;
-	int		i;
-	int		len;
 
-	len = 4;
 	str = &data->parss.east[2];
 	if (str[0] != ' ' && !(str[0] >= 9 && str[0] <= 13))
 	{
@@ -56,14 +40,11 @@ int	check_east(t_all *data)
 	return (0);
 }
 
-int	check_west(t_all *data)
+int	check_west(t_all *data, int i, int len)
 {
 	char	*str;
 	char	*trimed_str;
-	int		i;
-	int		len;
 
-	len = 4;
 	str = &data->parss.west[2];
 	if (str[0] != ' ' && !(str[0] >= 9 && str[0] <= 13))
 	{
@@ -87,14 +68,11 @@ int	check_west(t_all *data)
 	return (0);
 }
 
-int	check_south(t_all *data)
+int	check_south(t_all *data, int i, int len)
 {
 	char	*str;
 	char	*trimed_str;
-	int		i;
-	int		len;
 
-	len = 4;
 	str = &data->parss.south[2];
 	if (str[0] != ' ' && !(str[0] >= 9 && str[0] <= 13))
 	{
@@ -118,14 +96,11 @@ int	check_south(t_all *data)
 	return (0);
 }
 
-int	check_north(t_all *data)
+int	check_north(t_all *data, int i, int len)
 {
 	char	*str;
 	char	*trimed_str;
-	int		len;
-	int		i;
 
-	len = 4;
 	str = &data->parss.north[2];
 	if (str[0] != ' ' && !(str[0] >= 9 && str[0] <= 13))
 	{
@@ -152,7 +127,7 @@ int	check_north(t_all *data)
 int	check_textures(t_all *data)
 {
 	init_textures(data);
-	if (check_south(data))
+	if (check_south(data, 0, 4))
 	{
 		free(data->parss.east);
 		free(data->parss.north);
@@ -160,23 +135,18 @@ int	check_textures(t_all *data)
 		printf("check south texture\n");
 		return (1);
 	}
-	if (check_north(data))
+	if (check_north(data, 0, 4))
 	{
 		free(data->parss.east);
 		free(data->parss.west);
-		printf("check north texture\n");
-		return (1);
+		return (printf("check north texture\n"), 1);
 	}
-	if (check_west(data))
+	if (check_west(data, 0, 4))
 	{
 		free(data->parss.east);
-		printf("check west texture\n");
-		return (1);
+		return (printf("check west texture\n"), 1);
 	}
-	if (check_east(data))
-	{
-		printf("check east texture\n");
-		return (1);
-	}
+	if (check_east(data, 0, 4))
+		return (printf("check east texture\n"), 1);
 	return (0);
 }

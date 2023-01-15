@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/15 16:25:26 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/15 22:59:07 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,6 @@ double	normalize_angle(double ang)
 	return (ang);
 }
 
-
-//i = 0;
-//while (data.valid.maps[i])
-//	free(data.valid.maps[i++]);
-//free(data.valid.maps);
-//free(data.valid.we);
-//free(data.valid.so);
-//free(data.valid.ea);
-//free(data.valid.no);
-		//mlx_hook(data.mlx.win, 3, 1L<<1, test, NULL);
 int	main(int ac, char **av)
 {
 	t_all	data;
@@ -113,9 +103,9 @@ int	main(int ac, char **av)
 			return (1);
 		init_mlx(&data);
 		draw(&data);
-		mlx_hook(data.mlx.win, 17, (1L << 17), mlx_close, &data);
-		mlx_hook(data.mlx.win, 3, 0, mlx_key_release, &data);
-		mlx_hook(data.mlx.win, 2, 0, mlx_key, &data);
+		mlx_hook(data.mlx.win, DESTROY, (1L << 17), mlx_close, &data);
+		mlx_hook(data.mlx.win, KEY_RELEASE, 0, mlx_key_release, &data);
+		mlx_hook(data.mlx.win, KEY_PRESS, 0, mlx_key, &data);
 		mlx_loop_hook(data.mlx.mlx, mlx_keypress, &data);
 		mlx_loop(data.mlx.mlx);
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 14:40:53 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/15 17:16:24 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:07:18 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	mlx_keypress(t_all *data)
 	else if (data->key.y == 1)
 		move_up(data);
 	else if (data->key.y == -1)
-	move_down(data);
+		move_down(data);
 	else if (data->key.x == 1)
 		move_left(data);
 	else if (data->key.x == -1)

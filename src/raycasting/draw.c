@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/15 16:37:17 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/15 23:19:23 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	drawcub(t_all *data, int x, int y, unsigned int color)
 		while (start < x1)
 		{
 			if (start == x0 || (y0 % 50) == 0)
-				my_mlx_pixel_put(data,start,y0,0x000000);
+				my_mlx_pixel_put(data,start, y0, 0x000000);
 			else
 				my_mlx_pixel_put(data, start, y0, color);
 			start++;
@@ -83,21 +83,21 @@ void	player_position(t_all *data, int x, int y)
 	data->valid.maps[(int)roundf(y)][(int)roundf(x)] = '0';
 }
 
-int is_up(double ang)
+int	is_up(double ang)
 {
 	if (ang >= M_PI && ang <= (2 * M_PI))
 		return (1);
 	return (0);
 }
 
-int is_left(double ang)
+int	is_left(double ang)
 {
 	if (ang >= (M_PI / 2) && ang <= ((3 * M_PI) / 2))
 		return (1);
 	return (0);
 }
 
-int horizontal_inter(t_all *data,double ang)
+int	horizontal_inter(t_all *data,double ang)
 {
 	double	first_x;
 	double	first_y;
@@ -156,7 +156,7 @@ int horizontal_inter(t_all *data,double ang)
 	return (0);
 }
 
-int vertical_inter(t_all *data,double ang)
+int	vertical_inter(t_all *data,double ang)
 {
 	double	first_x;
 	double	first_y;
@@ -214,7 +214,7 @@ int vertical_inter(t_all *data,double ang)
 	return (0);
 }
 
-double calculate_distance(t_all *data,double y,double x)
+double	calculate_distance(t_all *data,double y,double x)
 {
 	return (sqrt(pow(x - data->x_player, 2) + pow(y - data->y_player, 2)));
 }

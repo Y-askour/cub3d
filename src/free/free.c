@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:54:27 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/04 17:16:21 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/15 23:23:52 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
-
-void	free_all(t_all *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->parss.all[i])
-		free(data->parss.all[i++]);
-	free(data->parss.all);
-}
 
 void	free_metadata(t_all *data)
 {
