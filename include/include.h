@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/15 16:25:19 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/15 17:23:33 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,23 @@ typedef struct s_all
 	double 			hor_y;
 }					t_all;
 
-int	check_wall(t_all *data, double y, double x);
+
+
 
 // mlx_utils
-void	init_mlx(t_all *data);
-void	mlx_button(t_all *data);
+void				init_mlx(t_all *data);
+int					mlx_close(void);
+int					mlx_key_release(int keycode, t_all *data);
+int					mlx_key(int keycode, t_all *data);
+int					mlx_keypress(t_all *data);
+ 
 
-int	mlx_close(void);
-int	mlx_key_release(int keycode, t_all *data);
-int	mlx_key(int keycode, t_all *data);
-int	mlx_keypress(t_all *data);
-
-
+// The above code is a list of functions that are used to move the player around the map.
+void				move_up(t_all *data);
+void				move_down(t_all *data);
+void				move_left(t_all *data);
+void				move_right(t_all *data);
+void 				rotate_left_and_right(t_all *data, int direction);
 
 // parssing
 int					parssing(char *av, t_all *data);
@@ -173,6 +178,7 @@ void				init_textures(t_all *data);
 // check_map
 int					check_map(t_all *data);
 int					is_empty(char *str);
+int					check_wall(t_all *data, double y, double x);
 
 // drawing
 int					draw(t_all *data);
