@@ -6,16 +6,17 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 14:40:53 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/15 23:07:18 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:30:30 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
 
-int	mlx_close(void)
+int	mlx_close(t_all *data)
 {
+	mlx_destroy_window(data->mlx.mlx, data->mlx.win);
 	exit(0);
-	return (0);
+	return (1);
 }
 
 int	mlx_key_release(int keycode, t_all *data)

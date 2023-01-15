@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/16 00:15:12 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/16 00:28:22 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_all
 
 // mlx_utils
 void				init_mlx(t_all *data);
-int					mlx_close(void);
+int					mlx_close(t_all *data);
 int					mlx_key_release(int keycode, t_all *data);
 int					mlx_key(int keycode, t_all *data);
 int					mlx_keypress(t_all *data);
