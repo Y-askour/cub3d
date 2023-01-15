@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 23:32:26 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/15 16:25:26 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,64 +84,6 @@ double	normalize_angle(double ang)
 	return (ang);
 }
 
-int	younes(int keycode, t_all *data)
-{
-	mlx_clear_window(data->mlx.mlx, data->mlx.win);
-	if (keycode == ESC)
-		exit(0);
-	else if (keycode == ROTATE_LEFT)
-	{
-		data->direction_ang -= data->rotation_speed;
-		data->direction_ang = normalize_angle(data->direction_ang);
-	}
-	else if (keycode == ROTATE_RIGHT)
-	{
-		data->direction_ang += data->rotation_speed;
-		data->direction_ang = normalize_angle(data->direction_ang);
-	}
-	else if (keycode == UP)
-	{
-		if (!check_wall(data, data->y_player + 1 * sin(data->direction_ang), data->x_player + 1 * cos(data->direction_ang)))
-		{
-			data->x_player = data->x_player + 1 * cos(data->direction_ang);
-			data->y_player = data->y_player + 1 * sin(data->direction_ang);
-		}
-	}
-	else if (keycode == DOWN)
-	{
-		if (!check_wall(data, data->y_player - 1 * sin(data->direction_ang), data->x_player - 1 * cos(data->direction_ang)))
-		{
-			data->x_player = data->x_player - 1 * cos(data->direction_ang);
-			data->y_player = data->y_player - 1 * sin(data->direction_ang);
-		}
-	}
-	else if (keycode == LEFT)
-	{
-		if (!check_wall(data, data->y_player - 1 * cos(data->direction_ang), data->x_player + 1 * sin(data->direction_ang)))
-		{
-			data->x_player = data->x_player + 1 * sin(data->direction_ang);
-			data->y_player = data->y_player - 1 * cos(data->direction_ang);
-		}
-	}
-	else if (keycode == RIGHT)
-	{
-		if (!check_wall(data, data->y_player + 1 * cos(data->direction_ang), data->x_player - 1 * sin(data->direction_ang)))
-		{
-			data->x_player = data->x_player - 1 * sin(data->direction_ang);
-			data->y_player = data->y_player + 1 * cos(data->direction_ang);
-		}
-	}
-	draw(data);
-	return (0);
-}
-
-int	test(int keycode, t_all *data)
-{
-	mlx_clear_window(data->mlx.mlx, data->mlx.win);
-	if (keycode == 124)
-		printf("keycode\n");
-	return (0);
-}
 
 //i = 0;
 //while (data.valid.maps[i])
@@ -155,9 +97,7 @@ int	test(int keycode, t_all *data)
 int	main(int ac, char **av)
 {
 	t_all	data;
-	int		i;
 
-	i = 0;
 	if (ac != 2)
 	{
 		printf("Usage : ./cub3d <filename>\n");
@@ -173,7 +113,10 @@ int	main(int ac, char **av)
 			return (1);
 		init_mlx(&data);
 		draw(&data);
-		mlx_hook(data.mlx.win, 2, 1L << 0, younes, &data);
+		mlx_hook(data.mlx.win, 17, (1L << 17), mlx_close, &data);
+		mlx_hook(data.mlx.win, 3, 0, mlx_key_release, &data);
+		mlx_hook(data.mlx.win, 2, 0, mlx_key, &data);
+		mlx_loop_hook(data.mlx.mlx, mlx_keypress, &data);
 		mlx_loop(data.mlx.mlx);
 		return (0);
 	}	
