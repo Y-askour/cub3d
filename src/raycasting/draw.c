@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 23:38:20 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/15 16:37:17 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,6 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 	dst = data->mlx.addr + (y * data->mlx.line_length + x * (data->mlx.bpp
 				/ 8));
 	*(unsigned int *)dst = color;
-}
-
-void	init_mlx(t_all *data)
-{
-	data->mlx.mlx = mlx_init();
-	data->mlx.w_win = 2560;
-	data->mlx.h_win = 1440;
-	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win, data->mlx.h_win, "Cub3D");
-	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.w_win, data->mlx.h_win);
-	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
-			&data->mlx.line_length, &data->mlx.endian);
 }
 
 void	dda(double X0, double Y0, double X1, double Y1, t_all *data, double color)

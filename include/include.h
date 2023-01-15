@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/14 22:52:07 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/15 16:25:19 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 # include <stdio.h>
-# define CUB 10
 # include "../mlx/mlx.h"
 # include "../utils/get_next_line/get_next_line.h"
 # include "../utils/libft/libft.h"
@@ -30,9 +29,10 @@
 # define ROTATE_RIGHT 124
 # define INT_MAX 2147483647
 // 
+# define CUB 10
 # define FOV 60 * M_PI / 180
-# define TILE_SIZE 64
-
+# define TILE_SIZE 32
+//
 typedef struct s_parss
 {
 	char			**all;
@@ -83,12 +83,19 @@ typedef struct s_mlx
 	int				line_length;
 	int				endian;
 }					t_mlx;
+typedef struct s_key
+{
+	int x;
+	int y;
+	int pov;
+}					t_key;
 
 typedef struct s_all
 {
 	t_parss			parss;
 	t_valid_data	valid;
 	t_mlx			mlx;
+	t_key			key;
 	unsigned int	len;
 	double			x_player;
 	double			y_player;
@@ -101,6 +108,19 @@ typedef struct s_all
 	double 			hor_x;
 	double 			hor_y;
 }					t_all;
+
+int	check_wall(t_all *data, double y, double x);
+
+// mlx_utils
+void	init_mlx(t_all *data);
+void	mlx_button(t_all *data);
+
+int	mlx_close(void);
+int	mlx_key_release(int keycode, t_all *data);
+int	mlx_key(int keycode, t_all *data);
+int	mlx_keypress(t_all *data);
+
+
 
 // parssing
 int					parssing(char *av, t_all *data);
