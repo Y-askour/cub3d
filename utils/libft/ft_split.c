@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:58:05 by yaskour           #+#    #+#             */
-/*   Updated: 2022/12/28 17:58:06 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/17 19:18:40 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	words = count_words(s, c);
-	ptr = (char **)malloc(sizeof(char *) * words + 1);
+	ptr = (char **)malloc(sizeof(char *) * (words + 1));
 	if (ptr == NULL)
 		return (NULL);
 	while (*s)

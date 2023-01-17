@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parssing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:55:00 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 16:05:34 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/15 23:21:08 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ int	parss_metadata(char *av, t_all *data)
 {
 	init_data(data);
 	if (check_file_name(av))
-	{
-		printf("check your name file\n");
-		return (0);
-	}
+		return (printf("check your name file\n"), 0);
 	if (!read_file(av, data, 0))
 	{
 		printf("check if file is empty\n");
