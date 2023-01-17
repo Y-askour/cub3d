@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:11:54 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/15 16:36:13 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:33:53 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	init_mlx(t_all *data)
 {
 	data->mlx.mlx = mlx_init();
-	data->mlx.w_win = 2560;
-	data->mlx.h_win = 1440;
-	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win, \
+	data->mlx.w_win = 2560/3;
+	data->mlx.h_win = 1440/3;
+	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win , \
 	data->mlx.h_win, "Cub3D");
 	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.w_win, \
 	data->mlx.h_win);
