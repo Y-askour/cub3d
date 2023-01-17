@@ -6,11 +6,39 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/16 00:16:19 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/17 20:01:09 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
+
+int middle_char_helper(t_all *data,int i,int j)
+{
+	char arr[4];
+	int k;
+
+	k = 0;
+	arr[0] = 'W';
+	arr[1] = 'S';
+	arr[2] = 'E';
+	arr[3] = 'N';
+	while (arr[k])
+	{
+		if (data->valid.maps[i][j] == arr[k] )
+		{
+			if (data->valid.maps[i][j - 1] == ' ')
+				return (1);
+			if (data->valid.maps[i][j + 1] == ' ')
+				return (1);
+			if (data->valid.maps[i - 1][j] == ' ')
+				return (1);
+			if (data->valid.maps[i + 1][j] == ' ')
+			return (1);
+		}
+		k++;
+	}
+	return (0);
+}
 
 int	middle_char(t_all *data)
 {
@@ -57,6 +85,8 @@ int	middle_char(t_all *data)
 				if (data->valid.maps[i + 1][j] == ' ')
 					return (1);
 			}
+			if (middle_char_helper(data,i,j))
+				return (1);
 			j++;
 		}
 		i++;

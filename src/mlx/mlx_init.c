@@ -15,11 +15,9 @@
 void	init_mlx(t_all *data)
 {
 	data->mlx.mlx = mlx_init();
-	data->img.img = mlx_xpm_file_to_image(data->mlx.mlx, "./younes.xpm",&data->img.width, &data->img.height);
-	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp, &data->img.size_line, &data->img.endian);
-	data->mlx.w_win = 2560;
-	data->mlx.h_win = 1440;
-	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win, \
+	data->mlx.w_win = 2560/3;
+	data->mlx.h_win = 1440/3;
+	data->mlx.win = mlx_new_window(data->mlx.mlx, data->mlx.w_win , \
 	data->mlx.h_win, "Cub3D");
 	data->mlx.img = mlx_new_image(data->mlx.mlx, data->mlx.w_win, \
 	data->mlx.h_win);
