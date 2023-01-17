@@ -6,11 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2023/01/15 23:19:23 by zyacoubi         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/17 17:56:53 by yaskour          ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2023/01/17 20:22:00 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +14,6 @@
 #include <math.h>
 #include <stdio.h>
 
-unsigned int	get_pixel(int start, int y, int x, t_all *data,double wall_height)
-{
-	int	color;
-	int	distance_from_y;
-	int	x_offset;
-
-	(void)start;
-	(void)x;
-	distance_from_y = y + (wall_height / 2) - (data->mlx.w_win / 2);
-	x_offset = (data->x_offset / CUB) * data->img.width;
-	y = ((distance_from_y) * (data->img.height / \
-				wall_height));
-	color = data->img.addr[(data->img.height * y) + x_offset];
-	return ((unsigned int)color);
-}
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 {
@@ -265,14 +246,12 @@ int	draw_rays(t_all *data)
 		{
 			y1 = data->hor_y;
 			x1 = data->hor_x;
-			data->x_offset = fmod(data->hor_x, CUB);
 			color = 0x00ffff;
 		}
 		else
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
-			data->x_offset = fmod(data->ver_y, CUB);
 			color = 0xffffff;
 		}
 		cub_distance = calculate_distance(data,y1,x1)/ CUB;
