@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 14:40:53 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 17:20:03 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 17:27:45 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	mouse_move(int x, int y, t_all *data)
 {
-	static int old_x;
-	
+	static int	old_x;
+
 	if (y < 0 || y > data->mlx.h_win)
 		return (0);
 	if (x <= data->mlx.w_win && x >= 0 && x < old_x)
