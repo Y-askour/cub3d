@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 17:21:13 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 19:22:09 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int					mlx_close(t_all *data);
 int					mlx_key_release(int keycode, t_all *data);
 int					mlx_key(int keycode, t_all *data);
 int					mlx_keypress(t_all *data);
-int	                mouse_move(int x, int y, t_all *data);
+int					mouse_move(int x, int y, t_all *data);
 // list of functions that are used to move the player around the map.
 void				move_up(t_all *data);
 void				move_down(t_all *data);
@@ -192,8 +192,6 @@ int					first_and_last_char(char **str, int map_len, int line_len);
 int					search(char *src, char *str);
 int					endmap_index(char **str);
 void				add_space(t_all *data);
-
-
 int					is_empty(char *str);
 int					check_wall(t_all *data, double y, double x);
 

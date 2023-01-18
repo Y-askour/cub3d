@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 23:25:40 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:21:19 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,6 @@ int					first_and_last_char(char **str, int map_len, int line_len);
 int					search(char *src, char *str);
 int					endmap_index(char **str);
 void				add_space(t_all *data);
-
 
 int					is_empty(char *str);
 int					check_wall(t_all *data, double y, double x);
