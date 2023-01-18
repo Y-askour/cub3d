@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 19:22:09 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 22:41:44 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define RIGHT 2
 # define ESC 53
 # define ROTATE_LEFT 123
+# define ROTATE_UP 126
+# define ROTATE_DOWN 125
 # define ROTATE_RIGHT 124
 # define INT_MAX 2147483647
 
@@ -191,13 +193,18 @@ int					check_characters(t_all *data);
 int					first_and_last_char(char **str, int map_len, int line_len);
 int					search(char *src, char *str);
 int					endmap_index(char **str);
+void				init_angle(t_all *data);
+int					check_valid_map(t_all *data);
+int					check_player(t_all *data, int i, int j, int player);
+int					middle_char(t_all *data);
+int					middle_char_helper(t_all *data, int i, int j);
 void				add_space(t_all *data);
 int					is_empty(char *str);
 int					check_wall(t_all *data, double y, double x);
 
 // drawing
 int					draw(t_all *data);
-void				player_position(t_all *data, int x, int y);
+void				player_position(t_all *data, int x, int y, int *player);
 void				init_mlx(t_all *data);
 double				normalize_angle(double ang);
 

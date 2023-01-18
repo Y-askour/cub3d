@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:11:54 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 17:26:40 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 22:21:40 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	init_mlx(t_all *data)
 	data->mlx.h_win);
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
 			&data->mlx.line_length, &data->mlx.endian);
+	ft_bzero(&data->key, sizeof(data->key));
 }

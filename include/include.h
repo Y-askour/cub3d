@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 19:21:19 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 22:41:16 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ typedef struct s_all
 	t_mlx			mlx;
 	t_key			key;
 	unsigned int	len;
+	int				x_p_pos;
+	int				y_p_pos;
 	double			x_player;
 	double			y_player;
 	double			direction_ang;
@@ -188,13 +190,21 @@ int					first_and_last_char(char **str, int map_len, int line_len);
 int					search(char *src, char *str);
 int					endmap_index(char **str);
 void				add_space(t_all *data);
-
+void				init_angle(t_all *data);
+int					check_valid_map(t_all *data);
+int					check_player(t_all *data, int i, int j, int player);
+int					middle_char(t_all *data, int i, int j, int start);
+int					middle_char_helper(t_all *data, int i, int j);
+int					zero_checker(t_all *data, int i, int j);
+int					space_checker(t_all *data, int i, int j);
 int					is_empty(char *str);
 int					check_wall(t_all *data, double y, double x);
+int					check_wall_y(t_all *data, int x_wall, int y_wall);
+int					check_wall_x(t_all *data, int x_wall, int y_wall);
 
 // drawing
 int					draw(t_all *data);
-void				player_position(t_all *data, int x, int y);
+void				player_position(t_all *data, int x, int y, int *player);
 void				init_mlx(t_all *data);
 double				normalize_angle(double ang);
 

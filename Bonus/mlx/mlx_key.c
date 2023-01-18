@@ -6,12 +6,11 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 14:40:53 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 17:27:45 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 22:19:38 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
-#include <stdio.h>
 
 int	mouse_move(int x, int y, t_all *data)
 {
@@ -77,9 +76,9 @@ int	mlx_key(int keycode, t_all *data)
 		data->key.pov = -1;
 	else if (keycode == ESC)
 		exit(0);
-	if (keycode == 126 && data->new_pov < 50)
+	if (keycode == ROTATE_UP && data->new_pov < 50)
 		data->new_pov += 5;
-	if (keycode == 125 && data->new_pov > -50)
+	if (keycode == ROTATE_DOWN && data->new_pov > -50)
 		data->new_pov -= 5;
 	return (0);
 }
