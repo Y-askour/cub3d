@@ -6,11 +6,11 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:39:45 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/17 16:56:39 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 01:56:34 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/include.h"
+#include "../../include/include_bonus.h"
 
 void	move_up(t_all *data)
 {
@@ -43,6 +43,19 @@ void	move_down(t_all *data)
 		data->x_player = data->x_player - 1 * cos(data->direction_ang);
 		data->y_player = data->y_player - 1 * sin(data->direction_ang);
 	}
+	else
+	{
+		if (!check_wall(data, data->y_player - 1 * sin(data->direction_ang), \
+		data->x_player))
+		{
+			data->y_player = data->y_player - 1 * sin(data->direction_ang);
+		}
+		if (!check_wall(data, data->y_player, \
+		data->x_player - 1 * cos(data->direction_ang)))
+		{
+			data->x_player = data->x_player - 1 * cos(data->direction_ang);
+		}
+	}
 }
 
 void	move_left(t_all *data)
@@ -53,6 +66,19 @@ void	move_left(t_all *data)
 		data->x_player = data->x_player + 1 * sin(data->direction_ang);
 		data->y_player = data->y_player - 1 * cos(data->direction_ang);
 	}
+	else
+	{
+		if (!check_wall(data, data->y_player - 1 * cos(data->direction_ang), \
+		data->x_player))
+		{
+			data->y_player = data->y_player - 1 * cos(data->direction_ang);
+		}
+		if (!check_wall(data, data->y_player, \
+		data->x_player + 1 * sin(data->direction_ang)))
+		{
+			data->x_player = data->x_player + 1 * sin(data->direction_ang);
+		}
+	}
 }
 
 void	move_right(t_all *data)
@@ -62,6 +88,19 @@ void	move_right(t_all *data)
 	{
 		data->x_player = data->x_player - 1 * sin(data->direction_ang);
 		data->y_player = data->y_player + 1 * cos(data->direction_ang);
+	}
+	else
+	{
+		if (!check_wall(data, data->y_player + 1 * cos(data->direction_ang), \
+		data->x_player))
+		{
+			data->y_player = data->y_player + 1 * cos(data->direction_ang);
+		}
+		if (!check_wall(data, data->y_player, \
+		data->x_player - 1 * sin(data->direction_ang)))
+		{
+			data->x_player = data->x_player - 1 * sin(data->direction_ang);
+		}
 	}
 }
 

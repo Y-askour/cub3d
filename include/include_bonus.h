@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   include.h                                          :+:      :+:    :+:   */
+/*   include_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 23:25:40 by zyacoubi         ###   ########.fr       */
+/*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
+/*   Updated: 2023/01/17 23:34:24 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDE_H
-# define INCLUDE_H
+#ifndef INCLUDE_BONUS_H
+# define INCLUDE_BONUS_H
 
 # include <stdio.h>
 # include <fcntl.h>
@@ -24,6 +24,8 @@
 # define DESTROY 17
 # define KEY_RELEASE 3
 # define KEY_PRESS 2
+# define MOUSEMOVE 6
+
 //
 
 // Keycodes for Mac
@@ -123,6 +125,7 @@ int					mlx_close(t_all *data);
 int					mlx_key_release(int keycode, t_all *data);
 int					mlx_key(int keycode, t_all *data);
 int					mlx_keypress(t_all *data);
+int	                mouse_move(int x, int y, t_all *data);
 // list of functions that are used to move the player around the map.
 void				move_up(t_all *data);
 void				move_down(t_all *data);

@@ -6,12 +6,10 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 20:06:13 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:24:34 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdio.h>
 #include "../include/include.h"
 
 int	check(t_all *data)

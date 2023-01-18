@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   check_colors_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 15:30:04 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/06 16:04:55 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/17 23:23:55 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../include/include.h"
 
 int	cout_comma(char *str)

@@ -6,14 +6,11 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 16:12:32 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 16:14:37 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
-#include <math.h>
-#include <stdio.h>
-
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 {
