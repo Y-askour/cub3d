@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 22:41:16 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:45:19 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define INT_MAX 2147483647
 
 // The above code is defining the size of the window
-# define CUB 10
+# define CUB 64
 # define TILE_SIZE 32
 //
 
@@ -98,6 +98,17 @@ typedef struct s_key
 	int				pov;
 }					t_key;
 
+typedef struct s_texture
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_texture;
+
 typedef struct s_all
 {
 	t_parss			parss;
@@ -117,6 +128,8 @@ typedef struct s_all
 	double			ver_y;
 	double			hor_x;
 	double			hor_y;
+	int			x_offset;
+	t_texture		txt;
 }					t_all;
 
 // mlx_utils

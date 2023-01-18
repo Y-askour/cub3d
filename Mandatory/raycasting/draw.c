@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 20:18:03 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:45:03 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 				/ 8));
 	*(unsigned int *)dst = color;
 }
+
+void get_color(t_texture txt,double y,t_all *data)
+{
+	int	texture_x;
+	(void)y;
+
+	texture_x = data->x_offset * txt.width;
+}
+
 /*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, 
  * double color)
 {
@@ -242,12 +251,16 @@ int	draw_rays(t_all *data)
 			y1 = data->hor_y;
 			x1 = data->hor_x;
 			color = 0x00ffff;
+			data->x_offset = fmod(x1,CUB);
+			get_color(data->txt,y1,data);
 		}
 		else
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
 			color = 0xffffff;
+			data->x_offset = fmod(y1,CUB);
+			get_color(data->txt,y1,data);
 		}
 		cub_distance = calculate_distance(data, y1, x1) / CUB;
 		cub_distance *= cos(data->direction_ang - start_angle);
