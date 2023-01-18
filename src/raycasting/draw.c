@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 20:22:00 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/18 16:12:32 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,22 +260,18 @@ int	draw_rays(t_all *data)
 		j = 0;
 		while (j < (data->mlx.h_win/2))
 		{
-			//my_mlx_pixel_put(data,i,j,0x000000);
 			my_mlx_pixel_put(data,i,j,0x50FF0000);
 			j++;
 		}
-		//printf("ceiling -> %d\n",0x50FF0000);
-		//printf("wall  -> %d\n",color);
 		start = (data->mlx.h_win/2) - (wall_height/2);
 		if (start < 0)
 			start = 0;
 		end = (data->mlx.h_win/2) + (wall_height/2);
-		if (end > data->mlx.h_win)
+		if (end > data->mlx.h_win || end < 0)
 			end = data->mlx.h_win;
 		j = start;
 		while (j < end)
 		{
-			//color = get_pixel(0,j,i,data,wall_height);
 			my_mlx_pixel_put(data,i,j,color);
 			j++;
 		}
