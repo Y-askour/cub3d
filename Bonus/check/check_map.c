@@ -6,16 +6,16 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 18:24:25 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 23:40:26 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:09:37 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
 
-int middle_char_helper(t_all *data,int i,int j)
+int	middle_char_helper(t_all *data, int i, int j)
 {
-	char arr[5];
-	int k;
+	char	arr[5];
+	int		k;
 
 	k = 0;
 	arr[0] = 'W';
@@ -25,7 +25,7 @@ int middle_char_helper(t_all *data,int i,int j)
 	arr[4] = 0;
 	while (arr[k])
 	{
-		if (data->valid.maps[i][j] == arr[k] )
+		if (data->valid.maps[i][j] == arr[k])
 		{
 			if (data->valid.maps[i][j - 1] == ' ')
 				return (1);
@@ -34,7 +34,7 @@ int middle_char_helper(t_all *data,int i,int j)
 			if (data->valid.maps[i - 1][j] == ' ')
 				return (1);
 			if (data->valid.maps[i + 1][j] == ' ')
-			return (1);
+				return (1);
 		}
 		k++;
 	}
@@ -86,7 +86,7 @@ int	middle_char(t_all *data)
 				if (data->valid.maps[i + 1][j] == ' ')
 					return (1);
 			}
-			if (middle_char_helper(data,i,j))
+			if (middle_char_helper(data, i, j))
 				return (1);
 			j++;
 		}
