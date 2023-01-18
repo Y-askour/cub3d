@@ -6,11 +6,12 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 23:47:42 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:19:08 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
+#include <stdio.h>
 
 void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 {
@@ -254,31 +255,28 @@ int	draw_rays(t_all *data)
 		cub_distance = calculate_distance(data,y1,x1)/ CUB;
 		cub_distance *= cos(data->direction_ang - start_angle);
 		wall_height = data->mlx.h_win / cub_distance;
-		j = 0;
-		while (j < (data->mlx.h_win/2))
-		{
-			//my_mlx_pixel_put(data,i,j,0x000000);
-			my_mlx_pixel_put(data,i,j,0x50FF0000);
-			j++;
-		}
-		//printf("ceiling -> %d\n",0x50FF0000);
-		//printf("wall  -> %d\n",color);
-		start = (data->mlx.h_win/2) - (wall_height/2);
+		start = (data->mlx.h_win/2) - (wall_height/2) - data->new_pov;
 		if (start < 0)
 			start = 0;
-		end = (data->mlx.h_win/2) + (wall_height/2);
-		if (end > data->mlx.h_win)
+		end = (data->mlx.h_win/2) + (wall_height/2) - data->new_pov;
+		if (end > data->mlx.h_win || end < 0) 
 			end = data->mlx.h_win;
+		j = 0;
+		while (j < start)
+		{
+			my_mlx_pixel_put(data,i,j,0x000000);
+			j++;
+		}
 		j = start;
 		while (j < end)
 		{
-			//color = get_pixel(0,j,i,data,wall_height);
 			my_mlx_pixel_put(data,i,j,color);
 			j++;
 		}
+		j = end;
 		while(j < data->mlx.h_win)
 		{
-			my_mlx_pixel_put(data,i,j,0xff00ff);
+			my_mlx_pixel_put(data,i,j,0x000000);
 			j++;
 		}
 		start_angle += increment;

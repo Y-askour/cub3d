@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/17 23:47:48 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:21:17 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	main(int ac, char **av)
 {
 	t_all	data;
 
+	data.new_pov = 0;
 	if (ac != 2)
 	{
 		printf("Usage : ./cub3d_bonus <filename>\n");

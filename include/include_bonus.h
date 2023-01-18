@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/17 23:34:24 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:21:13 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ typedef struct s_all
 	double			ver_y;
 	double			hor_x;
 	double			hor_y;
+	int				new_pov;
 }					t_all;
 
 // mlx_utils
