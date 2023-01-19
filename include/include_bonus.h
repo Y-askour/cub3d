@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/19 14:27:08 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 20:35:26 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_all
 	t_texture		e_txt;
 	t_texture		n_txt;
 	t_texture		s_txt;
+	t_texture		gun_txt;
 }					t_all;
 
 // mlx_utils
