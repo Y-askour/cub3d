@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 22:41:44 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:27:08 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@
 
 // The above code is defining the size of the window
 # define CUB 10
-# define TILE_SIZE 32
 //
 
 typedef struct s_parss
@@ -102,6 +101,17 @@ typedef struct s_key
 	int				pov;
 }					t_key;
 
+typedef struct s_texture
+{
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_texture;
+
 typedef struct s_all
 {
 	t_parss			parss;
@@ -120,6 +130,11 @@ typedef struct s_all
 	double			hor_x;
 	double			hor_y;
 	int				new_pov;
+	double			x_offset;
+	t_texture		w_txt;
+	t_texture		e_txt;
+	t_texture		n_txt;
+	t_texture		s_txt;
 }					t_all;
 
 // mlx_utils

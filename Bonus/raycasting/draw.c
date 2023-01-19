@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 20:18:17 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:30:34 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 	dst = data->mlx.addr + (y * data->mlx.line_length + x * (data->mlx.bpp
 				/ 8));
 	*(unsigned int *)dst = color;
+}
+
+unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
+{
+	int y_offset;
+	unsigned int color;
+	int x_offset;
+
+	y_offset = y + (wall_height / 2) - (data->mlx.h_win / 2);
+	x_offset = (data->x_offset / CUB) * txt.width;
+	y_offset = ((y_offset) * ((double)txt.height / \
+				wall_height));
+	color = txt.addr[(y_offset * txt.height) +x_offset];
+	return ((unsigned int)color);
 }
 
 /*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, double 
@@ -228,7 +242,8 @@ int	draw_rays(t_all *data)
 	int		j;
 	int		start;
 	int		end;
-	int		color;
+	unsigned int		color;
+	t_texture	*choice_txt;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	start_angle = normalize_angle(start_angle);
@@ -242,13 +257,21 @@ int	draw_rays(t_all *data)
 		{
 			y1 = data->hor_y;
 			x1 = data->hor_x;
-			color = 0x00ffff;
+			data->x_offset = fmod(x1,CUB);
+			if (is_up(start_angle))
+				choice_txt = &data->n_txt;
+			else
+				choice_txt = &data->s_txt;
 		}
 		else
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
-			color = 0xffffff;
+			data->x_offset = fmod(y1,CUB);
+			if (is_left(start_angle))
+				choice_txt = &data->e_txt;
+			else
+				choice_txt = &data->w_txt;
 		}
 		cub_distance = calculate_distance(data, y1, x1) / CUB;
 		cub_distance *= cos(data->direction_ang - start_angle);
@@ -268,6 +291,7 @@ int	draw_rays(t_all *data)
 		j = start;
 		while (j < end)
 		{
+			color = get_color(*choice_txt,j,data,wall_height); 
 			my_mlx_pixel_put(data, i, j, color);
 			j++;
 		}
