@@ -1,11 +1,11 @@
-SO ./textures/south.xpm
+SO textures/wall_h.xpm
 
-NO        ./textures/north.xpm
+NO textures/wall_3.xpm
 
-WE		          ./textures/west.xpm
+WE textures/wall_2.xpm
 
 
-EA			./textures/east.xpm
+EA textures/wall_1.xpm
 
 F   1,1,5
 C 225,255,0

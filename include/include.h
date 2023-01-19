@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/19 13:08:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 13:14:33 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,10 @@ typedef struct s_all
 	double			hor_x;
 	double			hor_y;
 	double			x_offset;
-	t_texture		txt;
+	t_texture		w_txt;
+	t_texture		e_txt;
+	t_texture		n_txt;
+	t_texture		s_txt;
 }					t_all;
 
 // mlx_utils

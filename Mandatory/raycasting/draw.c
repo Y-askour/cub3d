@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/19 13:10:07 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 13:43:04 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,7 @@ int	draw_rays(t_all *data)
 	int		start;
 	int		end;
 	unsigned int		color;
+	t_texture	*choice_txt;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	start_angle = normalize_angle(start_angle);
@@ -258,12 +259,20 @@ int	draw_rays(t_all *data)
 			y1 = data->hor_y;
 			x1 = data->hor_x;
 			data->x_offset = fmod(x1,CUB);
+			if (is_up(start_angle))
+				choice_txt = &data->n_txt;
+			else
+				choice_txt = &data->s_txt;
 		}
 		else
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
 			data->x_offset = fmod(y1,CUB);
+			if (is_left(start_angle))
+				choice_txt = &data->e_txt;
+			else
+				choice_txt = &data->w_txt;
 		}
 		cub_distance = calculate_distance(data, y1, x1) / CUB;
 		cub_distance *= cos(data->direction_ang - start_angle);
@@ -283,7 +292,7 @@ int	draw_rays(t_all *data)
 		}
 		while (j < end)
 		{
-			color = get_color(data->txt,j,data,wall_height);
+			color = get_color(*choice_txt,j,data,wall_height); 
 			my_mlx_pixel_put(data, i, j, color);
 			j++;
 		}
