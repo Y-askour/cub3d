@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/19 14:43:05 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 14:53:01 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
 				wall_height));
 	color = txt.addr[(y_offset * txt.height) +x_offset];
 	return ((unsigned int)color);
+}
+
+unsigned get_floor_c(t_all *data)
+{
+	return (data->valid.floor[0] * 65536 + data->valid.floor[1] * 256 + data->valid.floor[2]);
+}
+
+unsigned get_ceiling_c(t_all *data)
+{
+	return (data->valid.ceiling[0] * 65536 + data->valid.ceiling[1] * 256 + data->valid.ceiling[2]);
 }
 
 /*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, double 
@@ -285,7 +295,7 @@ int	draw_rays(t_all *data)
 		j = 0;
 		while (j < start)
 		{
-			my_mlx_pixel_put(data, i, j, 0x000000);
+			my_mlx_pixel_put(data, i, j, get_ceiling_c(data));
 			j++;
 		}
 		j = start;
@@ -298,7 +308,7 @@ int	draw_rays(t_all *data)
 		j = end;
 		while (j < data->mlx.h_win)
 		{
-			my_mlx_pixel_put(data, i, j, 0x000000);
+			my_mlx_pixel_put(data, i, j, get_floor_c(data));
 			j++;
 		}
 		start_angle += increment;

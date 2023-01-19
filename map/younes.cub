@@ -1,14 +1,9 @@
 SO textures/wall_h.xpm
-
 NO textures/wall_3.xpm
-
 WE textures/wall_2.xpm
-
-
 EA textures/wall_1.xpm
-
-F   1,1,5
-C 225,255,0
+F   19,51,55
+C 103,0,26
 
 
         1111111111111111111111111
