@@ -6,13 +6,13 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 22:45:03 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 13:10:07 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
 
-void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_all *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 
@@ -21,13 +21,20 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void get_color(t_texture txt,double y,t_all *data)
+unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
 {
-	int	texture_x;
-	(void)y;
+	int y_offset;
+	unsigned int color;
+	int x_offset;
 
-	texture_x = data->x_offset * txt.width;
+	y_offset = y + (wall_height / 2) - (data->mlx.h_win / 2);
+	x_offset = (data->x_offset / CUB) * txt.width;
+	y_offset = ((y_offset) * ((double)txt.height / \
+				wall_height));
+	color = txt.addr[(y_offset * txt.height) +x_offset];
+	return ((unsigned int)color);
 }
+
 
 /*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, 
  * double color)
@@ -236,7 +243,7 @@ int	draw_rays(t_all *data)
 	int		j;
 	int		start;
 	int		end;
-	int		color;
+	unsigned int		color;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	start_angle = normalize_angle(start_angle);
@@ -250,36 +257,33 @@ int	draw_rays(t_all *data)
 		{
 			y1 = data->hor_y;
 			x1 = data->hor_x;
-			color = 0x00ffff;
 			data->x_offset = fmod(x1,CUB);
-			get_color(data->txt,y1,data);
 		}
 		else
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
-			color = 0xffffff;
 			data->x_offset = fmod(y1,CUB);
-			get_color(data->txt,y1,data);
 		}
 		cub_distance = calculate_distance(data, y1, x1) / CUB;
 		cub_distance *= cos(data->direction_ang - start_angle);
 		wall_height = data->mlx.h_win / cub_distance;
-		j = 0;
-		while (j < (data->mlx.h_win / 2))
-		{
-			my_mlx_pixel_put(data, i, j, 0x50FF0000);
-			j++;
-		}
 		start = (data->mlx.h_win / 2) - (wall_height / 2);
 		if (start < 0)
 			start = 0;
 		end = (data->mlx.h_win / 2) + (wall_height / 2);
+
 		if (end > data->mlx.h_win || end < 0)
 			end = data->mlx.h_win;
-		j = start;
+		j = 0;
+		while (j < start)
+		{
+			my_mlx_pixel_put(data, i, j, 0x50FF0000);
+			j++;
+		}
 		while (j < end)
 		{
+			color = get_color(data->txt,j,data,wall_height);
 			my_mlx_pixel_put(data, i, j, color);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:11:54 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 22:44:43 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 13:07:09 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	init_mlx(t_all *data)
 	data->mlx.addr = mlx_get_data_addr(data->mlx.img, &data->mlx.bpp,
 			&data->mlx.line_length, &data->mlx.endian);
 	ft_bzero(&data->key, sizeof(data->key));
-	data->txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"/Users/yaskour/Desktop/cub/textures/wall_1.xpm",&data->txt.width, &data->txt.height);
-	data->txt.addr = mlx_get_data_addr(data->txt.img, &data->txt.bpp, &data->txt.line_length, &data->txt.endian);
+	data->txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"/Users/yaskour/Desktop/cub/y.xpm",&data->txt.width, &data->txt.height);
+	data->txt.addr = (int *)mlx_get_data_addr(data->txt.img, &data->txt.bpp, &data->txt.line_length, &data->txt.endian);
 }
