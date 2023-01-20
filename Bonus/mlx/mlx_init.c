@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:11:54 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 16:11:45 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:01:38 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,21 @@ void 	load_textures(t_all *data)
 	if (!data->s_txt.img)
 		exit(1);
 	data->s_txt.addr = (int *) mlx_get_data_addr(data->s_txt.img,&data->s_txt.bpp,&data->s_txt.line_length,&data->s_txt.endian);
-
-	data->gun_txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"./gun_sprites/hold_gun.xpm",&data->gun_txt.width, &data->gun_txt.height);
-	if (!data->gun_txt.img)
+// gun_frames
+	data->gun_1_txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"./gun_sprites/1.xpm",&data->gun_1_txt.width, &data->gun_1_txt.height);
+	if (!data->gun_1_txt.img)
 		exit(1);
-	data->gun_txt.addr = (int *) mlx_get_data_addr(data->gun_txt.img,&data->gun_txt.bpp,&data->gun_txt.line_length,&data->gun_txt.endian);
+	data->gun_1_txt.addr = (int *) mlx_get_data_addr(data->gun_1_txt.img,&data->gun_1_txt.bpp,&data->gun_1_txt.line_length,&data->gun_1_txt.endian);
+
+	data->gun_2_txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"./gun_sprites/2.xpm",&data->gun_2_txt.width, &data->gun_2_txt.height);
+	if (!data->gun_2_txt.img)
+		exit(1);
+	data->gun_2_txt.addr = (int *) mlx_get_data_addr(data->gun_2_txt.img,&data->gun_2_txt.bpp,&data->gun_2_txt.line_length,&data->gun_2_txt.endian);
+
+	data->gun_3_txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"./gun_sprites/3.xpm",&data->gun_3_txt.width, &data->gun_3_txt.height);
+	if (!data->gun_3_txt.img)
+		exit(1);
+	data->gun_3_txt.addr = (int *) mlx_get_data_addr(data->gun_3_txt.img,&data->gun_3_txt.bpp,&data->gun_3_txt.line_length,&data->gun_3_txt.endian);
 }
 
 void	init_mlx(t_all *data)
