@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/18 17:21:17 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/19 17:40:29 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int	main(int ac, char **av)
 			return (1);
 		init_mlx(&data);
 		draw(&data);
+		mlx_mouse_move(data.mlx.win, data.mlx.w_win / 2, data.mlx.h_win / 2);
+		mlx_mouse_hide();
 		mlx_hook(data.mlx.win, DESTROY, (1L << 17), mlx_close, &data);
 		mlx_hook(data.mlx.win, KEY_RELEASE, 0, mlx_key_release, &data);
 		mlx_hook(data.mlx.win, KEY_PRESS, 0, mlx_key, &data);
