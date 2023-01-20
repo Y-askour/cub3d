@@ -32,7 +32,7 @@ SRC = $(addprefix Mandatory/,main.c parssing/parssing.c parssing/get_colors.c \
 		check/check_textures.c check/check_textures_utils.c check/check_map.c\
 		raycasting/draw.c mlx/mlx_key.c mlx/mlx_init.c mlx/mlx_actions.c\
 		free/free2.c check/check_map2.c check/check_map3.c check/check_map4.c\
-		check/check_map5.c )
+		check/check_map5.c raycasting/math.c raycasting/draw_ray.c)
 
 # 		----------========== {     SRCS_BONUS    } ==========----------
 
@@ -42,7 +42,7 @@ SRC_BONUS = $(addprefix Bonus/,main.c parssing/parssing.c parssing/get_colors.c 
 		check/check_textures.c check/check_textures_utils.c check/check_map.c\
 		raycasting/draw.c mlx/mlx_key.c mlx/mlx_init.c mlx/mlx_actions.c\
 		free/free2.c check/check_map2.c check/check_map3.c check/check_map4.c\
-		)
+		raycasting/math.c)
 
 SRC_OBJ = $(SRC:.c=.o)
 SRC_OBJ_BONUS = $(SRC_BONUS:.c=.o)

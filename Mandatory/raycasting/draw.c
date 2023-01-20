@@ -6,98 +6,11 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/19 14:56:35 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:23:24 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
-
-void	my_mlx_pixel_put(t_all *data, int x, int y, unsigned int color)
-{
-	char	*dst;
-
-	dst = data->mlx.addr + (y * data->mlx.line_length + x * (data->mlx.bpp
-				/ 8));
-	*(unsigned int *)dst = color;
-}
-
-unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
-{
-	int y_offset;
-	unsigned int color;
-	int x_offset;
-
-	y_offset = y + (wall_height / 2) - (data->mlx.h_win / 2);
-	x_offset = (data->x_offset / CUB) * txt.width;
-	y_offset = ((y_offset) * ((double)txt.height / \
-				wall_height));
-	color = txt.addr[(y_offset * txt.height) +x_offset];
-	return ((unsigned int)color);
-}
-
-unsigned get_floor_c(t_all *data)
-{
-	return (data->valid.floor[0] * 65536 + data->valid.floor[1] * 256 + data->valid.floor[2]);
-}
-
-unsigned get_ceiling_c(t_all *data)
-{
-	return (data->valid.ceiling[0] * 65536 + data->valid.ceiling[1] * 256 + data->valid.ceiling[2]);
-}
-
-
-/*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, 
- * double color)
-{
-	double		dx;
-	double		dy;
-	double		steps;
-	double	xinc;
-	double	yinc;
-	double	x;
-	double	y;
-
-	dx = X1 - X0;
-	dy = Y1 - Y0;
-	steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
-	xinc = dx / (double)steps;
-	yinc = dy / (double)steps;
-	x = X0;
-	y = Y0;
-	for (int i = 0; i <= steps; i++)
-	{
-		my_mlx_pixel_put(data, round(x), round(y), color);
-		x += xinc;
-		y += yinc;
-	}
-}*/
-
-void	drawcub(t_all *data, int x, int y, unsigned int color)
-{
-	int	x0;
-	int	x1;
-	int	y0;
-	int	y1;
-	int	start;
-
-	x0 = x * CUB;
-	x1 = (x + 1) * CUB;
-	y0 = y * CUB;
-	y1 = (y + 1) * CUB;
-	while (y0 < y1)
-	{
-		start = x0;
-		while (start < x1)
-		{
-			if (start == x0 || (y0 % 50) == 0)
-				my_mlx_pixel_put(data, start, y0, 0x000000);
-			else
-				my_mlx_pixel_put(data, start, y0, color);
-			start++;
-		}
-		y0++;
-	}
-}
 
 void	player_position(t_all *data, int x, int y, int *player)
 {
@@ -106,20 +19,6 @@ void	player_position(t_all *data, int x, int y, int *player)
 	data->x_player = (x * CUB) + (CUB / 2);
 	data->valid.maps[(int)roundf(y)][(int)roundf(x)] = '0';
 	*player = *player + 1;
-}
-
-int	is_up(double ang)
-{
-	if (ang >= M_PI && ang <= (2 * M_PI))
-		return (1);
-	return (0);
-}
-
-int	is_left(double ang)
-{
-	if (ang >= (M_PI / 2) && ang <= ((3 * M_PI) / 2))
-		return (1);
-	return (0);
 }
 
 int	horizontal_inter(t_all *data, double ang)
@@ -153,7 +52,8 @@ int	horizontal_inter(t_all *data, double ang)
 		index_x = floor(first_x / CUB);
 		index_y = floor((first_y) / CUB);
 	}
-	while (index_y >= 0 && index_y < data->valid.map_len && index_x >= 0 && index_x < data->valid.line_len)
+	while (index_y >= 0 && index_y < data->valid.map_len \
+	&& index_x >= 0 && index_x < data->valid.line_len)
 	{
 		if (data->valid.maps[index_y][index_x] == '1')
 		{
@@ -210,7 +110,8 @@ int	vertical_inter(t_all *data, double ang)
 		index_x = floor(first_x / CUB);
 		index_y = floor(first_y / CUB);
 	}
-	while (index_y >= 0 && index_y < data->valid.map_len && index_x >= 0 && index_x < data->valid.line_len)
+	while (index_y >= 0 && index_y < data->valid.map_len \
+	&& index_x >= 0 && index_x < data->valid.line_len)
 	{
 		if (data->valid.maps[index_y][index_x] == '1')
 		{
@@ -236,39 +137,32 @@ int	vertical_inter(t_all *data, double ang)
 	return (0);
 }
 
-double	calculate_distance(t_all *data, double y, double x)
+int	draw_rays(t_all *data, int i, int j)
 {
-	return (sqrt(pow(x - data->x_player, 2) + pow(y - data->y_player, 2)));
-}
-
-int	draw_rays(t_all *data)
-{
-	double	start_angle;
-	double	increment;
-	double	x1;
-	double	y1;
-	double	cub_distance;
-	double	wall_height;
-	int		i;
-	int		j;
-	int		start;
-	int		end;
-	unsigned int		color;
-	t_texture	*choice_txt;
+	double			start_angle;
+	double			increment;
+	double			x1;
+	double			y1;
+	double			cub_distance;
+	double			wall_height;
+	int				start;
+	int				end;
+	unsigned int	color;
+	t_texture		*choice_txt;
 
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	start_angle = normalize_angle(start_angle);
 	increment = (60 * (M_PI / 180)) / data->mlx.w_win;
-	i = 0;
 	while (i < data->mlx.w_win)
 	{
 		horizontal_inter(data, start_angle);
 		vertical_inter(data, start_angle);
-		if (calculate_distance(data, data->ver_y, data->ver_x) > calculate_distance(data, data->hor_y, data->hor_x))
+		if (calculate_distance(data, data->ver_y, data->ver_x) > \
+		calculate_distance(data, data->hor_y, data->hor_x))
 		{
 			y1 = data->hor_y;
 			x1 = data->hor_x;
-			data->x_offset = fmod(x1,CUB);
+			data->x_offset = fmod(x1, CUB);
 			if (is_up(start_angle))
 				choice_txt = &data->n_txt;
 			else
@@ -278,7 +172,7 @@ int	draw_rays(t_all *data)
 		{
 			y1 = data->ver_y;
 			x1 = data->ver_x;
-			data->x_offset = fmod(y1,CUB);
+			data->x_offset = fmod(y1, CUB);
 			if (is_left(start_angle))
 				choice_txt = &data->e_txt;
 			else
@@ -291,10 +185,8 @@ int	draw_rays(t_all *data)
 		if (start < 0)
 			start = 0;
 		end = (data->mlx.h_win / 2) + (wall_height / 2);
-
 		if (end > data->mlx.h_win || end < 0)
 			end = data->mlx.h_win;
-		j = 0;
 		while (j < start)
 		{
 			my_mlx_pixel_put(data, i, j, get_ceiling_c(data));
@@ -302,7 +194,7 @@ int	draw_rays(t_all *data)
 		}
 		while (j < end)
 		{
-			color = get_color(*choice_txt,j,data,wall_height); 
+			color = get_color(*choice_txt, j, data, wall_height);
 			my_mlx_pixel_put(data, i, j, color);
 			j++;
 		}
@@ -319,7 +211,7 @@ int	draw_rays(t_all *data)
 
 int	draw(t_all *data)
 {
-	draw_rays(data);
+	draw_rays(data, 0, 0);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }

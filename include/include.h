@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/19 13:14:33 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:18:00 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ int					mlx_close(t_all *data);
 int					mlx_key_release(int keycode, t_all *data);
 int					mlx_key(int keycode, t_all *data);
 int					mlx_keypress(t_all *data);
+void				my_mlx_pixel_put(t_all *data, int x, int y, unsigned int color);
+
 // list of functions that are used to move the player around the map.
 void				move_up(t_all *data);
 void				move_down(t_all *data);
@@ -219,8 +221,15 @@ int					check_wall_x(t_all *data, int x_wall, int y_wall);
 
 // drawing
 int					draw(t_all *data);
+void				drawcub(t_all *data, int x, int y, unsigned int color);
 void				player_position(t_all *data, int x, int y, int *player);
-void				init_mlx(t_all *data);
 double				normalize_angle(double ang);
+double				calculate_distance(t_all *data, double y, double x);
+int					is_left(double ang);
+int					is_up(double ang);
+unsigned int		get_color(t_texture txt, double y, t_all *data, double wall_h);
+unsigned int		get_floor_c(t_all *data);
+unsigned int		get_ceiling_c(t_all *data);
+
 
 #endif
