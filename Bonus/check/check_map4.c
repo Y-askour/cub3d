@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:38:17 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 20:20:39 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 20:34:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,12 @@ int	middle_char_helper1(t_all *data, int i, int j)
 	return (0);
 }
 
-void	middle_char_helper3(t_all *data, int *start, int *end, int *j, int *i)
+void	middle_char_helper3(t_all *data, int *start, int *end, int *i)
 {
 	*start = 0;
 	while (data->valid.maps[*i][*start] && data->valid.maps[*i][*start] == ' ')
 		*start += 1;
 	*end = data->valid.line_len - 1;
-	while (*end > 0 && data->valid.maps[*i][*end] == ' ')
-		*end -= 1;
-	*j = *start;
 }
 
 int	middle_char(t_all *data)
@@ -100,7 +97,10 @@ int	middle_char(t_all *data)
 	i = 1;
 	while (i < data->valid.map_len - 1)
 	{
-		middle_char_helper3(data,&start,&end,&j,&i);
+		middle_char_helper3(data, &start, &end, &i);
+		while (end > 0 && data->valid.maps[i][end] == ' ')
+			end -= 1;
+		j = start;
 		while (j < end)
 		{
 			if (middle_char_helper1(data, i, j))
