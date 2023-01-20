@@ -6,7 +6,7 @@
 /*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 18:32:12 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:41:43 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,23 +381,31 @@ int	draw(t_all *data)
 	t_texture *gun_frame = NULL;
 	static int i;
 
-	if (i  >= 0 && i < 12)
+	if (data->shot_)
 	{
+		if (i  >= 0 && i < 12)
+		{
+			gun_frame = &data->gun_1_txt;
+			i++;
+		}
+		else if (i  >= 12 && i < 24)
+		{
+			gun_frame = &data->gun_2_txt;
+			i++;
+		}
+		else if (i >= 24 && i < 36)
+		{
+			gun_frame = &data->gun_3_txt;
+			i++;
+		}
+		if (i == 36)
+		{
+			i = 0;
+			data->shot_ = 0;
+		}
+	}
+	else if (data->shot_ == 0)
 		gun_frame = &data->gun_1_txt;
-		i++;
-	}
-	else if (i  >= 12 && i < 24)
-	{
-		gun_frame = &data->gun_2_txt;
-		i++;
-	}
-	else if (i >= 24 && i < 36)
-	{
-		gun_frame = &data->gun_3_txt;
-		i++;
-	}
-	if (i == 36)
-		i = 0;
 	draw_rays(data);
 	int y0 = data->mlx.h_win - gun_frame->height;
 	int x0 = data->mlx.w_win / 2 - (gun_frame->width/2);
