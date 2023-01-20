@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 19:49:51 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:30:20 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,22 +383,22 @@ int	draw(t_all *data)
 
 	if (data->shot_)
 	{
-		if (i  >= 0 && i < 12)
+		if (i  >= 0 && i < 6)
 		{
 			gun_frame = &data->gun_1_txt;
 			i++;
 		}
-		else if (i  >= 12 && i < 24)
+		else if (i  >= 6 && i < 12)
 		{
 			gun_frame = &data->gun_2_txt;
 			i++;
 		}
-		else if (i >= 24 && i < 36)
+		else if (i >= 12 && i < 18)
 		{
 			gun_frame = &data->gun_3_txt;
 			i++;
 		}
-		if (i == 36)
+		if (i == 18)
 		{
 			i = 0;
 			data->shot_ = 0;

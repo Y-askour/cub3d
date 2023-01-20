@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 17:23:24 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/20 20:24:28 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,10 @@ int	vertical_inter(t_all *data, double ang)
 	return (0);
 }
 
-int	draw_rays(t_all *data, int i, int j)
+int	draw_rays(t_all *data)
 {
+	int				i;
+	int				j;
 	double			start_angle;
 	double			increment;
 	double			x1;
@@ -153,6 +155,7 @@ int	draw_rays(t_all *data, int i, int j)
 	start_angle = data->direction_ang - (30 * (M_PI / 180));
 	start_angle = normalize_angle(start_angle);
 	increment = (60 * (M_PI / 180)) / data->mlx.w_win;
+	i = 0;
 	while (i < data->mlx.w_win)
 	{
 		horizontal_inter(data, start_angle);
@@ -187,6 +190,7 @@ int	draw_rays(t_all *data, int i, int j)
 		end = (data->mlx.h_win / 2) + (wall_height / 2);
 		if (end > data->mlx.h_win || end < 0)
 			end = data->mlx.h_win;
+		j = 0;
 		while (j < start)
 		{
 			my_mlx_pixel_put(data, i, j, get_ceiling_c(data));
@@ -211,7 +215,7 @@ int	draw_rays(t_all *data, int i, int j)
 
 int	draw(t_all *data)
 {
-	draw_rays(data, 0, 0);
+	draw_rays(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }
