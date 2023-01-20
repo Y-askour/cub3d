@@ -6,13 +6,13 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:39:45 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/18 01:56:34 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/20 21:07:44 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
 
-void	move_up(t_all *data)
+void move_up(t_all *data)
 {
 	if (!check_wall(data, data->y_player + 1 * sin(data->direction_ang), \
 	data->x_player + 1 * cos(data->direction_ang)))
