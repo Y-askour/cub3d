@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/19 14:53:01 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 03:07:26 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,65 @@ void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
 	dst = data->mlx.addr + (y * data->mlx.line_length + x * (data->mlx.bpp
 				/ 8));
 	*(unsigned int *)dst = color;
+}
+
+void	draw_miniplayer(t_all *r, double x, double y, int color)
+{
+	int	i;
+	int	j;
+
+	i = y - 1;
+	while (++i < y + 3)
+	{
+		j = x - 1;
+		while (++j < x + 3)
+		{
+			if (i >= 0 && j >= 0 && i < 200 && j < 200)
+				my_mlx_pixel_put(r, j, i, color);
+		}
+	}
+}
+
+void	draw_square(t_all *r, double y, double x, int color)
+{
+	int	i;
+	int	j;
+
+	i = y - 1;
+	while (++i < y + CUB)
+	{
+		j = x - 1;
+		while (++j < x + CUB)
+		{
+			if (i >= 0 && j >= 0 && i < 200 && j < 200)
+				if (sqrt(powf(i / 12.5 - 8, 2) + powf(j / 12.5 - 8, 2)) < 8)
+					my_mlx_pixel_put(r, j, i, color);
+		}
+	}
+}
+
+void	render_minimap(t_all *r)
+{
+	int		i;
+	int		j;
+	double	dx;
+	double	dy;
+	
+	dx = r->x_player - 100;
+	dy = r->y_player - 100;
+	i = -1;
+	while (r->valid.maps[++i])
+	{
+		j = -1;
+		while (r->valid.maps[i][++j])
+		{
+			if (r->valid.maps[i][j] == '1')
+				draw_square(r, (i * CUB - dy), \
+				(j * CUB - dx), 0x000000);
+		}
+	}
+	draw_miniplayer(r, (r->x_player - dx - 1), \
+	(r->y_player - dy - 1), 0xff0000);
 }
 
 unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
@@ -320,6 +379,7 @@ int	draw_rays(t_all *data)
 int	draw(t_all *data)
 {
 	draw_rays(data);
+	render_minimap(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	return (0);
 }

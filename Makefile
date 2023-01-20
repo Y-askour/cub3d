@@ -50,7 +50,7 @@ GNL_SRC = $(addprefix utils/get_next_line/,get_next_line.c get_next_line_utils.c
 GNL_OBJ = $(GNL_SRC:.c=.o)
 
 %.o:%.c
-	@printf "\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m"
+	@printf "\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m\e[1;42m \e[0;m"
 	@$(CC) $(FLAGS) -c $< -o $@
 #          ----------========== {     RULES     } ==========----------
 All:$(NAME)
