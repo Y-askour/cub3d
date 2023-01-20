@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 18:41:43 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:49:51 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,5 +412,6 @@ int	draw(t_all *data)
 	render_minimap(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img, 0, 0);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, gun_frame->img, x0, y0);
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->minimap.img, -20, -20);
 	return (0);
 }

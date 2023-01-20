@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:11:54 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 18:01:38 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:07:48 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ void 	load_textures(t_all *data)
 	if (!data->gun_3_txt.img)
 		exit(1);
 	data->gun_3_txt.addr = (int *) mlx_get_data_addr(data->gun_3_txt.img,&data->gun_3_txt.bpp,&data->gun_3_txt.line_length,&data->gun_3_txt.endian);
+	// minimap
+	data->minimap.img = mlx_xpm_file_to_image(data->mlx.mlx,"./textures/minimap.xpm",&data->minimap.width, &data->minimap.height);
+	if (!data->minimap.img)
+		exit(1);
+	data->minimap.addr = (int *) mlx_get_data_addr(data->minimap.img,&data->minimap.bpp,&data->minimap.line_length,&data->minimap.endian);
+		
 }
 
 void	init_mlx(t_all *data)
