@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 16:11:54 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 15:20:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:11:45 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void 	load_textures(t_all *data)
 		exit(1);
 	data->s_txt.addr = (int *) mlx_get_data_addr(data->s_txt.img,&data->s_txt.bpp,&data->s_txt.line_length,&data->s_txt.endian);
 
-	data->gun_txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"./gun_sprites/shot_gun.xpm",&data->gun_txt.width, &data->gun_txt.height);
+	data->gun_txt.img = mlx_xpm_file_to_image(data->mlx.mlx,"./gun_sprites/hold_gun.xpm",&data->gun_txt.width, &data->gun_txt.height);
 	if (!data->gun_txt.img)
 		exit(1);
 	data->gun_txt.addr = (int *) mlx_get_data_addr(data->gun_txt.img,&data->gun_txt.bpp,&data->gun_txt.line_length,&data->gun_txt.endian);
