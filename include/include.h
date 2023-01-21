@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 17:18:00 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/21 20:38:26 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,6 @@ int					check_wall_x(t_all *data, int x_wall, int y_wall);
 
 // drawing
 int					draw(t_all *data);
-void				drawcub(t_all *data, int x, int y, unsigned int color);
 void				player_position(t_all *data, int x, int y, int *player);
 double				normalize_angle(double ang);
 double				calculate_distance(t_all *data, double y, double x);

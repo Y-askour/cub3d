@@ -6,38 +6,11 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:56:04 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 17:17:40 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/21 20:38:23 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include.h"
-
-void	drawcub(t_all *data, int x, int y, unsigned int color)
-{
-	int	x0;
-	int	x1;
-	int	y0;
-	int	y1;
-	int	start;
-
-	x0 = x * CUB;
-	x1 = (x + 1) * CUB;
-	y0 = y * CUB;
-	y1 = (y + 1) * CUB;
-	while (y0 < y1)
-	{
-		start = x0;
-		while (start < x1)
-		{
-			if (start == x0 || (y0 % 50) == 0)
-				my_mlx_pixel_put(data, start, y0, 0x000000);
-			else
-				my_mlx_pixel_put(data, start, y0, color);
-			start++;
-		}
-		y0++;
-	}
-}
 
 unsigned int	get_color(t_texture txt, double y, t_all *data, double wall_h)
 {

@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 20:30:20 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/21 23:58:22 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,33 +129,6 @@ unsigned get_ceiling_c(t_all *data)
 		y += yinc;
 	}
 }*/
-
-void	drawcub(t_all *data, int x, int y, unsigned int color)
-{
-	int	x0;
-	int	x1;
-	int	y0;
-	int	y1;
-	int	start;
-
-	x0 = x * CUB;
-	x1 = (x + 1) * CUB;
-	y0 = y * CUB;
-	y1 = (y + 1) * CUB;
-	while (y0 < y1)
-	{
-		start = x0;
-		while (start < x1)
-		{
-			if (start == x0 || (y0 % 50) == 0)
-				my_mlx_pixel_put(data, start, y0, 0x000000);
-			else
-				my_mlx_pixel_put(data, start, y0, color);
-			start++;
-		}
-		y0++;
-	}
-}
 
 void	player_position(t_all *data, int x, int y , int *player)
 {
