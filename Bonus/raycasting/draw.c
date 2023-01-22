@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/21 23:58:22 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/22 19:19:03 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
 	x_offset = (data->x_offset / CUB) * txt.width;
 	y_offset = ((y_offset) * ((double)txt.height / \
 				wall_height));
-	color = txt.addr[(y_offset * txt.height) +x_offset];
+	color = txt.addr[abs((y_offset * txt.height) +x_offset)];
 	return ((unsigned int)color);
 }
 
@@ -103,32 +103,6 @@ unsigned get_ceiling_c(t_all *data)
 {
 	return (data->valid.ceiling[0] * 65536 + data->valid.ceiling[1] * 256 + data->valid.ceiling[2]);
 }
-
-/*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, double 
- * color)
-{
-	double		dx;
-	double		dy;
-	double		steps;
-	double	xinc;
-	double	yinc;
-	double	x;
-	double	y;
-
-	dx = X1 - X0;
-	dy = Y1 - Y0;
-	steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
-	xinc = dx / (double)steps;
-	yinc = dy / (double)steps;
-	x = X0;
-	y = Y0;
-	for (int i = 0; i <= steps; i++)
-	{
-		my_mlx_pixel_put(data, round(x), round(y), color);
-		x += xinc;
-		y += yinc;
-	}
-}*/
 
 void	player_position(t_all *data, int x, int y , int *player)
 {
