@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 14:40:53 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 18:42:28 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 19:21:05 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	mlx_key(int keycode, t_all *data)
 		data->new_pov += 5;
 	if (keycode == ROTATE_DOWN && data->new_pov > -50)
 		data->new_pov -= 5;
-	if (keycode == 49) // space
+	if (keycode == 49)
 		data->shot_ = 1;
 	return (0);
 }

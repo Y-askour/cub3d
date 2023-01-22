@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 20:30:20 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 19:19:03 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ unsigned int get_color(t_texture txt,double y,t_all *data,double wall_height)
 	x_offset = (data->x_offset / CUB) * txt.width;
 	y_offset = ((y_offset) * ((double)txt.height / \
 				wall_height));
-	color = txt.addr[(y_offset * txt.height) +x_offset];
+	color = txt.addr[abs((y_offset * txt.height) +x_offset)];
 	return ((unsigned int)color);
 }
 
@@ -102,59 +102,6 @@ unsigned get_floor_c(t_all *data)
 unsigned get_ceiling_c(t_all *data)
 {
 	return (data->valid.ceiling[0] * 65536 + data->valid.ceiling[1] * 256 + data->valid.ceiling[2]);
-}
-
-/*void	dda(double X0, double Y0, double X1, double Y1, t_all *data, double 
- * color)
-{
-	double		dx;
-	double		dy;
-	double		steps;
-	double	xinc;
-	double	yinc;
-	double	x;
-	double	y;
-
-	dx = X1 - X0;
-	dy = Y1 - Y0;
-	steps = fabs(dx) > fabs(dy) ? fabs(dx) : fabs(dy);
-	xinc = dx / (double)steps;
-	yinc = dy / (double)steps;
-	x = X0;
-	y = Y0;
-	for (int i = 0; i <= steps; i++)
-	{
-		my_mlx_pixel_put(data, round(x), round(y), color);
-		x += xinc;
-		y += yinc;
-	}
-}*/
-
-void	drawcub(t_all *data, int x, int y, unsigned int color)
-{
-	int	x0;
-	int	x1;
-	int	y0;
-	int	y1;
-	int	start;
-
-	x0 = x * CUB;
-	x1 = (x + 1) * CUB;
-	y0 = y * CUB;
-	y1 = (y + 1) * CUB;
-	while (y0 < y1)
-	{
-		start = x0;
-		while (start < x1)
-		{
-			if (start == x0 || (y0 % 50) == 0)
-				my_mlx_pixel_put(data, start, y0, 0x000000);
-			else
-				my_mlx_pixel_put(data, start, y0, color);
-			start++;
-		}
-		y0++;
-	}
 }
 
 void	player_position(t_all *data, int x, int y , int *player)

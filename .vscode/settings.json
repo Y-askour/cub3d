@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "__node_handle": "c",
+        "include.h": "c",
+        "mlx.h": "c",
+        "locale": "c",
+        "include_bonus.h": "c",
+        "get_next_line.h": "c",
+        "array": "c",
+        "iterator": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c"
+    }
+}
