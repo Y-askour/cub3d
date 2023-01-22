@@ -44,7 +44,8 @@ SRC_BONUS = $(addprefix Bonus/,main.c parssing/parssing.c parssing/get_colors.c 
 		raycasting/draw.c mlx/mlx_key.c mlx/mlx_init.c mlx/mlx_actions.c\
 		free/free2.c check/check_map2.c check/check_map3.c check/check_map4.c\
 		raycasting/math.c check/check_map5.c raycasting/draw_ray.c\
-		raycasting/intersections.c raycasting/minimap_draw.c raycasting/intersections2.c)
+		raycasting/intersections.c raycasting/minimap_draw.c raycasting/intersections2.c\
+		mlx/mlx_run.c raycasting/get_colors.c)
 
 SRC_OBJ = $(SRC:.c=.o)
 SRC_OBJ_BONUS = $(SRC_BONUS:.c=.o)

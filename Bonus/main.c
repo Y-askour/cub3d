@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:42 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/23 00:35:37 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/23 00:39:53 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,26 +89,6 @@ int	check_wall(t_all *data, double y, double x)
 	if (check_wall_helper1(data, x_wall, y_wall))
 		return (1);
 	return (0);
-}
-
-double	normalize_angle(double ang)
-{
-	ang = fmod(ang, 2 * M_PI);
-	if (ang < 0)
-		ang += 2 * M_PI;
-	return (ang);
-}
-
-void	run(t_all *data)
-{
-	mlx_mouse_move(data->mlx.win, data->mlx.w_win / 2, data->mlx.h_win / 2);
-	mlx_mouse_hide();
-	mlx_hook(data->mlx.win, DESTROY, (1L << 17), mlx_close, data);
-	mlx_hook(data->mlx.win, KEY_RELEASE, 0, mlx_key_release, data);
-	mlx_hook(data->mlx.win, KEY_PRESS, 0, mlx_key, data);
-	mlx_hook(data->mlx.win, MOUSEMOVE, 0, mouse_move, data);
-	mlx_loop_hook(data->mlx.mlx, mlx_keypress, data);
-	mlx_loop(data->mlx.mlx);
 }
 
 int	main(int ac, char **av)

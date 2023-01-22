@@ -6,23 +6,11 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/23 00:25:05 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/23 00:38:38 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
-
-unsigned int	get_floor_c(t_all *data)
-{
-	return (data->valid.floor[0] * 65536 + data->valid.floor[1] \
-			* 256 + data->valid.floor[2]);
-}
-
-unsigned int	get_ceiling_c(t_all *data)
-{
-	return (data->valid.ceiling[0] * 65536 + data->valid.ceiling[1] \
-			* 256 + data->valid.ceiling[2]);
-}
 
 void	player_position(t_all *data, int x, int y, int *player)
 {

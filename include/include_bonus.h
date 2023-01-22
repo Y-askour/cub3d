@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/23 00:30:18 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/23 00:41:22 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ int					mlx_key(int keycode, t_all *data);
 int					mlx_keypress(t_all *data);
 int					mouse_move(int x, int y, t_all *data);
 void				my_mlx_pixel_put(t_all *data, int x, int y, int color);
+void				run(t_all *data);
 // list of functions that are used to move the player around the map.
 void				move_up(t_all *data);
 void				move_down(t_all *data);
