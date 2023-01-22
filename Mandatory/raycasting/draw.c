@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/22 19:47:37 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 20:53:18 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	horizontal_inter(t_all *data, double ang)
 	data->norm.first_y = floor(data->y_player / CUB) * CUB;
 	if (!is_up(ang))
 		data->norm.first_y += CUB;
-	data->norm.first_x = ((data->norm.first_y - data->y_player) / tan(ang)) + data->x_player;
+	data->norm.first_x = ((data->norm.first_y - data->y_player) / \
+			tan(ang)) + data->x_player;
 	data->norm.step_y = CUB;
 	if (is_up(ang))
 		data->norm.step_y *= -1;
@@ -83,7 +84,8 @@ int	vertical_inter(t_all *data, double ang)
 	data->norm.first_x = floor(data->x_player / CUB) * CUB;
 	if (!is_left(ang))
 		data->norm.first_x += CUB;
-	data->norm.first_y = data->y_player + ((data->norm.first_x - data->x_player) * tan(ang));
+	data->norm.first_y = data->y_player + ((data->norm.first_x - \
+				data->x_player) * tan(ang));
 	data->norm.step_x = CUB;
 	if (is_left(ang))
 		data->norm.step_x *= -1;
@@ -167,7 +169,8 @@ int	draw_rays(t_all *data)
 				data->norm.choice_txt = &data->w_txt;
 		}
 		data->norm.cub_distance = calculate_distance(data, y1, x1) / CUB;
-		data->norm.cub_distance *= cos(data->direction_ang - data->norm.start_angle);
+		data->norm.cub_distance *= cos(data->direction_ang - \
+				data->norm.start_angle);
 		data->norm.wall_height = data->mlx.h_win / data->norm.cub_distance;
 		data->norm.start = (data->mlx.h_win / 2) - (data->norm.wall_height / 2);
 		if (data->norm.start < 0)
@@ -183,7 +186,8 @@ int	draw_rays(t_all *data)
 		}
 		while (j < data->norm.end)
 		{
-			data->norm.color = get_color(*data->norm.choice_txt, j, data, data->norm.wall_height);
+			data->norm.color = get_color(*data->norm.choice_txt, j, data, \
+					data->norm.wall_height);
 			my_mlx_pixel_put(data, i, j, data->norm.color);
 			j++;
 		}
