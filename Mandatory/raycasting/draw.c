@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/22 21:08:38 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 21:12:51 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	player_position(t_all *data, int x, int y, int *player)
 	*player = *player + 1;
 }
 
-void	horizontal_inter_helper(t_all *data, double ang, int *index_x, int *index_y)
+void	horizontal_inter_helper(t_all *data, double ang, \
+		int *index_x, int *index_y)
 {
 	if (is_up(ang))
 	{
@@ -35,11 +36,8 @@ void	horizontal_inter_helper(t_all *data, double ang, int *index_x, int *index_y
 	}
 }
 
-void	horizontal_inter(t_all *data, double ang)
+void	horizontal_inter_init(t_all *data, double ang)
 {
-	int		index_x;
-	int		index_y;
-
 	data->norm.first_y = floor(data->y_player / CUB) * CUB;
 	if (!is_up(ang))
 		data->norm.first_y += CUB;
@@ -53,6 +51,14 @@ void	horizontal_inter(t_all *data, double ang)
 		data->norm.step_x *= -1;
 	if (is_left(ang) && data->norm.step_x > 0)
 		data->norm.step_x *= -1;
+}
+
+void	horizontal_inter(t_all *data, double ang)
+{
+	int		index_x;
+	int		index_y;
+
+	horizontal_inter_init(data, ang);
 	horizontal_inter_helper(data, ang, &index_x, &index_y);
 	while (index_y >= 0 && index_y < data->valid.map_len \
 	&& index_x >= 0 && index_x < data->valid.line_len)
