@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/20 17:18:00 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/22 19:46:42 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,22 @@ typedef struct s_texture
 	int		width;
 }	t_texture;
 
+
+typedef struct s_norm
+{
+	double	first_x;
+	double	first_y;
+	double	step_x;
+	double	step_y;
+	double			cub_distance;
+	double			wall_height;
+	int				start;
+	int				end;
+	unsigned int	color;
+	t_texture		*choice_txt;
+	double			start_angle;
+}	t_norm;
+
 typedef struct s_all
 {
 	t_parss			parss;
@@ -132,6 +148,7 @@ typedef struct s_all
 	t_texture		e_txt;
 	t_texture		n_txt;
 	t_texture		s_txt;
+	t_norm			norm;
 }					t_all;
 
 // mlx_utils
