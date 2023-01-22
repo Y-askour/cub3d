@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:56:04 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 17:17:40 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/22 21:24:22 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ unsigned int	get_color(t_texture txt, double y, t_all *data, double wall_h)
 	x_offset = (data->x_offset / CUB) * txt.width;
 	y_offset = ((y_offset) * ((double)txt.height / \
 				wall_h));
-	color = txt.addr[(y_offset * txt.height) + x_offset];
+	color = txt.addr[abs((y_offset * txt.height) + x_offset)];
 	return ((unsigned int)color);
 }

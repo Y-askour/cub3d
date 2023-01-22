@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/22 21:12:51 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 21:37:34 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,8 @@ void	horizontal_inter(t_all *data, double ang)
 	return ;
 }
 
-void	vertical_inter(t_all *data, double ang)
+void	vertical_inter_init(t_all *data, double ang)
 {
-	int		index_x;
-	int		index_y;
-
 	data->norm.first_x = floor(data->x_player / CUB) * CUB;
 	if (!is_left(ang))
 		data->norm.first_x += CUB;
@@ -96,16 +93,30 @@ void	vertical_inter(t_all *data, double ang)
 		data->norm.step_y *= -1;
 	if (!is_up(ang) && data->norm.step_y < 0)
 		data->norm.step_y *= -1;
+}
+
+void	vertical_inter_helper(t_all *data, double ang, int *index_y, \
+		int *index_x)
+{
 	if (is_left(ang))
 	{
-		index_x = floor((data->norm.first_x - 1) / CUB);
-		index_y = floor(data->norm.first_y / CUB);
+		*index_x = floor((data->norm.first_x - 1) / CUB);
+		*index_y = floor(data->norm.first_y / CUB);
 	}
 	else
 	{
-		index_x = floor(data->norm.first_x / CUB);
-		index_y = floor(data->norm.first_y / CUB);
+		*index_x = floor(data->norm.first_x / CUB);
+		*index_y = floor(data->norm.first_y / CUB);
 	}
+}
+
+void	vertical_inter(t_all *data, double ang)
+{
+	int		index_x;
+	int		index_y;
+
+	vertical_inter_init(data, ang);
+	vertical_inter_helper(data, ang, &index_y, &index_x);
 	while (index_y >= 0 && index_y < data->valid.map_len \
 	&& index_x >= 0 && index_x < data->valid.line_len)
 	{
@@ -117,59 +128,83 @@ void	vertical_inter(t_all *data, double ang)
 		}
 		data->norm.first_x += data->norm.step_x;
 		data->norm.first_y += data->norm.step_y;
-		if (is_left(ang))
-		{
-			index_x = floor((data->norm.first_x - 1) / CUB);
-			index_y = floor(data->norm.first_y / CUB);
-		}
-		else
-		{
-			index_x = floor(data->norm.first_x / CUB);
-			index_y = floor(data->norm.first_y / CUB);
-		}
+		vertical_inter_helper(data, ang, &index_y, &index_x);
 	}
 	data->ver_x = INT_MAX;
 	data->ver_y = INT_MAX;
 	return ;
 }
 
+void	draw_rays_helper(t_all *data, double *x1, double *y1)
+{
+	horizontal_inter(data, data->norm.start_angle);
+	vertical_inter(data, data->norm.start_angle);
+	if (calculate_distance(data, data->ver_y, data->ver_x) > \
+	calculate_distance(data, data->hor_y, data->hor_x))
+	{
+		*y1 = data->hor_y;
+		*x1 = data->hor_x;
+		data->x_offset = fmod(*x1, CUB);
+		if (is_up(data->norm.start_angle))
+			data->norm.choice_txt = &data->n_txt;
+		else
+			data->norm.choice_txt = &data->s_txt;
+	}
+	else
+	{
+		*y1 = data->ver_y;
+		*x1 = data->ver_x;
+		data->x_offset = fmod(*y1, CUB);
+		if (is_left(data->norm.start_angle))
+			data->norm.choice_txt = &data->e_txt;
+		else
+			data->norm.choice_txt = &data->w_txt;
+	}
+}
+
+void	draw_rays_helper1(t_all *data, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < data->norm.start)
+	{
+		my_mlx_pixel_put(data, i, j, get_ceiling_c(data));
+		j++;
+	}
+	while (j < data->norm.end)
+	{
+		data->norm.color = get_color(*data->norm.choice_txt, j, data, \
+				data->norm.wall_height);
+		my_mlx_pixel_put(data, i, j, data->norm.color);
+		j++;
+	}
+	while (j < data->mlx.h_win)
+	{
+		my_mlx_pixel_put(data, i, j, get_floor_c(data));
+		j++;
+	}
+}
+
+void	draw_rays_helper2(t_all *data, double *increment)
+{
+	data->norm.start_angle = data->direction_ang - (30 * (M_PI / 180));
+	data->norm.start_angle = normalize_angle(data->norm.start_angle);
+	*increment = (60 * (M_PI / 180)) / data->mlx.w_win;
+}
+
 int	draw_rays(t_all *data)
 {
 	int				i;
-	int				j;
 	double			increment;
 	double			x1;
 	double			y1;
 
-	data->norm.start_angle = data->direction_ang - (30 * (M_PI / 180));
-	data->norm.start_angle = normalize_angle(data->norm.start_angle);
-	increment = (60 * (M_PI / 180)) / data->mlx.w_win;
-	i = 0;
-	while (i < data->mlx.w_win)
+	draw_rays_helper2(data, &increment);
+	i = -1;
+	while (++i < data->mlx.w_win)
 	{
-		horizontal_inter(data, data->norm.start_angle);
-		vertical_inter(data, data->norm.start_angle);
-		if (calculate_distance(data, data->ver_y, data->ver_x) > \
-		calculate_distance(data, data->hor_y, data->hor_x))
-		{
-			y1 = data->hor_y;
-			x1 = data->hor_x;
-			data->x_offset = fmod(x1, CUB);
-			if (is_up(data->norm.start_angle))
-				data->norm.choice_txt = &data->n_txt;
-			else
-				data->norm.choice_txt = &data->s_txt;
-		}
-		else
-		{
-			y1 = data->ver_y;
-			x1 = data->ver_x;
-			data->x_offset = fmod(y1, CUB);
-			if (is_left(data->norm.start_angle))
-				data->norm.choice_txt = &data->e_txt;
-			else
-				data->norm.choice_txt = &data->w_txt;
-		}
+		draw_rays_helper(data, &x1, &y1);
 		data->norm.cub_distance = calculate_distance(data, y1, x1) / CUB;
 		data->norm.cub_distance *= cos(data->direction_ang - \
 				data->norm.start_angle);
@@ -180,26 +215,8 @@ int	draw_rays(t_all *data)
 		data->norm.end = (data->mlx.h_win / 2) + (data->norm.wall_height / 2);
 		if (data->norm.end > data->mlx.h_win || data->norm.end < 0)
 			data->norm.end = data->mlx.h_win;
-		j = 0;
-		while (j < data->norm.start)
-		{
-			my_mlx_pixel_put(data, i, j, get_ceiling_c(data));
-			j++;
-		}
-		while (j < data->norm.end)
-		{
-			data->norm.color = get_color(*data->norm.choice_txt, j, data, \
-					data->norm.wall_height);
-			my_mlx_pixel_put(data, i, j, data->norm.color);
-			j++;
-		}
-		while (j < data->mlx.h_win)
-		{
-			my_mlx_pixel_put(data, i, j, get_floor_c(data));
-			j++;
-		}
+		draw_rays_helper1(data, i);
 		data->norm.start_angle += increment;
-		i++;
 	}
 	return (0);
 }
