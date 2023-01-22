@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 19:06:10 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/22 23:11:52 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,21 @@ typedef struct s_texture
 	int		width;
 }	t_texture;
 
+typedef struct s_norm
+{
+	double			first_x;
+	double			first_y;
+	double			step_x;
+	double			step_y;
+	double			cub_distance;
+	double			wall_height;
+	int				start;
+	int				end;
+	unsigned int	color;
+	t_texture		*choice_txt;
+	double			start_angle;
+}	t_norm;
+
 typedef struct s_all
 {
 	t_parss			parss;
@@ -140,6 +155,7 @@ typedef struct s_all
 	t_texture		gun_3_txt;
 	t_texture		minimap;
 	int				shot_;
+	t_norm			norm;
 }					t_all;
 
 // mlx_utils
