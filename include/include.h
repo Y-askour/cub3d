@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:50:58 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/22 21:48:14 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 22:26:55 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,12 @@ typedef struct s_texture
 	int		width;
 }	t_texture;
 
-
 typedef struct s_norm
 {
-	double	first_x;
-	double	first_y;
-	double	step_x;
-	double	step_y;
+	double			first_x;
+	double			first_y;
+	double			step_x;
+	double			step_y;
 	double			cub_distance;
 	double			wall_height;
 	int				start;
@@ -248,5 +247,15 @@ unsigned int		get_color(t_texture txt, double y, t_all *data, \
 					double wall_h);
 unsigned int		get_floor_c(t_all *data);
 unsigned int		get_ceiling_c(t_all *data);
+
+// intersection
+void				horizontal_inter_helper(t_all *data, double ang, \
+					int *index_x, int *index_y);
+void				horizontal_inter_init(t_all *data, double ang);
+void				horizontal_inter(t_all *data, double ang);
+void				vertical_inter_init(t_all *data, double ang);
+void				vertical_inter_helper(t_all *data, \
+					double ang, int *index_y, int *index_x);
+void				vertical_inter(t_all *data, double ang);
 
 #endif

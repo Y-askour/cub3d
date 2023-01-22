@@ -16,7 +16,7 @@ NAME = Cub3d
 NAME_BONUS = Cub3d_bonus
 HEADER = include/include.h
 HEADER_BONUS = include/include_bonus.h
-FLAGS = -Wall -Wextra -Werror -Imlx -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -Imlx
 LIBFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 MLX_LIB = mlx/libmlx.a
 GET_NEXT_LINE = /utils/get_next_line/
@@ -32,7 +32,8 @@ SRC = $(addprefix Mandatory/,main.c parssing/parssing.c parssing/get_colors.c \
 		check/check_textures.c check/check_textures_utils.c check/check_map.c\
 		raycasting/draw.c mlx/mlx_key.c mlx/mlx_init.c mlx/mlx_actions.c\
 		free/free2.c check/check_map2.c check/check_map3.c check/check_map4.c\
-		check/check_map5.c raycasting/math.c raycasting/draw_ray.c)
+		check/check_map5.c raycasting/math.c raycasting/draw_ray.c\
+		raycasting/intersections.c raycasting/intersections2.c)
 
 # 		----------========== {     SRCS_BONUS    } ==========----------
 
