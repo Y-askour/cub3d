@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 18:46:35 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/22 19:47:37 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 20:01:14 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,51 @@ void	player_position(t_all *data, int x, int y, int *player)
 	*player = *player + 1;
 }
 
-int	horizontal_inter(t_all *data, double ang)
+void	horizontal_inter_helper(t_all *data, int *index_x, int *index_y, \
+		int ang)
+{
+	while (*index_y >= 0 && *index_y < data->valid.map_len \
+	&& *index_x >= 0 && *index_x < data->valid.line_len)
+	{
+		if (data->valid.maps[*index_y][*index_x] == '1')
+		{
+			data->hor_x = data->norm.first_x;
+			data->hor_y = data->norm.first_y;
+			return ;
+		}
+		data->norm.first_x += data->norm.step_x;
+		data->norm.first_y += data->norm.step_y;
+		if (is_up(ang))
+		{
+			*index_x = floor(data->norm.first_x / CUB);
+			*index_y = floor((data->norm.first_y - 1) / CUB);
+		}
+		else
+		{
+			*index_x = floor(data->norm.first_x / CUB);
+			*index_y = floor((data->norm.first_y) / CUB);
+		}
+	}
+	data->hor_y = INT_MAX;
+	data->hor_x = INT_MAX;
+}
+
+void	horizontal_inter_helper1(t_all *data, int *index_x, int *index_y, \
+		int ang)
+{
+	if (is_up(ang))
+	{
+		*index_x = floor(data->norm.first_x / CUB);
+		*index_y = floor((data->norm.first_y - 1) / CUB);
+	}
+	else
+	{
+		*index_x = floor(data->norm.first_x / CUB);
+		*index_y = floor((data->norm.first_y) / CUB);
+	}
+}
+
+void	horizontal_inter(t_all *data, double ang)
 {
 	int		index_x;
 	int		index_y;
@@ -29,7 +73,8 @@ int	horizontal_inter(t_all *data, double ang)
 	data->norm.first_y = floor(data->y_player / CUB) * CUB;
 	if (!is_up(ang))
 		data->norm.first_y += CUB;
-	data->norm.first_x = ((data->norm.first_y - data->y_player) / tan(ang)) + data->x_player;
+	data->norm.first_x = ((data->norm.first_y - data->y_player) \
+			/ tan(ang)) + data->x_player;
 	data->norm.step_y = CUB;
 	if (is_up(ang))
 		data->norm.step_y *= -1;
@@ -38,44 +83,53 @@ int	horizontal_inter(t_all *data, double ang)
 		data->norm.step_x *= -1;
 	if (is_left(ang) && data->norm.step_x > 0)
 		data->norm.step_x *= -1;
-	if (is_up(ang))
+	horizontal_inter_helper1(data, &index_x, &index_y, ang);
+	horizontal_inter_helper(data, &index_x, &index_y, ang);
+}
+
+void	vertical_inter_helper(t_all *data, int *index_x, int *index_y, int ang)
+{
+	while (*index_y >= 0 && *index_y < data->valid.map_len \
+	&& *index_x >= 0 && *index_x < data->valid.line_len)
 	{
-		index_x = floor(data->norm.first_x / CUB);
-		index_y = floor((data->norm.first_y - 1) / CUB);
-	}
-	else
-	{
-		index_x = floor(data->norm.first_x / CUB);
-		index_y = floor((data->norm.first_y) / CUB);
-	}
-	while (index_y >= 0 && index_y < data->valid.map_len \
-	&& index_x >= 0 && index_x < data->valid.line_len)
-	{
-		if (data->valid.maps[index_y][index_x] == '1')
+		if (data->valid.maps[*index_y][*index_x] == '1')
 		{
-			data->hor_x = data->norm.first_x;
-			data->hor_y = data->norm.first_y;
-			return (0);
+			data->ver_x = data->norm.first_x;
+			data->ver_y = data->norm.first_y;
+			return ;
 		}
 		data->norm.first_x += data->norm.step_x;
 		data->norm.first_y += data->norm.step_y;
-		if (is_up(ang))
+		if (is_left(ang))
 		{
-			index_x = floor(data->norm.first_x / CUB);
-			index_y = floor((data->norm.first_y - 1) / CUB);
+			*index_x = floor((data->norm.first_x - 1) / CUB);
+			*index_y = floor(data->norm.first_y / CUB);
 		}
 		else
 		{
-			index_x = floor(data->norm.first_x / CUB);
-			index_y = floor((data->norm.first_y) / CUB);
+			*index_x = floor(data->norm.first_x / CUB);
+			*index_y = floor(data->norm.first_y / CUB);
 		}
 	}
-	data->hor_y = INT_MAX;
-	data->hor_x = INT_MAX;
-	return (0);
+	data->ver_x = INT_MAX;
+	data->ver_y = INT_MAX;
 }
 
-int	vertical_inter(t_all *data, double ang)
+void	vertical_inter_helper1(t_all *data, int *index_x, int *index_y, int ang)
+{
+	if (is_left(ang))
+	{
+		*index_x = floor((data->norm.first_x - 1) / CUB);
+		*index_y = floor(data->norm.first_y / CUB);
+	}
+	else
+	{
+		*index_x = floor(data->norm.first_x / CUB);
+		*index_y = floor(data->norm.first_y / CUB);
+	}
+}
+
+void	vertical_inter(t_all *data, double ang)
 {
 	int		index_x;
 	int		index_y;
@@ -83,7 +137,8 @@ int	vertical_inter(t_all *data, double ang)
 	data->norm.first_x = floor(data->x_player / CUB) * CUB;
 	if (!is_left(ang))
 		data->norm.first_x += CUB;
-	data->norm.first_y = data->y_player + ((data->norm.first_x - data->x_player) * tan(ang));
+	data->norm.first_y = data->y_player + ((data->norm.first_x - \
+				data->x_player) * tan(ang));
 	data->norm.step_x = CUB;
 	if (is_left(ang))
 		data->norm.step_x *= -1;
@@ -92,41 +147,8 @@ int	vertical_inter(t_all *data, double ang)
 		data->norm.step_y *= -1;
 	if (!is_up(ang) && data->norm.step_y < 0)
 		data->norm.step_y *= -1;
-	if (is_left(ang))
-	{
-		index_x = floor((data->norm.first_x - 1) / CUB);
-		index_y = floor(data->norm.first_y / CUB);
-	}
-	else
-	{
-		index_x = floor(data->norm.first_x / CUB);
-		index_y = floor(data->norm.first_y / CUB);
-	}
-	while (index_y >= 0 && index_y < data->valid.map_len \
-	&& index_x >= 0 && index_x < data->valid.line_len)
-	{
-		if (data->valid.maps[index_y][index_x] == '1')
-		{
-			data->ver_x = data->norm.first_x;
-			data->ver_y = data->norm.first_y;
-			return (0);
-		}
-		data->norm.first_x += data->norm.step_x;
-		data->norm.first_y += data->norm.step_y;
-		if (is_left(ang))
-		{
-			index_x = floor((data->norm.first_x - 1) / CUB);
-			index_y = floor(data->norm.first_y / CUB);
-		}
-		else
-		{
-			index_x = floor(data->norm.first_x / CUB);
-			index_y = floor(data->norm.first_y / CUB);
-		}
-	}
-	data->ver_x = INT_MAX;
-	data->ver_y = INT_MAX;
-	return (0);
+	vertical_inter_helper1(data, &index_x, &index_y, ang);
+	vertical_inter_helper(data, &index_x, &index_y, ang);
 }
 
 int	draw_rays(t_all *data)
