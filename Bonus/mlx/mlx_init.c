@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaskour <yaskour@student.1337.ma >         +#+  +:+       +#+        */
+/*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 21:43:15 by yaskour           #+#    #+#             */
-/*   Updated: 2023/01/22 23:30:42 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 23:47:59 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
+
+void	my_mlx_pixel_put(t_all *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->mlx.addr + (y * data->mlx.line_length + x * (data->mlx.bpp
+				/ 8));
+	*(unsigned int *)dst = color;
+}
 
 void	load_textures_helper(t_all *data)
 {

@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/22 23:11:52 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/23 00:01:07 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ int					mlx_key_release(int keycode, t_all *data);
 int					mlx_key(int keycode, t_all *data);
 int					mlx_keypress(t_all *data);
 int					mouse_move(int x, int y, t_all *data);
+void				my_mlx_pixel_put(t_all *data, int x, int y, int color);
 // list of functions that are used to move the player around the map.
 void				move_up(t_all *data);
 void				move_down(t_all *data);
@@ -223,6 +224,10 @@ void				init_textures(t_all *data);
 // check_map
 int					check_is_white_spaces(char *str);
 int					check_map(t_all *data);
+int					middle_char_helper1(t_all *data, int i, int j);
+int					middle_char_helper2(t_all *data, int i, int j);
+void				middle_char_helper3(t_all *data, int *start, \
+					int *end, int *i);
 unsigned int		big_len(t_all *data);
 void				init_map(t_all *data);
 int					check_characters(t_all *data);
@@ -243,5 +248,28 @@ int					draw(t_all *data);
 void				player_position(t_all *data, int x, int y, int *player);
 void				init_mlx(t_all *data);
 double				normalize_angle(double ang);
+double				calculate_distance(t_all *data, double y, double x);
+void				vertical_inter(t_all *data, double ang);
+void				vertical_inter_helper(t_all *data, \
+					double ang, int *index_y, int *index_x);
+void				vertical_inter_init(t_all *data, double ang);
+void				horizontal_inter(t_all *data, double ang);
+void				horizontal_inter_helper(t_all *data, double ang, \
+					int *index_x, int *index_y);
+void				horizontal_inter_init(t_all *data, double ang);
+void				draw_rays_helper(t_all *data, double *x1, double *y1);
+void				draw_rays_helper1(t_all *data, int i);
+void				draw_rays_helper2(t_all *data, double *increment);
+int					is_left(double ang);
+int					is_up(double ang);
+unsigned int		get_color(t_texture txt, double y, t_all *data, \
+					double wall_height);
+unsigned int		get_floor_c(t_all *data);
+unsigned int		get_ceiling_c(t_all *data);
+
+// minimap drawing
+void				render_minimap(t_all *data);
+void				draw_circle(t_all *data, double y, double x, int color);
+void				draw_miniplayer(t_all *data, double x, double y, int color);
 
 #endif

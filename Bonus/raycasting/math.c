@@ -6,18 +6,28 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:12:26 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/17 23:47:44 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/22 23:54:41 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/include_bonus.h"
 
-// Ray to cast 0 to 2PI
-
-// segfault when the player is on the wall and the ray is on the wall
-// segfault when the player is on the wall and the ray is on the wall to fix 
-
-double	distance_between_points(double x1, double y1, double x2, double y2)
+unsigned int	get_color(t_texture txt, double y, t_all *data, \
+		double wall_height)
 {
-	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
+	unsigned int	color;
+	int				y_offset;
+	int				x_offset;
+
+	y_offset = y + (wall_height / 2) - (data->mlx.h_win / 2 - data->new_pov);
+	x_offset = (data->x_offset / CUB) * txt.width;
+	y_offset = ((y_offset) * ((double)txt.height / \
+				wall_height));
+	color = txt.addr[abs((y_offset * txt.height) + x_offset)];
+	return ((unsigned int)color);
+}
+
+double	calculate_distance(t_all *data, double y, double x)
+{
+	return (sqrt(pow(x - data->x_player, 2) + pow(y - data->y_player, 2)));
 }
