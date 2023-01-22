@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 19:38:17 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/20 20:20:39 by yaskour          ###   ########.fr       */
+/*   Updated: 2023/01/22 19:21:51 by zyacoubi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	middle_char(t_all *data)
 	i = 1;
 	while (i < data->valid.map_len - 1)
 	{
-		middle_char_helper3(data,&start,&end,&j,&i);
+		middle_char_helper3(data, &start, &end, &j, &i);
 		while (j < end)
 		{
 			if (middle_char_helper1(data, i, j))
