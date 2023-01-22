@@ -6,7 +6,7 @@
 /*   By: zyacoubi <zyacoubi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:25:12 by zyacoubi          #+#    #+#             */
-/*   Updated: 2023/01/23 00:01:07 by zyacoubi         ###   ########.fr       */
+/*   Updated: 2023/01/23 00:30:18 by yaskour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,9 @@ typedef struct s_all
 	t_texture		minimap;
 	int				shot_;
 	t_norm			norm;
+	t_texture		*gun_frame;
+	int				y_p_pos;
+	int				x_p_pos;
 }					t_all;
 
 // mlx_utils
