@@ -53,3 +53,5 @@ C 60,60,60
 11111111 1111111 11111111111111111111111111111
 11111111 1111111 11111111111111111111111111111
 ```
+
+Once you have provided a .cub file as input, you can run the project to render the 3D representation of the map on the screen. The project also supports user input, allowing you to move the viewpoint around the scene and interact with the environment using the arrow keys to rotate the player's field of view and the W/S/A/D keys to move forward, backward, left, and right, respectively.
