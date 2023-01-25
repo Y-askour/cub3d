@@ -55,3 +55,19 @@ C 60,60,60
 ```
 
 Once you have provided a .cub file as input, you can run the project to render the 3D representation of the map on the screen. The project also supports user input, allowing you to move the viewpoint around the scene and interact with the environment using the arrow keys to rotate the player's field of view and the W/S/A/D keys to move forward, backward, left, and right, respectively.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/YOPll"><img src="https://avatars.githubusercontent.com/u/49567393?v=4" width="100px;" alt=""/><br /><sub><b>Zakaria Yacoubi Mea</b></sub></a><br /><a href="YOPIIIIIIIII" title="Code">💻</a> <a href="#Cub3D Projection" title="Code">🚇</a></td>
+    <td align="center"><a href="https://github.com/Y-askour"><img src="https://avatars.githubusercontent.com/u/66399701?v=4" width="100px;" alt=""/><br /><sub><b>Y-askour</b></sub></a><br /><a href="Y-askour" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
