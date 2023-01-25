@@ -63,7 +63,7 @@ Once you have provided a .cub file as input, you can run the project to render t
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/YOPll"><img src="https://avatars.githubusercontent.com/u/49567393?v=4" width="100px;" alt=""/><br /><sub><b>Zakaria Yacoubi Mea</b></sub></a><br /><a href="YOPIIIIIIIII" title="Code">💻</a> <a href="#Cub3D Projection" title="Code">🚇</a></td>
+    <td align="center"><a href="https://github.com/YOPll"><img src="https://avatars.githubusercontent.com/u/49567393?v=4" width="100px;" alt=""/><br /><sub><b>Zakaria Yacoubi</b></sub></a><br /><a href="YOPIIIIIIIII" title="Code">💻</a> <a href="#Cub3D Projection" title="Code">🚇</a></td>
     <td align="center"><a href="https://github.com/Y-askour"><img src="https://avatars.githubusercontent.com/u/66399701?v=4" width="100px;" alt=""/><br /><sub><b>Y-askour</b></sub></a><br /><a href="Y-askour" title="Code">💻</a></td>
   </tr>
 </table>
