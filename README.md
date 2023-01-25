@@ -1,8 +1,8 @@
+https://user-images.githubusercontent.com/49567393/214644991-3d1f01c4-5fdb-4e17-8c99-ae0b80233211.mp4
+
 Cub3D is a project that implements a raycasting algorithm to create a 3D representation of a 2D grid or map. The project is written in C and uses the minilibx library for rendering the resulting image on the screen.
 
-
-
-// add a video here
+https://user-images.githubusercontent.com/49567393/214645061-d21fc407-c546-4306-8d8e-18b47d1198ab.mp4
 
 
 The project includes a Makefile that can be used to build and install the project and its dependencies. To build  the project
